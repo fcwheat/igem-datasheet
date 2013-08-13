@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Datasheet Builder</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="shortcut icon" href="images/shortcutIcon.ico">
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+    </head>
+    <body data-spy="scroll" data-target="#sidebar">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner"> 
+                <div class="container">
+                    <a class="brand" href="index.html">Datasheet Builder</a>
+                    <ul class="nav">
+                        <li ><a href="#">Browse Data Sheets</a></li>
+                        <li class="active"><a href="design.html">Create New Data Sheet</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul> 
+                    <div id="loginArea"><form id="loginForm" class="navbar-form pull-right" action="AuthenticationServlet" method="POST">
+                            <input name="user" type="text" class="span2" placeholder="Login">
+                            <input name="password" type="password" class="span2" placeholder="Password">
+                            <input type="submit" value="Login" class="btn"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="page-header" style="margin-top:50px">
+                <h1>Datasheet Builder <small>Build an awesome data sheet here</small></h1>
+            </div>
+            <div class="row-fluid">
+                <div class="span2">
+                    <div id="sidebar">
+                        <ul  class=" well nav nav-list affix">
+                            <li class="active"><a href="#basic">Basic Description</a></li>
+                            <li><a href="#author">Author</a></li>
+                            <li><a href="#growth">Growth Conditions</a></li>
+                            <li><a href="#measure">Measurements</a></li>
+                            <li><a href="#data">Data</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="span10">
+                    <div class="row-fluid">                      
+                        <div class="well" id="basic">
+                            <h3>Basic Information</h3>
+                            <hr/>
+                            <dl>
+                                <dt>Name</dt>
+                                <dd><input/></dd>
+                                <dt>Part Type</dt>
+                                <dd>
+                                    <select>
+                                        <option value="composite">Composite</option>
+                                        <option value="basic">Basic</option>
+                                    </select>
+                                </dd>
+                                <dt>Date</dt>
+                                <dd><input/></dd>
+                                <dt>Summary</dt>
+                                <dd>
+                                    <textarea style="width:100%;resize: none">
+                                    </textarea>
+                                </dd>
+
+                            </dl>
+
+                        </div>
+                        <div class="well" id="author">
+                            <h3>Author information</h3>
+                            <hr/>
+                            <dl>
+                                <dt>Author(s)</dt>
+                                <dd><input/></dd>
+                                <dt>Contact</dt>
+                                <dd><input/></dd>
+                                <dt>Affiliation</dt>
+                                <dd><input/></dd>
+                            </dl>
+                        </div>
+                        <div class="well" id="growth">
+                            <h3>Growth Conditions</h3>
+                            <hr/>
+                            <div id="growthTableArea">
+                                <button class="btn tableButton" id="growthTableButton">Add New Table</button>
+                                <hr/>
+                            </div>
+                        </div>
+                        <div class="well" id="measure">
+                            <h3>Measurements</h3>
+                            <hr/>
+                            <div id="measureTableArea">
+                                <button class="btn tableButton" id="measureTableButton">Add New Table</button>
+                                <hr/>
+                            </div>
+                        </div>
+                        <div class="well" id="data">
+                            <h3>Data</h3>
+                            <hr/>
+                            <div id="dataTableArea">
+                                <button class="btn tableButton" id="dataTableButton">Add New Table</button>
+                                <hr/>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+            <div class="modal-header">
+                <h4 id="loginLabel">Sign in</h4>
+            </div>
+            <div class="modal-body">
+                <p>Please enter your user name and password to sign in.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Dismiss</button>
+            </div>
+        </div>
+
+        <!--scripts placed at the end to enhance page loading speed--> 
+        <script type="text/javascript" src="libraries/jquery-1.9.1.min.js"></script> 
+        <script src="libraries/bootstrap.min.js"></script> 
+        <script src="javascript/design.js"></script> 
+        <footer>
+            <div class="container" align="center">
+                <p>Designed and built by <a href="contact.html">BU iGEM Team</a> at <a href="http://wiki.bu.edu/ece-cidar/index.php/Main_Page">CIDAR</a></p>
+                <p>Code licensed under <a href="license.html">LICENSE</a></p>
+            </div>
+        </footer>
+    </body>
+</html>
