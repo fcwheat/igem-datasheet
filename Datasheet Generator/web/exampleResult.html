@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title class="name">BBa_K783067</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body class="container">
+        <!--summary-->
+        <div class="well">
+            <h1 class="name">BBa_K783067</h1>
+            <h4>Summary</h4>
+            <div class="row-fluid">
+                <div class="span6">
+                    <p id="summary">
+                        This device is specified to act as a logical inverter as a function of [L-arabinose]. GFP expression should increase as L-arabinose concentration increases and RFP expression should decrease. 
+                        Characterization finds behavior consistent with specification.
+                    </p>
+                </div>
+                <div class="span6" id="deviceImage">
+                    <img src="example/exampleDevice.png" class="img-polaroid"/>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span6">
+                    <dl>
+                        <dt>Author(s)</dt>
+                        <dd id="authors">Jenhan Tao, Thomas Lozanoski</dd>
+                        <dt>Date</dt>
+                        <dd id="date">08/13/2013</dd>
+                        <dt>Contact</dt>
+                        <dd>jenhantao@gmail.com</dd>
+                        <dt>Affiliation</dt>
+                        <dd id="affiliation">Densmore Lab, Boston University</dd>
+                    </dl>
+                </div>
+                <div class="span6">
+                    <dl>
+                        <dt>Related Parts</dt>
+                        <dd id="relatedParts">
+                            <a href="#">BBa_I13453</a>,
+                            <a href="#">BBa_C0040</a>,
+                            <a href="#">BBa_R0040</a>
+                        </dd>
+                        <dt id="comments">Additional Comments</dt>
+                        <dd>SI built device, EA and MF characterized device.</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="well">
+            <h4>Growth Conditions</h4>
+            <div class="row-fluid">
+                <div class="span6">
+                    <dl>
+                        <dt>Chassis</dt>
+                        <dd id="strain">E. Coli</dd>
+                    </dl> 
+                </div>
+                <div class="span6">
+                    <dl>
+                        <dt>Strain</dt>
+                        <dd>Bioline alpha-gold</dd>
+                    </dl> 
+                </div>
+            </div>
+
+            <!--growth conditons-->
+            <div class="row-fluid">
+                <div class="span6">
+                    <table>
+                        <thead><th colspan="2">PRE-INDUCTION GROWTH CONDITIONS</th></thead>
+                        <tbody>
+                            <tr><th>Media Type</th><td>Luria Broth (LB)</td></tr>
+                            <tr><th>Vessel</th><td>5 mL tubes</td></tr>
+                            <tr><th>Volume</th><td>2 mL</td></tr>
+                            <tr><th>Incubation</th><td>37 C, 300 rpm</td></tr>
+                            <tr><th>Time</th><td>420 min</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="span6">
+                    <table>
+                        <thead><th colspan="2">INDUCTION GROWTH CONDITIONS</th></thead>
+                        <tbody>
+                            <tr><th>Media Type</th><td>Luria Broth (LB)</td></tr>
+                            <tr><th>Vessel</th><td>500 uL tubes</td></tr>
+                            <tr><th>Volume</th><td>200 uL</td></tr>
+                            <tr><th>Incubation</th><td>37 C, 300 rpm</td></tr>
+                            <tr><th>Time</th><td>870 min</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <!--measurements-->
+        <div class="well">
+            <h4>Measurements</h4>
+            <div class="row-fluid">
+                <div class="span6">
+                    <table>
+                        <thead><th colspan="2">Flow Cytometry</th></thead>
+                        <tbody>
+                            <tr><th>Data Type</th><td>Single-cell fluorescence</td></tr>
+                            <tr><th>Location</th><td>Boston University Center for Advanced Biotech</td></tr>
+                            <tr><th>Machine Name</th><td>SORP 4B-2YG-1BV, ACDU (FACSAriaII)	</td></tr>
+                            <tr><th>Data Format</th><td>FCS 3.0 data files</td></tr>
+                            <tr><th>Additional Information</th><td>Lasers:(Filters) 445nm, 40mW:(515/20nm); 
+                                    488nm, 50mW: (488/10, 515/20, 545/35, 610/20, 
+                                    710/50nm); 561nm, 40mW:(610/20, 660/20nm);
+                                </td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="span6">
+                    <table>
+                        <thead><th colspan="2">Restriction Mapping</th></thead>
+                        <tbody>
+                          <tr><th>Data Type</th><td>Gel electrophoresis (DNA size bands)</td></tr>
+                            <tr><th>Location</th><td>Boston University Center for Advanced Biotech</td></tr>
+                            <tr><th>Machine Name</th><td>n/a</td></tr>
+                            <tr><th>Data Format</th><td>Gel pictures</td></tr>
+                            <tr><th>Additional Information</th><td>
+                                    1% TAE gel; Sybr dye used for staining
+                                </td></tr>
+                     </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <!--device declaration-->
+        <div class="well">
+            <h4>Device Declaration</h4>
+            <div class="row-fluid">
+                <div class="span6">
+                    <dl>
+                        <dt>Name</dt>
+                        <dd class="name">BBa_K783067</dd>
+                        <dt>Device Type</dt>
+                        <dd id="type">Inverter</dd>
+                        <dt>Description</dt>
+                        <dd id="description">pBad-pTet inverter</dd>
+                        <dt>Components</dt>
+                        <dd id="components"><a>BBa_13453</a>,<a href="#">BBa_B0032</a>,<a href="#">BBa_C0040</a>,<a href="#">BBa_B0034</a>,
+                            <a href="#">BBa_E0040</a>,<a href="#">BBa_B0015</a>,<a href="#">BBa_R0040</a>,<a href="#">BBa_B0034</a>,<a href="#">
+                                BBa_E1010</a>,<a href="#">BBa_B0015</a>
+                        </dd>
+                    </dl>
+                </div>
+                <div class="span6">
+                    <dl>
+                        <dt>Assembly</dt>
+                        <dd id="assembly">BioBricks</dd>
+                        <dt>Protocol</dt>
+                        <dd id="protocol">BU BioBricks assembly protocol</dd>
+                        <dt>Scars</dt>
+                        <dd id="scars">Yes, 6 bp scars between each part</dd>
+                        <dt>Vector</dt>
+                        <dd id="vector">pSB1A3</dd>
+                    </dl>
+                </div>
+            </div> 
+        </div>
+        <hr/>  
+        <!--images-->
+        <div class="well">
+            <h4>Data</h4>
+            <div class="row-fluid">
+                <div class="span6">
+                    <div>
+                        <img src="example/data1.png" class="img-polaroid"/>
+                        FIGURE 1: Flow cytometry measurements at variable L-arabinose concentrations. 
+                        Three device clones were tested to obtain error bars.  
+                        GFP fluorescence measured on 488nm laser, 515/20nm filter. 
+                        RFP fluorescence measured on 561nm laser, 610/20nm filter.
+                    </div>
+                </div>
+                <div class="span6">
+                    <div>
+                        <img src="example/data2.jpg" class="img-polaroid"/>
+                        FIGURE 2: Restriction mapping for BBa_K783067 (seen here as pSI59-1) has the correct part length according the marker, indicating the proper construction of the device.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
