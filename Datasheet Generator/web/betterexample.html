@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title class="name">BBa_K783067</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body class="container">
+        <!--summary-->
+        <div class="well">
+         <h1 class="name">BBa_K783067</h1>
+            <h4>Part Description</h4>                 
+            <h4>Summary</h4>
+            <div class="row-fluid">
+                <div class="span6">
+                    <p id="summary">
+                        This device is specified to act as a logical inverter as a function of [L-arabinose]. GFP expression should increase as L-arabinose concentration increases and RFP expression should decrease. 
+                        Characterization finds behavior consistent with specification.
+                    </p>
+                </div>
+                <div class="span6" id="deviceImage">
+                    <img src="images/exampleDevice.png" class="img-polaroid"/>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span6">
+                    <dl>
+                    <h4>Contact Information</h4> 
+                        <dt>Author(s)</dt>
+                        <dd id="authors">Jenhan Tao, Thomas Lozanoski</dd>
+                        <dt>Team</dt>
+                        <dd id="team">BostonU iGEM 2013 </dd>
+                        <dt>Data Collection</dt>
+                        <dd id="datacollection">Evan Appleton, Monique Freitas</dd>
+                        <dt>Affiliation</dt>
+                        <dd id="affiliation">Densmore Lab, Boston University</dd>
+                    </dl>
+                </div>
+                <div class="span6">
+                    <dl>
+                        <dt>Related Parts</dt>
+                        <dd id="relatedParts">
+                            <a href="#">BBa_I13453</a>,
+                            <a href="#">BBa_C0040</a>,
+                            <a href="#">BBa_R0040</a>
+                        </dd>
+                        <dt>Contact</dt>
+                        <dd>jenhantao@gmail.com</dd>
+                        <dt>Date</dt>
+                        <dd id="date">08/13/2013</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="well">
+            <h4>Standard (Required) Design Information</h4>
+            <div class="row-fluid">
+                <div class="span6">
+                    <dl>
+                        <dt>Chassis</dt>
+                        <dd id="chassis">E. Coli</dd>
+                        <dt>Device Name</dt>
+                        <dd id ="devicename">BBa_K783067</dd>
+                        <dt>Device Type</dt>
+                        <dd id ="devicetype">Inverter</dd>
+                        <dt>Safety Level</dt>
+                        <dd id="safetylevel">Risk Group 1</dd>
+                        <dt>Components</dt>
+                        <dd id="components">
+                            <a href="#">BBa_I13453</a>,
+                            <a href="#">BBa_B0032</a>,
+                            <a href="#">BBa_C0040</a>
+                            <a href="#">BBa_B0034</a>
+                            <a href="#">BBa_E0040</a>
+                            <a href="#">BBa_B0015</a>
+                            <a href="#">BBa_R0040</a>
+                            <a href="#">BBa_B0034</a>
+                            <a href="#">BBa_E1010</a>
+                            <a href="#">BBa_B0015</a>
+                        </dd>
+                        <dt>Additional Comments</dt>
+                        <dd id="additionalcomments">SI built device, EA and MF characterized device</dd>
+                    </dl> 
+                </div>
+                <div class="span6">
+                    <dl>
+                        <dt>Strain</dt>
+                        <dd id="strain">Bioline Alpha-Gold</dd>
+                        <dt>Assembly</dt>
+                        <dd id ="assembly">BioBricks</dd>
+                        <dt>Protocol</dt>
+                        <dd id="protocol">BU BioBricks assembly protocol</dd>
+                        <dt>Scars</dt>
+                        <dd id="scars">Yes;60bp scars between each part </dd>
+                        <dt>Insertion</dt>
+                        <dd id ="insertion">Plasmid</dd>
+                        <dt>Vector</dt>
+                        <dd id ="vector">pSB1A3</dd>
+                    </dl> 
+                </div>
+            </div>
+            
+           <div class="well">
+            <h4>Standard (Required) Assays</h4>
+            <div class="row-fluid">
+                <div class="span6">
+                    <dl>
+                        <dt>(1)Restriction Digest and Gel Electrophoresis</dt>
+                        <dd id="Assay">Restriction Digest and Gel Electrophoresis</dd>
+                        <dt>Purpose</dt>
+                        <dd id ="purpose">Verify restriction mapping</dd>
+                        <dt>Data Type</dt>
+                        <dd id ="datatype">DNA size bands</dd>
+                        <dt>Location</dt>
+                        <dd id="location">Boston University Center for Advanced Biotechnology</dd>
+                        <dt>Data Format</dt>
+                        <dd id="dataformat">Gel Images</dd>
+                        <dt>Enzymes</dt>
+                        <dd id="enzymes">XbaI,PstI</dd>
+                        <dt>Ladder</dt>
+                        <dd id="ladder">NEB 2Kb ladder</dd>
+                        <dt>Protocol Details</dt>
+                        <dd id="protocoldetails">1% TAE gel; Sybr Safe dye used for staining</dd>
+                    </dl> 
+                </div>
+            </div> 
+           </div>
+            
+            
+            
+            
+            
+             <div class="well">
+            <h4>Demonstration of Device Functionality (Project Specific Assays)</h4>
+            <div class="row-fluid">
+                <div class="span6">
+                    <dl>
+                        <dt>(1)Flow Cytometry</dt>
+                        <dt>Purpose</dt>
+                        <dd id ="purpose">Measure fluorescence for induction curve data</dd>
+                        <dt>Data Type</dt>
+                        <dd id ="datatype">Single-cell fluorescence</dd>
+                        <dt>Location</dt>
+                        <dd id="location">Boston University Center for Advanced Biotechnology</dd>
+                        <dt>Machine Name</dt>
+                        <dd id="machinetype">SORP 4B-2YG-1BV, ACDU(FACSAriall)</dd>
+                        <dt>Data Format</dt>
+                        <dd id="dataformat">FCS 3.0 data files</dd>
+                        <dt>Protocol Details</dt>
+                        <dd id="protocoldetails">link</dd>
+                        <dt>Lasers(Filters)</dt>
+                        <dd id="lasers">45nm, 40mW:(515/20nm); 
+                                    488nm, 50mW: (488/10, 515/20, 545/35, 610/20, 
+                                    710/50nm); 561nm, 40mW:(610/20, 660/20nm);</dd>
+                    </dl> 
+                    <br> 
+                    <dl>
+                        <dt>Pre-Induction Growth Conditions</dt> 
+                        <dt>Media Type</dt>
+                        <dd id="mediatype">Luria Broth (LB)</dd>
+                        <dt>Vessel</dt>
+                        <dd id="vessel">5mL tubes</dd>
+                        <dt>Volume</dt>
+                        <dd id="volume">2mL</dd>
+                        <dt>Incubation</dt>
+                        <dd id="incubation">37 C, 300rpm</dd>
+                        <dt>Time(min)</dt>
+                        <dd id="time">420</dd>
+                    </dl>
+                    <br>
+                    <dl>
+                        <dt>Induction Growth Condition</dt>
+                        <dt>Media Type</dt>
+                        <dd id="mediatype">Luria Broth</dd>
+                        <dt>Vessel</dt>
+                        <dd id="vessel">500uL tubes</dd>
+                        <dt>Volume</dt>
+                        <dd id="volume">200uL</dd>
+                        <dt>Incubation</dt>
+                        <dd id="incubation">37C, 300rpm</dd>
+                        <dt>Time(min)</dt>
+                        <dd id="time">870</dd>
+                    </dl>
+                </div>
+            </div> 
+           </div>
+            
+            
+            
+            
+            
+            <div class="well">
+            <h4>Future Work</h4>
+            </div>
