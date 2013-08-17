@@ -1,0 +1,40 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <div>TODO write content</div>
+        <div id="test">
+            hello
+            <h1 class="name">name</h1>
+            <div class="name">also name
+            </div>
+            <p id="summary">
+                
+            </p>
+        
+        </div>
+        
+        
+        <script src="libraries/jquery-1.9.1.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                var data = {
+                    "name":"B0015",
+                    "summary":"i think this is a terminator"
+                };
+                
+                
+                
+                $('.name').text(data["name"]);
+                $('#summary').text(data["summary"]);
+            });
+        </script>
+    </body>
+</html>
