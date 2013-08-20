@@ -106,7 +106,7 @@
         <div class="well">
             <h4>Standard (Required) Assays</h4>
             <div class="row-fluid">
-                <div class="span6">
+                <div id="standard" class="span6">
                     <table>
                         <thead><b>(1). Restriction Digest and Gel Electrophoresis</b></thead>  
                         <tbody>
@@ -175,9 +175,9 @@
         <div class="well">
             <h4>Future Work</h4>
         </div>	
-        
-        
-                <script src="libraries/jquery-1.9.1.min.js"></script>
+
+
+        <script src="libraries/jquery-1.9.1.min.js"></script>
 
         <script>
             alert('data sheet about to change');
@@ -232,33 +232,56 @@
                         "details": "1% TAE gel; Sybr Safe dye used for staining(link)"
                     }],
                 "functionalityAssays": [{
-                    "name": "Flow Cytometry",
-                    "purpose": "Measures fluorescence for induction curve data",
-                    "dataType": "Single-cell fluorescence",
-                    "location": "Boston University Center for Advanced Biotech",
-                    "machineName": "SORP 4B-2YG-1BV, ACDU (FACSAriaII)",
-                    "dataFormat": "FCS 3.0 data files",
-                    "protocolDetails": "link to protocol",
-                    "lasers": "445nm, 40mW:(515/20nm); 488nm, 50mW: (488/10, 515/20, 545/35, 610/20, 710/50nm); 561nm, 40mW:(610/20, 660/20nm);",
-                    "preInductionGrowthConditions": {
-                        "media": "Luria Broth (LB)",
-                        "vessel": "5 mL tubes",
-                        "volume": "2 mL",
-                        "incubation": "37 C, 300 rpm",
-                        "time": "420"
-                    },
-                    "inductionGrowthConditions": {
-                        "media": "Luria Broth (LB)",
-                        "vessel": "500 uL tubes",
-                        "volume": "200 uL",
-                        "incubation": "37 C, 300 rpm",
-                        "time": "870"
-                    }
-                }]
+                        "name": "Flow Cytometry",
+                        "purpose": "Measures fluorescence for induction curve data",
+                        "dataType": "Single-cell fluorescence",
+                        "location": "Boston University Center for Advanced Biotech",
+                        "machineName": "SORP 4B-2YG-1BV, ACDU (FACSAriaII)",
+                        "dataFormat": "FCS 3.0 data files",
+                        "protocolDetails": "link to protocol",
+                        "lasers": "445nm, 40mW:(515/20nm); 488nm, 50mW: (488/10, 515/20, 545/35, 610/20, 710/50nm); 561nm, 40mW:(610/20, 660/20nm);",
+                        "preInductionGrowthConditions": {
+                            "media": "Luria Broth (LB)",
+                            "vessel": "5 mL tubes",
+                            "volume": "2 mL",
+                            "incubation": "37 C, 300 rpm",
+                            "time": "420"
+                        },
+                        "inductionGrowthConditions": {
+                            "media": "Luria Broth (LB)",
+                            "vessel": "500 uL tubes",
+                            "volume": "200 uL",
+                            "incubation": "37 C, 300 rpm",
+                            "time": "870"
+                        }
+                    }]
             };
 
-  $(".name").text(data.name);
-  $("#summary").text(data.summary);
-</script>
+            $(".name").text(data.name);
+            $("#summary").text(data.summary);
+            var newTable = '';
+            for (var i = 0; i < data["standardAssays"].length; i++) {
+                newTable = newTable + '<table><tbody>';
+                for (var key in data["standardAssays"][i]) {
+                    newTable = newTable + '<tr>';
+
+                    newTable = newTable + '<th align="left">' + key + '</th><td>' + data["standardAssays"][i][key] + '</td>';
+
+                    newTable = newTable + '</tr>';
+                }
+
+                newTable = newTable + '</tbody></table>';
+            }
+
+            $('#standard').html(newTable);
+        </script>
     </body>
 </html>
+
+<!--<tr><th align="left">Purpose</th><td>Verifiying Restriction Mapping</td></tr>
+                            <tr><th align="left">Data Type</th><td>DNA size bands</td></tr>
+                            <tr><th align="left">Location</th><td>Boston University Center for Advanced Biotechnology</td></tr>
+                            <tr><th align="left">Data Format</th><td>Gel Image(link)</td></tr>
+                            <tr><th align="left">Enzymes</th><td>XbaI,PstI</td></tr>
+                            <tr><th align="left">Ladder</th><td>NEB 2Kb ladder</td></tr>
+                            <tr><th align="left">Protocol Details</th><td>1% TAE gel; Sybr Safe dye used for staining(link)</td></tr>-->
