@@ -33,13 +33,14 @@
                         <dt>Team</dt>
                         <dd id="team">BostonU iGEM 2013 </dd>
                         <dt>Data Collection</dt>
-                        <dd id="datacollection">Evan Appleton, Monique Freitas</dd>
+                        <dd id="dataCollection">Evan Appleton, Monique Freitas</dd>
                         <dt>Affiliation</dt>
                         <dd id="affiliation">Densmore Lab, Boston University</dd>
                     </dl>
                 </div>
                 <div class="span6">
                     <dl>
+                        <br>
                         <dt>Related Parts</dt>
                         <dd id="relatedParts">
                             <a href="#">BBa_I13453</a>,
@@ -107,7 +108,7 @@
             <div class="row-fluid">
                 <div class="span6">
                     <table>
-                        <thead>(1).Restriction Digest and Gel Electrophoresis</thead>  
+                        <thead><b>(1). Restriction Digest and Gel Electrophoresis</b></thead>  
                         <tbody>
                             <tr><th align="left">Purpose</th><td>Verifiying Restriction Mapping</td></tr>
                             <tr><th align="left">Data Type</th><td>DNA size bands</td></tr>
@@ -130,7 +131,7 @@
             <div class="row-fluid">
                 <div class="span6">
                     <table>
-                        <thead>(1). Flow Cytometry</thead>
+                        <thead><b>(1). Flow Cytometry</b></thead>
                         <tbody>
                             <tr><th align="left">Purpose</th><td>Measures fluorescence for induction curve data</td></tr>
                             <tr><th align="left">Data Type</th><td>Single-cell fluorescence</td></tr>
@@ -146,7 +147,7 @@
                     </table>
                     <br>
                     <table>
-                        <thead>Pre-Induction Growth Conditions</thead>
+                        <thead><b>Pre-Induction Growth Conditions</b></thead>
                         <tbody>
                             <tr><th align="left">Media Type</th><td>Luria Broth (LB)</td></tr>
                             <tr><th align="left">Vessel</th><td>5 mL tubes</td></tr>
@@ -157,7 +158,7 @@
                     </table>
                     <br>
                     <table>
-                        <thead>Induction Growth Conditions</thead>
+                        <thead><b>Induction Growth Conditions</b></thead>
                         <tbody>
                             <tr><th align="left">Media Type</th><td>Luria Broth (LB)</td></tr>
                             <tr><th align="left">Vessel</th><td>500 uL tubes</td></tr>
@@ -174,6 +175,9 @@
         <div class="well">
             <h4>Future Work</h4>
         </div>	
+        
+        
+        
         <script>
             alert('data sheet about to change');
             var data = {
@@ -252,5 +256,15 @@
                 }]
             };
         </script>
+    </body>
+</html>
+
+
+<script>
+$(document).ready(function(){
+  $(".name").text(data.name);
+  $("#summary").text(data.summary);
+}); 
+</script>
     </body>
 </html>
