@@ -48,7 +48,7 @@
                             <a href="#">BBa_R0040</a>
                         </dd>
                         <dt>Contact</dt>
-                        <dd>jenhantao@gmail.com</dd>
+                        <dd id="contact">jenhantao@gmail.com</dd>
                         <dt>Date</dt>
                         <dd id="date">08/13/2013</dd>
                     </dl>
@@ -63,13 +63,13 @@
         <div class="well">
             <h4>Standard (Required) Design Information</h4>
             <div class="row-fluid">
-                <div class="span6">
+                <div id ="standardDesignInfo"class="span6">
                     <table>
                         <tbody>
-                            <tr><th align="left">Chassis</th><td>E.Coli</td></tr>
-                            <tr><th align="left">Device Name</th><td>BBa_K783067</td></tr>
-                            <tr><th align="left">Device Type</th><td>Inverter</td></tr>
-                            <tr><th align="left">Safety Level</th><td>Risk Group 1</td></tr>
+                            <tr><th align="left">Chassis</th><td id="chassis">E.Coli</td></tr>
+                            <tr><th align="left">Device Name</th><td id="deviceName">BBa_K783067</td></tr>
+                            <tr><th align="left">Device Type</th><td id="deviceType">Inverter</td></tr>
+                            <tr><th align="left">Safety Level</th><td id="safetyLevel">Risk Group 1</td></tr>
                             <tr><th align="left">Components</th><td>
                                     <a href="#">BBa_I13453</a>,
                                     <a href="#">BBa_B0032</a>,
@@ -88,13 +88,13 @@
                 <div class="span6">
                     <table>
                         <tbody>
-                            <tr><th align="left">Strain</th><td>Bioline Alpha-Gold</td></tr>
-                            <tr><th align="left">Assembly</th><td>BioBricks</td></tr>
-                            <tr><th align="left">Protocol</th><td>BU BioBricks assembly protocol</td></tr>
-                            <tr><th align="left">Scars</th><td>Yes; 6bp scars between each part</td></tr>
-                            <tr><th align="left">Insertion</th><td>Plasmid</td></tr>
-                            <tr><th align="left">Vector</th><td>pSB1A3</td></tr>
-                            <tr><th align="left">Additional Comments</th><td>SI built device; EA and MF characterized device</td></tr>
+                            <tr><th align="left">Strain</th><td id="strain">Bioline Alpha-Gold</td></tr>
+                            <tr><th align="left">Assembly</th><td id="assembly">BioBricks</td></tr>
+                            <tr><th align="left">Protocol</th><td id="protocol">BU BioBricks assembly protocol</td></tr>
+                            <tr><th align="left">Scars</th><td id="scars">Yes; 6bp scars between each part</td></tr>
+                            <tr><th align="left">Insertion</th><td id="insertion">Plasmid</td></tr>
+                            <tr><th align="left">Vector</th><td id="vector">pSB1A3</td></tr>
+                            <tr><th align="left">Additional Comments</th><td id="additionalComments">SI built device; EA and MF characterized device</td></tr>
                         </tbody>    
                     </table>
                 </div>  
@@ -199,12 +199,13 @@
                         {"name": "terminator",
                             "link": "#"}],
                     "contact": "someemail@yahoo.com",
-                    "data": "8-17-2013"
+                    "date": "8-17-2013"
                 },
                 "designInformation": {
-                    "chassis": {"name": "E. Coli",
-                        "strain": "Bioline Alpha Gold"},
-                    "deviceType": "operon",
+                    "chassis": {"name": "E. Coliii",
+                        "strain": "Bioline Alpha Goldddd"},
+                    "deviceName": "operon",
+                    "deviceType": "level 1",
                     "safetyLevel": "0",
                     "components": [{"name": "promoter",
                             "link": "#"},
@@ -260,23 +261,39 @@
             $(".name").text(data.name);
             $("#summary").text(data.summary);
             $("#deviceImage").text(data.deviceImage);
-                     
+            $("#authors").text(data.contactInformation.authors); 
+            $("#team").text(data.contactInformation.team); 
+            $("#dataCollection").text(data.contactInformation.dataCollection); 
+            $("#affiliation").text(data.contactInformation.affiliation); 
+            $("#date").text(data.contactInformation.date);
+            $("#contact").text(data.contactInformation.contact); 
+    
+ //Changing Standard Design Information          
+            $("#chassis").text(data.designInformation.chassis);
+            $("#strain").text(data.designInformation.strain);
+            $("#deviceType").text(data.designInformation.deviceType);
+            $("#deviceName").text(data.designInformation.deviceName);
+            $("#safetyLevel").text(data.designInformation.safetyLevel);
+            $("#components").text(data.designInformation.components);
+            $("#assembly").text(data.designInformation.assembly);
+            $("#protocol").text(data.designInformation.protocol);
+            $("#scars").text(data.designInformation.scars);
+            $("#insertion").text(data.designInformation.insertion);
+            $("#vector").text(data.designInformation.vector);
+            $("#additionalComments").text(data.designInformation.comments);
             
-          //Changing Standard Assay Table   
+            
+ //Changing Standard Assay Table   
             var standAssayTable = '';
             for (var i = 0; i < data["standardAssays"].length; i++) {
                 standAssayTable = standAssayTable + '<table><tbody>';
                 for (var key in data["standardAssays"][i]) {
                     standAssayTable = standAssayTable + '<tr>';
-
                     standAssayTable = standAssayTable + '<th align="left">' + key + '</th><td>' + data["standardAssays"][i][key] + '</td>';
-
                     standAssayTable = standAssayTable + '</tr>';
                 }
-
                 standAssayTable = standAssayTable + '</tbody></table>';
             }
-
             $('#standard').html(standAssayTable);
         
         
@@ -287,16 +304,12 @@
             for (var i = 0; i < data["functionalityAssays"].length; i++) { 
                 fuctAssayTable = fuctAssayTable + '<table><tbody>';
                 for (var key in data["functionalityAssays"][i]) {
-                 
                     fuctAssayTable = fuctAssayTable + '<tr>';
-                    
-                    fuctAssayTable = fuctAssayTable + '<th align ="left">' + key + '</th><td>' + data["functionalityAssays"][i][key] + '</td>';
-                    
+                    fuctAssayTable = fuctAssayTable + '<th align ="left">' + key + '</th><td>' + data["functionalityAssays"][i][key] + '</td>';     
                     fuctAssayTable = fuctAssayTable + '</tr>';
                 }
                 fuctAssayTable = fuctAssayTable + '</tbody></table>';
             }
-            
             $('#flowCytometry').html(fuctAssayTable); 
         
         
