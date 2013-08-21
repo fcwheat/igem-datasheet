@@ -147,24 +147,24 @@
                     </table>
                     <br>
                     <table>
-                        <thead><b>Pre-Induction Growth Conditions</b></thead>
+                        <thead><b id="preInduction">Pre-Induction Growth Conditions</b></thead>
                         <tbody>
-                            <tr><th align="left">Media Type</th><td>Luria Broth (LB)</td></tr>
-                            <tr><th align="left">Vessel</th><td>5 mL tubes</td></tr>
-                            <tr><th align="left">Volume</th><td>2 mL</td></tr>
-                            <tr><th align="left">Incubation</th><td>37 C, 300 rpm</td></tr>
-                            <tr><th align="left">Time(min)</th><td>420</td></tr>
+                            <tr><th align="left" id="preMedia">Media Type</th><td>Luria Broth (LB)</td></tr>
+                            <tr><th align="left" id="preVessel">Vessel</th><td>5 mL tubes</td></tr>
+                            <tr><th align="left" id="preVolume">Volume</th><td>2 mL</td></tr>
+                            <tr><th align="left" id="preInduction">Incubation</th><td>37 C, 300 rpm</td></tr>
+                            <tr><th align="left" id="preTime">Time(min)</th><td>420</td></tr>
                         </tbody>
                     </table>
                     <br>
                     <table>
-                        <thead><b>Induction Growth Conditions</b></thead>
+                        <thead><b id="induction">Induction Growth Conditions</b></thead>
                         <tbody>
-                            <tr><th align="left">Media Type</th><td>Luria Broth (LB)</td></tr>
-                            <tr><th align="left">Vessel</th><td>500 uL tubes</td></tr>
-                            <tr><th align="left">Volume</th><td>200 uL</td></tr>
-                            <tr><th align="left">Incubation</th><td>37 C, 300 rpm</td></tr>
-                            <tr><th align="left">Time</th><td>870 min</td></tr>
+                            <tr><th align="left" id="media">Media Type</th><td>Luria Broth (LB)</td></tr>
+                            <tr><th align="left" id="vessel">Vessel</th><td>500 uL tubes</td></tr>
+                            <tr><th align="left" id="volume">Volume</th><td>200 uL</td></tr>
+                            <tr><th align="left" id="incubation">Incubation</th><td>37 C, 300 rpm</td></tr>
+                            <tr><th align="left" id="time">Time</th><td>870 min</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -202,8 +202,8 @@
                     "date": "8-17-2013"
                 },
                 "designInformation": {
-                    "chassis": {"name": "E. Coliii",
-                        "strain": "Bioline Alpha Goldddd"},
+                    "chassis": {"name": "E. Coli",
+                        "strain": "Bioline Alpha Gold"},
                     "deviceName": "operon",
                     "deviceType": "level 1",
                     "safetyLevel": "0",
@@ -242,8 +242,8 @@
                         "protocolDetails": "link to protocol",
                         "lasers": "445nm, 40mW:(515/20nm); 488nm, 50mW: (488/10, 515/20, 545/35, 610/20, 710/50nm); 561nm, 40mW:(610/20, 660/20nm);",
                         "preInductionGrowthConditions": {
-                            "media": "Luria Broth (LB)",
-                            "vessel": "5 mL tubes",
+                            "media": "Luria Broth (LBBB)",
+                            "vessel": "5 mL tubesss",
                             "volume": "2 mL",
                             "incubation": "37 C, 300 rpm",
                             "time": "420"
@@ -269,8 +269,8 @@
             $("#contact").text(data.contactInformation.contact); 
     
  //Changing Standard Design Information          
-            $("#chassis").text(data.designInformation.chassis);
-            $("#strain").text(data.designInformation.strain);
+            $("#chassis").text(data.designInformation.chassis.name);
+            $("#strain").text(data.designInformation.chassis.strain);
             $("#deviceType").text(data.designInformation.deviceType);
             $("#deviceName").text(data.designInformation.deviceName);
             $("#safetyLevel").text(data.designInformation.safetyLevel);
@@ -295,11 +295,10 @@
                 standAssayTable = standAssayTable + '</tbody></table>';
             }
             $('#standard').html(standAssayTable);
+            
         
         
-        
-        
-            //Changing Functionality Table     
+ //Changing Functionality Table         
             var fuctAssayTable = ''; 
             for (var i = 0; i < data["functionalityAssays"].length; i++) { 
                 fuctAssayTable = fuctAssayTable + '<table><tbody>';
@@ -311,10 +310,19 @@
                 fuctAssayTable = fuctAssayTable + '</tbody></table>';
             }
             $('#flowCytometry').html(fuctAssayTable); 
-        
-        
-        
-        
+            
+ //Changing PreInduction Growth Conditions
+            $("#preMedia").text(data.functionalityAssays.preInductionGrowthConditions.media);
+            $("#preVessel").text(data.functionalityAssays.preInductionGrowthConditions.vessel);
+            $("#preVolume").text(data.functionalityAssays.preInductionGrowthConditions.volume);
+            $("#preIncubation").text(data.functionalityAssays.preInductionGrowthConditions.incubation);
+            $("#preTime").text(data.functionalityAssays.preInductionGrowthConditions.time);
+ //Changing Induction Growth Conditions
+            $("#media").text(data.functionalityAssays.inductionGrowthConditions.media);
+            $("#vessel").text(data.functionalityAssays.inductionGrowthConditions.vessel);
+            $("#volume").text(data.functionalityAssays.inductionGrowthConditions.volume);
+            $("#incubation").text(data.functionalityAssays.inductionGrowthConditions.incubation);
+            $("#time").text(data.functionalityAssays.inductionGrowthConditions.time);
         
         
         
