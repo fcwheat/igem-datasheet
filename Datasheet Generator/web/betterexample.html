@@ -9,7 +9,7 @@
     </head>
     <body class="container">
         <!--summary-->
-        <!--        <div class="well">
+                <div class="well">
                     <h1 class="name">BBa_K783067</h1>
                     <h4>Part Description</h4>                 
                     <h4>Summary</h4>
@@ -99,7 +99,7 @@
                         </div>  
                     </div>
                     <hr/>
-                </div>-->
+                </div>
 
 
         <div class="well">
@@ -233,7 +233,7 @@
                         "details": "1% TAE gel; Sybr Safe dye used for staining(link)"
                     }],
                 "functionalityAssays": [{
-                        "name": "Flow Cytometry",
+                        "name": "Flow Cytometryyy",
                         "purpose": "Measures fluorescence for induction curve data",
                         "dataType": "Single-cell fluorescence",
                         "location": "Boston University Center for Advanced Biotechnology",
@@ -249,7 +249,7 @@
                             "time": "420"
                         },
                         "inductionGrowthConditions": {
-                            "media": "Luria Broth (LB)",
+                            "media": "Luria Broth (LBBB)",
                             "vessel": "500 uL tubes",
                             "volume": "200 uL",
                             "incubation": "37 C, 300 rpm",
@@ -302,10 +302,10 @@
             var fuctAssayTable = '';
             for (var i = 0; i < data["functionalityAssays"].length; i++) {
                 fuctAssayTable = fuctAssayTable + '<table><tbody>';
-                for (var key in data["functionalityAssays"][i]) {
-                    if (data["functionalityAssays"][i][key].tostring().contains("object Object")) {
+                for (var key1 in data["functionalityAssays"][i]) {
+                    if (data["functionalityAssays"][i][key1].tostring().contains("object Object")) {
                         fuctAssayTable = fuctAssayTable + '<tr>';
-                        fuctAssayTable = fuctAssayTable + '<th align ="left">' + key + '</th><td>' + data["functionalityAssays"][i][key] + '</td>';
+                        fuctAssayTable = fuctAssayTable + '<th align ="left">' + key1 + '</th><td>' + data["functionalityAssays"][i][key1] + '</td>';
                         fuctAssayTable = fuctAssayTable + '</tr>';
                     }
                 }
@@ -328,7 +328,10 @@
                 fuctAssayTable = fuctAssayTable + '</tbody></table>';
             }
             $('#flowCytometry').html(fuctAssayTable);
-            //Changing PreInduction Growth Conditions
+            
+    
+    
+             //Changing PreInduction Growth Conditions
             var something = data.functionalityAssays;
 //            $("#preMedia").text(data.functionalityAssays[0].preInductionGrowthConditions.media);
 //            $("#preVessel").text(data.functionalityAssays[0].preInductionGrowthConditions.vessel);
