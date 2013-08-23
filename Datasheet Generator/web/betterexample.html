@@ -303,7 +303,7 @@
             for (var i = 0; i < data["functionalityAssays"].length; i++) {
                 fuctAssayTable = fuctAssayTable + '<table><tbody>';
                 for (var key1 in data["functionalityAssays"][i]) {
-                    if (data["functionalityAssays"][i][key1].tostring().contains("object Object")) {
+                    if (data["functionalityAssays"][i][key1.toString()].toString().indexOf("object Object")<0) {
                         fuctAssayTable = fuctAssayTable + '<tr>';
                         fuctAssayTable = fuctAssayTable + '<th align ="left">' + key1 + '</th><td>' + data["functionalityAssays"][i][key1] + '</td>';
                         fuctAssayTable = fuctAssayTable + '</tr>';
