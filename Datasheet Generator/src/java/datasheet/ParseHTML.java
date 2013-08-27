@@ -14,8 +14,9 @@ public class ParseHTML {
         
         String newHTMLstring = new String();
         StringBuilder newHTML = new StringBuilder();
+        
+        //This string should be added to the StringBuilder in the html body
         String redClassString = "<style>.red{color:red}</style>";
-        newHTML.append(redClassString);
         
         System.out.println("This is a print statement to your console - look at the GlassFish Server tab below");
         System.out.println("redClassString: " + redClassString);
