@@ -6,10 +6,12 @@ package datasheet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONObject;
 
 /**
  *
@@ -29,20 +31,29 @@ public class DataServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("application/json");
         PrintWriter out = response.getWriter();
+        String command = request.getParameter("command");
         try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet DataServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet DataServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        } finally {            
+            if (command.equals("test")) {
+                JSONObject toReturn = new JSONObject();
+                String data = request.getParameter("data");
+                String parsedHTML = ParseHTML.parseHTML(data);
+                toReturn.put("status", "good");
+                toReturn.put("data", parsedHTML);
+                out.write(toReturn.toString());
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            StringWriter stringWriter = new StringWriter();
+            PrintWriter printWriter = new PrintWriter(stringWriter);
+            e.printStackTrace(printWriter);
+            String exceptionAsString = stringWriter.toString().replaceAll("[\r\n\t]+", "<br/>");
+            if (out != null) {
+                out.write("{\"data\":\"" + exceptionAsString + "\",\"status\":\"bad\"}");
+            }
+        } finally {
             out.close();
         }
     }

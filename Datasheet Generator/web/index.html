@@ -34,6 +34,7 @@
                 <h2>Automagically build data sheets.</h2>
                 <br>
                 <p> <a id="startLink" class="btn btn-primary btn-large" href="login.html"> Get Started</a> </p>
+                <p> <button id="poojaButton" class="btn btn-primary btn-large btn-danger">Click here pooja</button> </p>
             </div>
             <hr/>
             <h2 class="text-center">Why automatic data sheets?</h2>
@@ -76,8 +77,19 @@
         </div>
 
         <!--scripts placed at the end to enhance page loading speed--> 
-        <script type="text/javascript" src="jsLibraries/jquery-1.9.1.min.js"></script> 
-        <script src="jsLibraries/bootstrap.min.js"></script> 
+        <script type="text/javascript" src="libraries/jquery-1.9.1.min.js"></script> 
+        <script src="libraries/bootstrap.min.js"></script> 
+        <script>
+            $(document).ready(function(){
+                $('#poojaButton').click(function(){
+                    $.get("DataServlet",{command:"test",data:""+$(document).html()},function(response){
+                        alert("this is your response\n"+JSON.stringify(response));
+                        var data = response["data"];
+                        $('body').html(response["data"]);
+                    })
+                })
+            })
+        </script>
         <footer>
             <div class="container" align="center">
                 <p>Designed and built by <a href="contact.html">BU iGEM Team</a> at <a href="http://wiki.bu.edu/ece-cidar/index.php/Main_Page">CIDAR</a></p>
