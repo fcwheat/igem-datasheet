@@ -13,12 +13,20 @@
     
     <!--Basic Info-->
     <div class="well">
-    <h2 id="basicInfo">Basic Info</h2> 
+    <h2 id="basicInfo">Basic Infooo</h2>
+     <form>
+     <fieldset>
         <div class="row-fluid">
         <div class="span6">
-  <form>
-  <fieldset>
-      <div id="partName"><h5>Part Name </h5><input/></div>
+            <div id="partName"><h5>Part Name </h5><input/></div>
+        
+            <div class="span6 offset2">
+                <div id="partSummary"><h5>Part Summary</h5><textarea rows="5"></textarea></div>
+            </div> 
+            </div>
+            </div>    
+
+      
       <div id="partType"><h5>Part Type</h5>
     <select>
         <option>
@@ -29,39 +37,54 @@
         </option>
     </select>
    </div>
-      <div id="partDescription"><h5>Part Description</h5><input/><small> Example: Arabinose-TetR Inverter</small></div> 
-   <div id="partSummary"><h5>Part Summary</h5><textarea rows="5"></textarea></div>
+     <div id="partDescription"><h5>Part Description</h5><input/><small> Example: Arabinose-TetR Inverter</small></div> 
      <br>
   <button class="btn btn-primary" type="button">Next</button>
-   
-  
+  <script>
+  $(".btn btn-primary").click(function(){
+    $("#contactInfo").show();
+  });  
+  </script>
   </fieldset>
-</form>
-        </div>         
+</form>         
    </div>   
-   </div>     
+   </div>  
+   </div> 
     
     
     
     
  <!--Contact Info-->
+ <script>
+ $(document).ready(function(){
+   $("#contactInfo").hide();
+ });  
+ </script>
  <div class="well">
      <h2 id="contactInfo">Contact Information</h2> 
  <div class="row-fluid">
- <div class="span6">    
+    <div class="span6">
      <div id="author"><h5>Author</h5><input/></div>
+     <div id="team"><h5>Team</h5><input/></div>  
      <div id="team"><h5>Team</h5><input/></div>
      <div id="dataCollectors"><h5>Data Collectors</h5><input/></div>
+     <div id="date"><h5>Date</h5><input/></div>
      <div id="affiliation"><h5>Affiliation</h5><input/></div>
      <div id="contact"><h5>Contact</h5><input/></div>
      <div id="relatedParts"><h5>Related Parts</h5><textarea rows="5"></textarea></div>
      <br>
-     <button class="btn btn-primary" type="button">Next</button>  
+     <button class="btn btn-primary" type="button">Next</button> 
+     
  </div>
  </div>
  </div>    
-     
+        
   <!--Images + Sequence-->
+  <script>
+   $(document).ready(function(){
+   $("#imagesSequence").hide();
+ });
+ </script>
  <div class="well">
      <h2 id="imagesSequence">Sequence Data + Images</h2> 
  <div class="row-fluid">
@@ -78,6 +101,11 @@
     
     
   <!--Standard Required Design Information-->
+  <script>
+   $(document).ready(function(){
+   $("#standardDesignInfo").hide();
+ });
+ </script>
  <div class="well">
      <h2 id="standardDesignInfo">Standard Required Design Information</h2> 
  <div class="row-fluid">
@@ -102,6 +130,11 @@
     
     
    <!--Demonstration of Device Functionality-->
+   <script>
+    $(document).ready(function(){
+   $("#assayType").hide();
+ });
+ </script>
  <div class="well">
      <h2 id="requiredAssays">Demonstration of Device Functionality(Project Specific Assays) </h2> 
      <select> <div id="assayType"> Assay Type
@@ -182,11 +215,12 @@
   <br>
   <br>         
            
-           
+ </div>          
  </div>
  </div>
  </div>    
-    
+ </div>   
+</div>
     
     
     </body>
