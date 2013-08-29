@@ -27,15 +27,21 @@ public class ParseHTML {
         String[] inputHTMLLines = HTMLstring.split("\n");
         for (String line : inputHTMLLines) {
             // HERE IS WHERE YOU WILL PERFORM OPERATIONS AS YOU PARSE THE INPUT HTML LINE-BY-LINE AND ADD TO newHTML StringBuilder
-            if (line.contains("class=\"")) {
-                newHTMLstring = line.replaceAll("class=\"","class=\"red ");
-                newHTML.append(newHTMLstring);
-            }
-
-            //add red class code in body...i think
-            if (line.contains("<body>")) {
-                newHTML.append("\n").append(redClassString).append("\n");
-            }
+         newHTML.append(line);
+         
+		if (line.contains("class=\"")) {
+                    newHTMLstring = line.replaceAll("class=\"","class=\"red ");
+                    newHTML.append(newHTMLstring);       
+                }
+			
+            //find index of <body>
+            int bodyIndex = line.indexOf("<body>");
+			
+            //add red class code after the <body>...i think
+            newHTML.insert(bodyIndex + 1, "\n\n" + redClassString + "\n\n");            
+            
+            //check print statement
+            System.out.println("check: " + newHTMLstring);    
 
         }
 
