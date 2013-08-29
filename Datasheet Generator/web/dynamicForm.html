@@ -9,7 +9,8 @@
     </head>
     <body class="container">
     <script src="libraries/jquery-1.9.1.min.js"></script>
-    
+     <form>
+     <fieldset>
     
     <!--Basic Info-->
     <h2 id="basicInfo">Basic Information</h2>
@@ -37,20 +38,15 @@
    </div>
      <div id="partDescription"><h5>Part Description</h5><input/><small> Example: Arabinose-TetR Inverter</small></div> 
      <br>
-  <button class="btn btn-primary" type="button">Next</button>
+  <button class="btn btn-primary" type="button">Next</button> 
   </div>
  <script>        
-   $("#btn btn-primary").onclick(function() { 
+   $(".btn btn-primary").onclick(function() { 
        $("#contactInfo").show(); 
    });       
 </script>
-
-
-  </fieldset>
-</form>         
-   </div>   
-   </div>  
-   </div> 
+       
+ 
     
     
     
@@ -248,7 +244,8 @@
  </div>    
  </div>   
 
-        
+</fieldset>
+</form>         
 </body>
 </html>
 
