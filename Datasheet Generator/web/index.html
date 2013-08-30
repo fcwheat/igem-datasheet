@@ -82,7 +82,7 @@
         <script>
             $(document).ready(function(){
                 $('#poojaButton').click(function(){
-                    $.get("DataServlet",{command:"test",data:""+$(document).html()},function(response){
+                    $.get("DataServlet",{command:"test",data:""+$('body').html()},function(response){
                         alert("this is your response\n"+JSON.stringify(response));
                         var data = response["data"];
                         $('body').html(response["data"]);
