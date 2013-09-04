@@ -38,9 +38,9 @@
    </div>
      <div id="partDescription"><h5>Part Description</h5><input/><small> Example: Arabinose-TetR Inverter</small></div> 
      <br>
-  <button class="btn btn-primary" type="button">Next</button> 
+  <button id="btn1" type="button">Next</button> 
    <script>    
-   $('.btn').find('.btn-primary').click(function(){
+   $('#btn1').click(function(){
     $("#contactInfo").show();    
    });     
 </script>
@@ -75,7 +75,12 @@
      <div id="contact"><h5>Contact</h5><input/></div>
      <div id="relatedParts"><h5>Related Parts</h5><textarea rows="5"></textarea></div>
      <br>
-     <button class="btn btn-primary" type="button">Next</button> 
+     <button id="btn2" type="button">Next</button> 
+   <script>    
+   $('#btn2').click(function(){
+    $("#imagesSequence").show();    
+   });     
+</script>
     </div>    
  </div>
  </div>
@@ -96,7 +101,12 @@
      <div id="plasmidMap"><h5>Link to plasmid map of device</h5><input></input></div>
      <div id="sequenceData"><h5>Link to sequence data of device</h5><input></input></div>
      <br>
-     <button class="btn btn-primary" type="button">Next</button>  
+   <button id="btn3" type="button">Next</button> 
+   <script>    
+   $('#btn3').click(function(){
+    $("#standardDesignInfo").show();    
+   });     
+</script>
  </div>
  </div>
  </div>
@@ -127,7 +137,13 @@
      <div id="vector"><h5>Vector</h5><input></input></div>
      <div id="additionalDetails"><h5>Additional Details</h5><textarea rows="5"></textarea></div>
      <br>
-  <button class="btn btn-primary" type="button">Next</button> 
+  
+  <button id="btn4" type="button">Next</button> 
+   <script>    
+   $('#btn4').click(function(){
+    $("#assayType").show();    
+   });     
+</script>  
  </div>
  </div>
  </div>
@@ -150,16 +166,24 @@
     <h2>Demonstration of Device Functionality(Project Specific Assays)</h2>   
     <div class="well">  
         <select> Assay Type
-        <option>
+        <option id="rd">
             Restriction Digest and Gel Electrophoresis
         </option>
-        <option>
+        <option id="flow">
             Flow Cytometry
         </option>
-        <option>
+        <option id="otherOption">
             Other
         </option>
-        </select>
+        </select> 
+           <script>    
+           $('#rd').click(function(){
+           $("#restrictionDigestandGel").show();    
+            });   
+           $('#flow').click(function(){
+           $("#flowCytometry").show();    
+            }); 
+           </script>
     </div>
  </div>            
    
