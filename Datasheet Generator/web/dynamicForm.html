@@ -9,16 +9,23 @@
     </head>
     <body class="container">
     <script src="libraries/jquery-1.9.1.min.js"></script>
-    
+     <form>
+     <fieldset>
     
     <!--Basic Info-->
+    <h2 id="basicInfo">Basic Information</h2>
     <div class="well">
-    <h2 id="basicInfo">Basic Info</h2> 
+     <form>
+     <fieldset>
         <div class="row-fluid">
         <div class="span6">
-  <form>
-  <fieldset>
-      <div id="partName"><h5>Part Name </h5><input/></div>
+            <div id="partName"><h5>Part Name </h5><input/></div>
+        </div>    
+            <div class="span6">
+                <div id="partSummary"><h5>Part Summary</h5><textarea rows="5"></textarea></div>
+            </div>       
+         
+      <div class="span6">
       <div id="partType"><h5>Part Type</h5>
     <select>
         <option>
@@ -29,48 +36,78 @@
         </option>
     </select>
    </div>
-      <div id="partDescription"><h5>Part Description</h5><input/><small> Example: Arabinose-TetR Inverter</small></div> 
-   <div id="partSummary"><h5>Part Summary</h5><textarea rows="5"></textarea></div>
+     <div id="partDescription"><h5>Part Description</h5><input/><small> Example: Arabinose-TetR Inverter</small></div> 
      <br>
-  <button class="btn btn-primary" type="button">Next</button>
-   
+  <button id="btn1" type="button">Next</button> 
+   <script>    
+   $('#btn1').click(function(){
+    $("#contactInfo").show();    
+   });     
+</script>
   
-  </fieldset>
-</form>
-        </div>         
-   </div>   
-   </div>     
+  </div>
+  </div>
+  </div>
+
+       
+ 
     
     
     
     
  <!--Contact Info-->
- <div class="well">
-     <h2 id="contactInfo">Contact Information</h2> 
+ <script>
+ $(document).ready(function(){
+   $("#contactInfo").hide();
+ });  
+ </script>
+ <div id="contactInfo"> 
+ <div class="well">    
+     <h2>Contact Information</h2> 
  <div class="row-fluid">
- <div class="span6">    
+    <div class="span6">
      <div id="author"><h5>Author</h5><input/></div>
+     <div id="team"><h5>Team</h5><input/></div>  
      <div id="team"><h5>Team</h5><input/></div>
      <div id="dataCollectors"><h5>Data Collectors</h5><input/></div>
+     <div id="date"><h5>Date</h5><input/></div>
      <div id="affiliation"><h5>Affiliation</h5><input/></div>
      <div id="contact"><h5>Contact</h5><input/></div>
      <div id="relatedParts"><h5>Related Parts</h5><textarea rows="5"></textarea></div>
      <br>
-     <button class="btn btn-primary" type="button">Next</button>  
+     <button id="btn2" type="button">Next</button> 
+   <script>    
+   $('#btn2').click(function(){
+    $("#imagesSequence").show();    
+   });     
+</script>
+    </div>    
  </div>
  </div>
  </div>    
-     
+        
   <!--Images + Sequence-->
+  <script>
+   $(document).ready(function(){
+   $("#imagesSequence").hide();
+ });
+ </script>
+ <div id="imagesSequence">
  <div class="well">
-     <h2 id="imagesSequence">Sequence Data + Images</h2> 
+     <h2>Sequence Data + Images</h2> 
  <div class="row-fluid">
  <div class="span6">    
      <div id="pigeonImage"><h5>Link to Pigeon image of device</h5><input></input></div>
      <div id="plasmidMap"><h5>Link to plasmid map of device</h5><input></input></div>
      <div id="sequenceData"><h5>Link to sequence data of device</h5><input></input></div>
      <br>
-     <button class="btn btn-primary" type="button">Next</button>  
+   <button id="btn3" type="button">Next</button> 
+   <script>    
+   $('#btn3').click(function(){
+    $("#standardDesignInfo").show();    
+   });     
+</script>
+ </div>
  </div>
  </div>
  </div>    
@@ -78,8 +115,14 @@
     
     
   <!--Standard Required Design Information-->
+  <script>
+   $(document).ready(function(){
+   $("#standardDesignInfo").hide();
+ });
+ </script>
+ <div id="standardDesignInfo">
  <div class="well">
-     <h2 id="standardDesignInfo">Standard Required Design Information</h2> 
+     <h2>Standard Required Design Information</h2> 
  <div class="row-fluid">
  <div class="span6">    
      <div id="chassis"><h5>Chasis</h5><input></input></div>
@@ -94,29 +137,59 @@
      <div id="vector"><h5>Vector</h5><input></input></div>
      <div id="additionalDetails"><h5>Additional Details</h5><textarea rows="5"></textarea></div>
      <br>
-  <button class="btn btn-primary" type="button">Next</button> 
+  
+  <button id="btn4" type="button">Next</button> 
+   <script>    
+   $('#btn4').click(function(){
+    $("#assayType").show();    
+   });     
+</script>  
+ </div>
  </div>
  </div>
  </div>    
     
     
     
-   <!--Demonstration of Device Functionality-->
- <div class="well">
-     <h2 id="requiredAssays">Demonstration of Device Functionality(Project Specific Assays) </h2> 
-     <select> <div id="assayType"> Assay Type
-        <option>
+ <!--Demonstration of Device Functionality-->
+ <script>
+  $(document).ready(function(){
+   $("#assayType").hide();   
+   $("#restrictionDigestandGel").hide();
+   $("#assayDropDown").hide();
+   $("#flowCytometry").hide();
+ });
+ </script>
+ 
+
+  <div id="assayType">  
+    <h2>Demonstration of Device Functionality(Project Specific Assays)</h2>   
+    <div class="well">  
+        <select> Assay Type
+        <option id="rd">
             Restriction Digest and Gel Electrophoresis
         </option>
-        <option>
+        <option id="flow">
             Flow Cytometry
         </option>
-        <option>
+        <option id="otherOption">
             Other
         </option>
-    </select>
-     
- <h3 id="restrictionDigestandGel">Restriction Digest and Gel Electrophoresis</h3>
+        </select> 
+           <script>    
+           $('#rd').click(function(){
+           $("#restrictionDigestandGel").show();    
+            });   
+           $('#flow').click(function(){
+           $("#flowCytometry").show();    
+            }); 
+           </script>
+    </div>
+ </div>            
+   
+ <div id="restrictionDigestandGel">    
+ <h3>Restriction Digest and Gel Electrophoresis</h3>
+ <div class="well">
  <div class="row-fluid">
  <div class="span6">    
      <div id="purpose"><h5>Purpose</h5><input></input></div>
@@ -134,7 +207,14 @@
      <button class="btn btn-primary" type="button">Next</button> 
     <br>
   <br>
-       <div id="assayDropDown"> <select> Assay Type
+ </div> 
+ </div>
+ </div> 
+ </div>    
+     
+ <div id="assayDropDown"> 
+    <div class="well">
+      <select> Assay Type
         <option>
             Restriction Digest and Gel Electrophoresis
         </option>
@@ -145,10 +225,14 @@
             Other
         </option>
     </select>
-           
-  <h3 id="restrictionDigestandGel">Flow Cytometry</h3>
- <div class="row-fluid">
- <div class="span6">    
+    </div> 
+ </div>
+  
+<div id="flowCytometry">   
+  <h3>Flow Cytometry</h3>
+<div class="well">    
+<div class="row-fluid">
+<div class="span6">    
      <div id="purpose"><h5>Purpose</h5><input></input></div>
      <div id="dataType"><h5>Data Type</h5><input></input></div>
      <div id="location"><h5>Location</h5><input></input></div>
@@ -182,14 +266,15 @@
   <br>
   <br>         
            
-           
+ </div>          
  </div>
- </div>
+ 
  </div>    
-    
-    
-    
-    </body>
+ </div>   
+
+</fieldset>
+</form>         
+</body>
 </html>
 
 
