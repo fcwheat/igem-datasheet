@@ -35,7 +35,7 @@ public class XMLParser {
         Document partDoc;
         try {
             //all part urls kind of look like this
-            partDoc = Jsoup.connect("http://parts.igem.org/partsdb/part_info.cgi?part_name=" + partName).get();
+            partDoc = Jsoup.connect("http://parts.igem.org/partsdb/part_info.cgi?part_name=" + partName).timeout(10000000).get();
             return partDoc;
         } catch (Exception e) {
             e.printStackTrace();
