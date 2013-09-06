@@ -4,10 +4,11 @@
         <title></title>
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
-        
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body class="container">
+<<<<<<< HEAD
     <script src="libraries/jquery-1.9.1.min.js"></script>
      <form>
      <fieldset>
@@ -275,6 +276,263 @@
 </fieldset>
 </form>         
 </body>
+=======
+        <script src="libraries/jquery-1.9.1.min.js"></script>
+        <form>
+            <fieldset>
+
+                <!--Basic Info-->
+                <h2 id="basicInfo">Basic Information</h2>
+                <div class="well">
+                    <fieldset>
+                        <div class="row-fluid">
+                            <div class="span4">
+                                <div id="partName"><h5>Part Name </h5><input/></div>
+                            </div>    
+                            <div class="span4">
+                                <div id="partSummary"><h5>Part Summary</h5><textarea rows="5"></textarea></div>
+                            </div>       
+
+                            <div class="span4">
+                                <div id="partType"><h5>Part Type</h5>
+                                    <select>
+                                        <option>
+                                            Basic Part
+                                        </option>
+                                        <option>
+                                            Composite Part
+                                        </option>
+                                    </select>
+                                </div>
+                                <div id="partDescription"><h5>Part Description</h5><input/><small> Example: Arabinose-TetR Inverter</small></div> 
+                                <br>
+                                <button id="btn1" type="button">Next</button> 
+
+
+                            </div>
+                        </div>
+                </div>
+
+                <!--Contact Info-->
+
+                <div id="contactInfo"> 
+                    <div class="well">    
+                        <h2>Contact Information</h2> 
+                        <div class="row-fluid">
+                            <div class="span6">
+                                <div id="author"><h5>Author</h5><input/></div>
+                                <div id="team"><h5>Team</h5><input/></div>  
+                                <div id="team"><h5>Team</h5><input/></div>
+                                <div id="dataCollectors"><h5>Data Collectors</h5><input/></div>
+                                <div id="date"><h5>Date</h5><input/></div>
+                                <div id="affiliation"><h5>Affiliation</h5><input/></div>
+                                <div id="contact"><h5>Contact</h5><input/></div>
+                                <div id="relatedParts"><h5>Related Parts</h5><textarea rows="5"></textarea></div>
+                                <br>
+                                <button id="btn2" type="button">Next</button> 
+
+                            </div>    
+                        </div>
+                    </div>
+                </div>    
+
+                <!--Images + Sequence-->
+
+                <div id="imagesSequence">
+                    <div class="well">
+                        <h2>Sequence Data + Images</h2> 
+                        <div class="row-fluid">
+                            <div class="span6">    
+                                <div id="pigeonImage"><h5>Link to Pigeon image of device</h5><input></div>
+                                <div id="plasmidMap"><h5>Link to plasmid map of device</h5><input></div>
+                                <div id="sequenceData"><h5>Link to sequence data of device</h5><input></div>
+                                <br>
+                                <button id="btn3" type="button">Next</button> 
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+
+
+
+                <!--Standard Required Design Information-->
+                <div id="standardDesignInfo">
+                    <div class="well">
+                        <h2>Standard Required Design Information</h2> 
+                        <div class="row-fluid">
+                            <div class="span6">    
+                                <div id="chassis"><h5>Chasis</h5><input></div>
+                                <div id="deviceName"><h5>Device Name</h5><input></div>
+                                <div id="deviceType"><h5>Device Type</h5><input></div>
+                                <div id="safetyLevel"><h5>Safety Level</h5><input></div>
+                                <div id="strain"><h5>Strain</h5><input></div>
+                                <div id="assembly"><h5>Assembly</h5><input></div>
+                                <div id="protocol"><h5>Protocol</h5><input></div>
+                                <div id="scars"><h5>Scars</h5><input></div>
+                                <div id="insertion"><h5>Insertion</h5><input></div>
+                                <div id="vector"><h5>Vector</h5><input></div>
+                                <div id="additionalDetails"><h5>Additional Details</h5><textarea rows="5"></textarea></div>
+                                <br>
+
+                                <button id="btn4" type="button">Next</button> 
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+
+
+
+                <!--Demonstration of Device Functionality-->
+
+
+
+                <div id="assayType">  
+                    <h2>Demonstration of Device Functionality(Project Specific Assays)</h2>   
+                    <div class="well">
+                        Assay Type
+                        <select> 
+                            <option id="rd">
+                                Restriction Digest and Gel Electrophoresis
+                            </option>
+                            <option id="flow">
+                                Flow Cytometry
+                            </option>
+                            <option id="otherOption">
+                                Other
+                            </option>
+                        </select> 
+
+                    </div>
+                </div>            
+
+                <div id="restrictionDigestandGel">    
+                    <h3>Restriction Digest and Gel Electrophoresis</h3>
+                    <div class="well">
+                        <div class="row-fluid">
+                            <div class="span6">    
+                                <div id="purpose"><h5>Purpose</h5><input></div>
+                                <div id="dataType"><h5>Data Type</h5><input></div>
+                                <div id="location"><h5>Location</h5><input></div>
+                                <div id="dataFormat"><h5>Data Format</h5><input></div>
+                                <div id="enzymes"><h5>Enzymes</h5><input></div>
+                                <div id="ladder"><h5>Ladder</h5><input></div>
+                                <div id="protocolDetails"><h5>Protocol Details</h5><input></div>
+                                <div id="protocolLink"><h5>Link to Protocol</h5><input></div>
+                                <div id="gelImage"><h5>Link to gel image</h5><input></div>
+                                <div id="gelImageCaption"><h5>Caption for gel image</h5><input></div>
+                                <br>
+                                <button class="btn" type="button">Add additional assay</button>
+                                <button class="btn btn-primary" type="button">Next</button> 
+                                <br>
+                                <br>
+                            </div> 
+                        </div>
+                    </div> 
+                </div>    
+
+                <div id="assayDropDown"> 
+                    <div class="well">
+                        Assay Type
+                        <select>
+                            <option>
+                                Restriction Digest and Gel Electrophoresis
+                            </option>
+                            <option>
+                                Flow Cytometry
+                            </option>
+                            <option>
+                                Other
+                            </option>
+                        </select>
+                    </div> 
+                </div>
+
+                <div id="flowCytometry">   
+                    <h3>Flow Cytometry</h3>
+                    <div class="well">    
+                        <div class="row-fluid">
+                            <div class="span6">    
+                                <div id="purpose"><h5>Purpose</h5><input></div>
+                                <div id="dataType"><h5>Data Type</h5><input></div>
+                                <div id="location"><h5>Location</h5><input></div>
+                                <div id="dataFormat"><h5>Data Format</h5><input></div>
+                                <div id="machineName"><h5>Machine Name</h5><input></div>
+                                <div id="protocolDetails"><h5>Protocol Details</h5><input></div>
+                                <div id="protocolLink"><h5>Link to Protocol</h5><input></div>
+                                <div id="lasers"><h5>Lasers(filters)</h5><input></div>
+                                <div id="transerCurve"><h5>Link to Transfer Curve Image</h5><input></div>
+                                <div id="transerCurveCaption"><h5>Caption for Transfer Curve</h5><input></div>
+                                <br>
+
+                                <h4 id="preinductionGrowthConditions">Pre-Induction Growth Conditions</h4>
+                                <div id="mediaType"><h5>Media Type</h5><input></div>
+                                <div id="vessel"><h5>Vessel</h5><input></div>
+                                <div id="volume"><h5>Volume</h5><input></div>
+                                <div id="incubation"><h5>Incubation</h5><input></div>
+                                <div id="time"><h5>Time(mins)</h5><input></div>
+                                <br> 
+
+                                <h4 id="inductionGrowthConditions">Induction Growth Conditions</h4>
+                                <div id="mediaType"><h5>Media Type</h5><input></div>
+                                <div id="vessel"><h5>Vessel</h5><input></div>
+                                <div id="volume"><h5>Volume</h5><input></div>
+                                <div id="incubation"><h5>Incubation</h5><input></div>
+                                <div id="time"><h5>Time(mins)</h5><input></div>
+                                <br> 
+
+                                <button class="btn" type="button">Add additional assay</button>
+                                <button class="btn btn-primary" type="button">Next</button> 
+                                <br>
+                                <br>         
+
+                            </div>          
+                        </div>
+
+                    </div>    
+                </div>   
+
+            </fieldset>
+        </form> 
+        <script>
+            $(document).ready(function() {
+                $("#contactInfo").hide();
+                $("#imagesSequence").hide();
+                $("#assayType").hide();
+                $("#restrictionDigestandGel").hide();
+                $("#assayDropDown").hide();
+                $("#flowCytometry").hide();
+                $("#standardDesignInfo").hide();
+
+                $('#btn1').click(function() {
+                    $("#contactInfo").show();
+                });
+                $('#btn2').click(function() {
+                    $("#imagesSequence").show();
+                });
+                $('#btn3').click(function() {
+                    $("#standardDesignInfo").show();
+                });
+                $('#btn4').click(function() {
+                    $("#assayType").show();
+                });
+                $('#rd').click(function() {
+                    $("#restrictionDigestandGel").show();
+                });
+                $('#flow').click(function() {
+                    $("#flowCytometry").show();
+                });
+                //INSERT MORE CODE HERE
+                
+                
+                
+                ////////////////////////
+            });
+        </script>
+        <script>
+
+        </script>
+    </body>
+>>>>>>> 256e6112590a7b3d419c1dd3e1ab4c7f30f9ecde
 </html>
 
 
