@@ -12,7 +12,7 @@ public class DataSheetHTML {
 
     public static String parseHTML(String HTMLstring) {
 
-        String newHTMLstring = new String();
+//        String newHTMLstring;
         StringBuilder newHTML = new StringBuilder();
 
         //This string should be added to the StringBuilder in the html body
@@ -31,20 +31,28 @@ public class DataSheetHTML {
          
             //if a line contains class, add the red class
             if (line.contains("class=\"")) {
-                newHTMLstring = line.replaceAll("class=\"","class=\"red ");
-                newHTML.append(newHTMLstring);       
+                line = line.replaceAll("class=\"","class=\"red ");
+                newHTML.append(line);       
             }
 			
             //find index of <body>
-            int bodyIndex = line.indexOf("<body>");
+//            int bodyIndex = line.indexOf("<body>");
             //add red class code after the <body>...i think
-            newHTML.insert(bodyIndex + 1, "\n\n" + redClassString + "\n\n");            
+//            newHTML.insert(bodyIndex + 1, "\n\n" + redClassString + "\n\n");            
+            
+            if (line.contains("<body>")) {
+                newHTML.append("\n\n").append(redClassString).append("\n\n");
+            }
             
             //check print statement (prints lines multiple times?)
-            //System.out.println("check: " + newHTMLstring);    
+//            System.out.println("check: " + newHTMLstring);    
         }
 
         //this string will now be returned to the servlet, which will then return it to the web client
+        String newHTMLstring = newHTML.toString();
+        
+        System.out.println("newHTMLstring: " + newHTMLstring);
+        
         return newHTMLstring;
     }
 
