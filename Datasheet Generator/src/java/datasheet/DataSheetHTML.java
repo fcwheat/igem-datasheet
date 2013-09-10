@@ -4,12 +4,16 @@
  */
 package datasheet;
 
+import org.json.JSONObject;
+
 /**
  *
  * @author Pooja
+ * This class parses data from the client 
  */
 public class DataSheetHTML {
 
+    /** This method is a practice method for parsing html and adding the red class to all of the elements **/
     public static String parseHTML(String HTMLstring) {
 
 //        String newHTMLstring;
@@ -55,5 +59,10 @@ public class DataSheetHTML {
         
         return newHTMLstring;
     }
-
+    
+    /** This method parses HTML from the client side of the data sheet app **/
+    public static JSONObject parseDataSheetHTML(String HTMLstring) {
+        return null;
+    }
+    
 }
