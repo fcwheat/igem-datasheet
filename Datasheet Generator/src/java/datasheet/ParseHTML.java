@@ -12,7 +12,8 @@ public class ParseHTML {
 
     public static String parseHTML(String HTMLstring) {
 
-//        String newHTMLstring;
+        //
+//        String newH0TMLstring;
         StringBuilder newHTML = new StringBuilder();
 
         //This string should be added to the StringBuilder in the html body
