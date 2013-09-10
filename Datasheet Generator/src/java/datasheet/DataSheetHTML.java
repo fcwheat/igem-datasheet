@@ -8,7 +8,7 @@ package datasheet;
  *
  * @author Pooja
  */
-public class ParseHTML {
+public class DataSheetHTML {
 
     public static String parseHTML(String HTMLstring) {
 
