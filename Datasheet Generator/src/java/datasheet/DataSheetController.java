@@ -4,6 +4,8 @@
  */
 package datasheet;
 
+import org.json.JSONObject;
+
 /**
  *
  * @author evanappleton
@@ -12,6 +14,13 @@ package datasheet;
  */
 public class DataSheetController {
     
+    //Methods to parse the registry
+    public JSONObject parseRegistry(String registry) {
+        return null;
+    }
     
-    
+    //Methods to parse data sheet HTML and save pictures and associated files
+    public void save() {
+        
+    }
 }
