@@ -1,6 +1,6 @@
 // Function to hide sections 
 $(document).ready(function() {
-    data = {};
+    var data = {};
 
     var $tabs = $('.tabbable li');
 
@@ -50,4 +50,25 @@ $(document).ready(function() {
         $("#flowCytometry").hide();
         $("#other").show();
     });
+    
+    
+    $('#designButton').click(function(){
+        //collect information here
+       data["name"] = $('#partName').val(); 
+       data["summary"] = $('#summary').val(); 
+       data["deviceImage"] = $('#summary').val(); 
+       var contactInformation = {};
+       data["contactInformation"] = contactInformation;
+       var designInformation = {};
+       data["designInformation"] = designInformation;
+       var standardAssays = {};
+       data["standardAssays"] = standardAssays;
+       var functionalityAssays = {};
+       data["functionalityAssays"] = {};
+       
+       //temporarily redirect to example
+        window.location.replace("betterexample.html");
+
+    });
+    
 });

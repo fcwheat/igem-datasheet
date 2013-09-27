@@ -260,7 +260,7 @@
 
             $(".name").text(data.name);
             $("#summary").text(data.summary);
-            $("#deviceImage").text(data.deviceImage);
+            $("#deviceImage img").attr('src',data.deviceImage);
             $("#authors").text(data.contactInformation.authors);
             $("#team").text(data.contactInformation.team);
             $("#dataCollection").text(data.contactInformation.dataCollection);
