@@ -215,17 +215,14 @@
  //JSON object 
    function createJSON() {
         jsonObj= [];   
-        $("input[id=inputId]").each(function() {    
+        $("input").each(function() {    
          
-            var id = $(this).attr('id');
-            var val = $(this).val();   
+            var id = $(this).attr('id'); 
+            var value = $(this).val();   
         
-            data["partName"]= partName;
-            data["partType"]= partType;
-            data["sequence"]= sequence; 
-            data["pigeonImage"]= pigeonImage; 
-            data["plasmidMap"]= plasmidMap;
-            data["partSummary"]= partSummary;
+            item ={};
+            item ["id"]=id; 
+            item["value"]=value;
             
             jsonObj.push(item);
         }); 
