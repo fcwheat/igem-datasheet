@@ -19,9 +19,9 @@ and open the template in the editor.
         <script>
             //event handler for button
             $('button#authenticateButton').click(function() {
-                var user = "user";
-                var password = "password";
                 //you should grab the user and password
+                var user = $("#userInput").val();
+                var password = $("#passwordInput").val();
                 //scramble it
                 //TODO add code
 
@@ -65,7 +65,7 @@ and open the template in the editor.
 
             } else {
                 //do something else otherwise
-
+                
             }
             //display authentication status
             alert("authentication status: "+getCookie("authenticate"));
