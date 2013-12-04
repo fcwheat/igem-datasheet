@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <title>Index</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+    </head>
+    <body>
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="index.html">Datasheet Builder</a>
+                    <ul class="nav">
+                        <li><a href="#">Browse Data Sheets</a></li>
+                        <li><a href="design.html">Create New Data Sheet</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>     
+                    <div id="loginArea"><form id="loginForm" class="navbar-form pull-right" action="AuthenticationServlet" method="POST">
+                            <input name="user" type="text" class="span2" placeholder="Login">
+                            <input name="password" type="password" class="span2" placeholder="Password">
+                            <input type="submit" value="Login" class="btn"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="page-header" style="margin-top:50px">
+                <h1>Datasheet Builder<small>Automagically build data sheets</small></h1>
+            </div>
+            <div class="hero-unit" align="center">
+                <h2>Welcome to</h2>
+                <h1><strong>Datasheet Builder</strong></h1>
+                <h2>Automagically build data sheets.</h2>
+                <br>
+                <p> <a id="startLink" class="btn btn-primary btn-large" href="dynamicForm.html"> Get Started</a> </p>
+                <!--<p> <button id="poojaButton" class="btn btn-primary btn-large btn-danger">Click here pooja</button> </p>-->
+            </div>
+            <hr/>
+            <h2 class="text-center">Why automatic data sheets?</h2>
+            <h4 class="text-center muted">Here's a few ways automation will help you work faster</h4>
+            <div class="row-fluid">
+                <div class="span4">
+                    <h3>Save Time and Money</h3>
+                    <p>
+                        Building html data sheets by hand is time consuming - this is time that could be spent running yet another gel
+                    </p>
+                </div>
+                <div class="span4">
+                    <h3>Aesthetics</h3>
+                    <p>
+                        Our datasheets look good
+                    </p>
+                </div>
+                <div class="span4">
+                    <h3>Leverage existing data</h3>
+                    <p>
+                        Datasheet Builder automatically pulls data from existing Registries to help you make your data sheet
+                    </p>
+                </div>
+            </div>
+            <hr/>
+
+        </div>
+
+        <!--modal dialogs-->
+        <div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+            <div class="modal-header">
+                <h4 id="loginLabel">Sign in</h4>
+            </div>
+            <div class="modal-body">
+                <p>Please enter your user name and password to sign in.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Dismiss</button>
+            </div>
+        </div>
+
+        <!--scripts placed at the end to enhance page loading speed--> 
+        <script type="text/javascript" src="libraries/jquery-1.9.1.min.js"></script> 
+        <script src="libraries/bootstrap.min.js"></script> 
+        <script>
+            $(document).ready(function(){
+                $('#poojaButton').click(function(){
+                    $.get("DataServlet",{command:"test",data:""+$(document).html()},function(response){
+                        alert("this is your response\n"+JSON.stringify(response));
+                        var data = response["data"];
+                        $('body').html(response["data"]);
+                    })
+                })
+            })
+        </script>
+        <footer>
+            <div class="container" align="center">
+                <p>Designed and built by <a href="contact.html">BU iGEM Team</a> at <a href="http://wiki.bu.edu/ece-cidar/index.php/Main_Page">CIDAR</a></p>
+                <p>Code licensed under <a href="license.html">LICENSE</a></p>
+            </div>
+        </footer>
+    </body>
+</html>

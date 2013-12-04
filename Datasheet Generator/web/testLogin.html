@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Login Test Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+    </head>
+    <body>
+        <input id="userInput" placeholder="Username"/>
+        <input id="passwordInput" placeholder="Password"/>
+        <button id="authenticateButton">Authenticate</button>
+        <script type="text/javascript" src="libraries/jquery-1.9.1.min.js"></script> 
+        <script src="libraries/bootstrap.min.js"></script>
+        <script>
+            //event handler for button
+            $('button#authenticateButton').click(function() {
+                var user = "user";
+                var password = "password";
+                //you should grab the user and password
+                //scramble it
+                //TODO add code
+
+
+                //then send it to the server
+                $.post("AuthenticationServlet", {"user": user, "password": password},function(){
+                    window.location.replace("testLogin.html");
+                });
+
+            });
+            //get the value of a cookies given the game of the cookie
+            function getCookie(cookieName) {
+                var c_value = document.cookie;
+                var c_start = c_value.indexOf(" " + cookieName + "=");
+                if (c_start === -1) {
+                    c_start = c_value.indexOf(cookieName + "=");
+                }
+                if (c_start === -1) {
+                    c_value = null;
+                }
+                else {
+                    c_start = c_value.indexOf("=", c_start) + 1;
+                    var c_end = c_value.indexOf(";", c_start);
+                    if (c_end === -1) {
+                        c_end = c_value.length;
+                    }
+                    c_value = unescape(c_value.substring(c_start, c_end));
+                }
+                return c_value;
+            }
+
+            function deleteCookie(cookieName) {
+                // Delete a cookie by setting the date of expiry to yesterday
+                date = new Date();
+                date.setDate(date.getDate() - 1);
+                document.cookie = escape(cookieName) + '=;expires=' + date;
+            }
+            //on page load, check to see if you're logged in
+            if (getCookie("authenticate") === "authenticated") {
+                //do something if you're logged in
+
+            } else {
+                //do something else otherwise
+
+            }
+            //display authentication status
+            alert("authentication status: "+getCookie("authenticate"));
+
+        </script>
+    </body>
+</html>
