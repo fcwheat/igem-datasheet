@@ -15,15 +15,19 @@ import org.jsoup.select.Elements;
  */
 public class poojHTML {
 
-    public static String parseHTML(String HTMLstring) {
+    public static void main() {
+    //test functions here    
+        
+    }
+    
+    public static String[] parseHTML(String HTMLstring) {
 
         StringBuilder newHTML = new StringBuilder();
-
         String[] inputHTMLLines = HTMLstring.split("\n");
+
         for (String line : inputHTMLLines) {
-            newHTML.append(line);
             if (line.contains("http://")) {	//parse for links
-			/*	pseudo code
+		/*	pseudo code
 		
                  //save links as images to directory...maybe?
                  File imgfile = new File(partImage + "." + ext);
@@ -34,8 +38,10 @@ public class poojHTML {
                  */
             }
         }
-        String newHTMLString = newHTML.toString();
+        String[] newHTMLString = null;
 
         return newHTMLString;
     }
 }
+
+
