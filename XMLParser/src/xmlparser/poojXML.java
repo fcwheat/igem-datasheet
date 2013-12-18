@@ -22,6 +22,13 @@ public class poojXML {
 
     public static void main(String[] args) throws JSONException {
         //call parseXML function
+        
+        //There will be an arraylist of actual part names
+        ArrayList<String> partNames = new ArrayList<String>();
+        partNames.add("B0034");
+        
+        ArrayList<String> partXMLs = getXML(partNames);
+        
         String[] parsedString = parseXML("<!--\n" +
 "Parts from the iGEM Registry of Standard Biological Parts\n" +
 "-->\n" +
@@ -228,5 +235,25 @@ public class poojXML {
         partInfoJSON.put(directionJSON);
         
         return partInfoJSON; //return JSONArray of JSONobjects of relevant info
+    }
+    
+    public static ArrayList<String> getXML(ArrayList<String> partNames) {
+        
+        ArrayList<String> xmlStrings = new ArrayList<String>();
+        String URLprefix = "http://parts.igem.org/cgi/xml/part.cgi?part=BBa_";
+        
+        //For each of the names provided,
+        for (String name : partNames) {
+            
+            String XMLstring = new String();
+            String URL = URLprefix + name;
+            
+            //GET THE XML TEXT FROM THE URL
+            
+            
+            xmlStrings.add(XMLstring);            
+        }
+        
+        return xmlStrings;        
     }
 }
