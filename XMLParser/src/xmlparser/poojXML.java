@@ -1,19 +1,12 @@
 package xmlparser;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import org.jsoup.parser.Parser;
 
 /**
  * @author Pooja Shah
@@ -26,6 +19,7 @@ public class poojXML {
         //There will be an arraylist of actual part names
         ArrayList<String> partNames = new ArrayList<String>();
         partNames.add("B0034");
+        partNames.add("B0030");
         
         ArrayList<String> partXMLs = getXML(partNames);
         
@@ -240,20 +234,32 @@ public class poojXML {
     public static ArrayList<String> getXML(ArrayList<String> partNames) {
         
         ArrayList<String> xmlStrings = new ArrayList<String>();
-        String URLprefix = "http://parts.igem.org/cgi/xml/part.cgi?part=BBa_";
         
         //For each of the names provided,
         for (String name : partNames) {
             
-            String XMLstring = new String();
-            String URL = URLprefix + name;
-            
-            //GET THE XML TEXT FROM THE URL
-            
-            
-            xmlStrings.add(XMLstring);            
+            Document partDocument = getPartDocument(name);
+            xmlStrings.add(partDocument.toString());            
         }
         
         return xmlStrings;        
+    }
+    
+    //given a part name, create a document object corresponding to the DOM
+    public static Document getPartDocument(String partName) {
+        Document partDoc;
+        try {
+
+            partDoc = Jsoup.connect("http://parts.igem.org/xml/part." + partName)
+                    .timeout(10000000)
+                    .parser(Parser.xmlParser())
+                    .get();
+
+            return partDoc;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+        }
     }
 }
