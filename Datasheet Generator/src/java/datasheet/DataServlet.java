@@ -38,7 +38,8 @@ public class DataServlet extends HttpServlet {
             if (command.equals("test")) {
                 JSONObject toReturn = new JSONObject();
                 String data = request.getParameter("data");
-                String parsedHTML = ParseHTML.parseHTML(data);
+                //System.out.println("data: " + data);
+                String parsedHTML = DataSheetHTML.parseHTML(data);
                 toReturn.put("status", "good");
                 toReturn.put("data", parsedHTML);
                 out.write(toReturn.toString());

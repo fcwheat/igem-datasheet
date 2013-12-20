@@ -4,6 +4,7 @@
  */
 package xmlparser;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,6 +29,10 @@ public class XMLParser {
         System.out.println("Name: " + getName(BBa_J23119Doc));
         //use the document to parse out the sequence
         System.out.println("Sequence: " + getSequence(BBa_J23119Doc));
+        //print out the entire document
+        System.out.println(BBa_J23119Doc.toString());
+        ArrayList<Integer> indexMatches = poojaMethod("", "");
+        System.out.println(indexMatches);
     }
 
     //given a part name, create a document object corresponding to the DOM
@@ -87,5 +92,15 @@ public class XMLParser {
             e.printStackTrace();
             return null;
         }
+    }
+    
+    /** This is a practice regex exercise **/
+    public static ArrayList<Integer> poojaMethod(String sequence, String regexStatement) {
+        
+        //Initiate all variables needed for this method
+        ArrayList<Integer> matchLocations = new ArrayList<Integer>();
+        
+        
+        return matchLocations;
     }
 }
