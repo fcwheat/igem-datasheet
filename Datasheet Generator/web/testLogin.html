@@ -25,6 +25,45 @@ and open the template in the editor.
                 //scramble it
                 //TODO add code
 
+                //5 rotors 
+                var rotor1 ="CREZLNOAQFIPWXBKTGSUDVHJMY";
+                var rotor2 ="KWAXINJQYBVLUPCZMDOEFSGRHT";
+                var rotor3 ="DNMRBUSOCTKFLGVJQYAPXEWHZI";
+                var rotor4 ="RAQDSEOBNTPFKCMVGUHYIWJXLZ";
+                var rotor5 ="JSCLIUKTGYAZHMXBVFNPDWQEOR"; 
+                
+                //creating new encrypted uername 
+                var userencrypt=[];
+                for (var i=0;i<user.length;i++)
+                    {
+                        if(i<27){
+                        userencrypt[i]=rotor1[i];
+                        }
+                        if(i>26){
+                            
+                        }
+
+                    }
+                
+                
+             
+             
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 //then send it to the server
                 $.post("AuthenticationServlet", {"user": user, "password": password},function(){
