@@ -25,26 +25,30 @@ and open the template in the editor.
                 //scramble it
                 //TODO add code
 
-                //5 rotors 
-                var rotor1 ="CREZLNOAQFIPWXBKTGSUDVHJMY";
-                var rotor2 ="KWAXINJQYBVLUPCZMDOEFSGRHT";
-                var rotor3 ="DNMRBUSOCTKFLGVJQYAPXEWHZI";
-                var rotor4 ="RAQDSEOBNTPFKCMVGUHYIWJXLZ";
-                var rotor5 ="JSCLIUKTGYAZHMXBVFNPDWQEOR"; 
+                //3 rotors 
+                var rotor1 ="1CR5E2ZL3NO4AQFI8PWX7BK9TGSUD6VHJ0MY";
+                var rotor2 ="KW7AX6IN5J8QYB3VLUP4CZ9MD2OEF0S1GRHT";
+                var rotor3 ="DN0MRBU1SOC5TKFL63GVJQY9AP4X2E7WH8ZI";
+                var allpos ="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
                 
-                //creating new encrypted uername 
-                var userencrypt=[];
+                //creating new encrypted username 
+                var inds =[];
+                //find user in all possible array nd return indices
                 for (var i=0;i<user.length;i++)
                     {
-                        if(i<27){
-                        userencrypt[i]=rotor1[i];
-                        }
-                        if(i>26){
-                            
-                        }
-
+                      inds[i]=allpos.indexOf(user[i]); 
                     }
                 
+                
+                //change username to first substitution
+                for (var j=0;j<inds.length;j++)
+                    {
+                      for (var k=inds[j];k<inds.length;k++)
+                          //takes users names index in allposs array and subsituties for letter in roto1 with same index
+                          var usersub1[j]=rotor1[k];
+                          var rotaterotor1= rotor1.slice(-1);
+                          var rotor1= rotor1.concat(rotaterotor1);
+                    }
                 
              
              
