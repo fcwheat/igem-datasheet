@@ -33,20 +33,25 @@ and open the template in the editor.
                 
                 //creating new encrypted username 
                 var inds =[];
-                //find user in all possible array nd return indices
+                //find user in all possible array and return indices
                 for (var i=0;i<user.length;i++)
                     {
                       inds[i]=allpos.indexOf(user[i]); 
                     }
                 
-                
                 //change username to first substitution
+                // j iterates through index of inds array
                 for (var j=0;j<inds.length;j++)
                     {
+                      // k iterates through actual values of inds
+                      // loops finds value of k in rotor1 and makes sub 
                       for (var k=inds[j];k<inds.length;k++)
                           //takes users names index in allposs array and subsituties for letter in roto1 with same index
                           var usersub1[j]=rotor1[k];
+                          //rotate rotor- find first value in rotor array
+                          //remove first value of rotor to simulate step
                           var rotaterotor1= rotor1.slice(-1);
+                          //add original first value of rotor to the end to complete rotor 
                           var rotor1= rotor1.concat(rotaterotor1);
                     }
                 
