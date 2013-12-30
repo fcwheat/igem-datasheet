@@ -22,6 +22,7 @@ and open the template in the editor.
                 //you should grab the user and password
                 var user = $("#userInput").val();
                 var password = $("#passwordInput").val();
+               
                 //scramble it
                 //TODO add code
 
@@ -57,20 +58,55 @@ and open the template in the editor.
                 
              
              
+                var inds1 =[];
+                //find usersub1 in rotor1 and return indices
+                for (var m=0;m<usersub1.length;m++)
+                    {
+                      inds1[m]=allpos.indexOf(usersub1[m]); 
+                    }
+               
+                //change username to second substitution
+                // n iterates through index of inds1 array
+                for (var n=0;n<inds1.length;n++)
+                    {
+                      // p iterates through actual values of inds1
+                      // loops finds value of n in rotor1 and makes sub 
+                      for (var p=inds1[n];p<inds1.length;p++)
+                          //takes users names index in allposs array and subsituties for letter in roto1 with same index
+                          var usersub2[n]=rotor2[p];
+                          //rotate rotor- find first value in rotor array
+                          //remove first value of rotor to simulate step
+                          var rotaterotor2= rotor2.slice(-1);
+                          //add original first value of rotor to the end to complete rotor 
+                          var rotor2= rotor2.concat(rotaterotor2);
+                    }
+             
                 
+                
+                var inds2 =[];
+                //find usersub2 in rotor2 and return indices
+                for (var q=0;q<usersub2.length;q++)
+                    {
+                      inds1[q]=allpos.indexOf(usersub2[q]); 
+                    }
 
-
-
-
-
-
-
-
-
-
-
-
-
+                //change username to third substitution
+                // r iterates through index of inds2 array
+                for (var r=0;r<inds2.length;r++)
+                    {
+                      // s iterates through actual values of inds1
+                      // loops finds value of r in rotor2 and makes sub 
+                      for (var s=inds1[r];s<inds2.length;s++)
+                          //takes users names index in allposs array and subsituties for letter in roto1 with same index
+                          var usersub3[r]=rotor3[s];
+                          //rotate rotor- find first value in rotor array
+                          //remove first value of rotor to simulate step
+                          var rotaterotor3= rotor3.slice(-1);
+                          //add original first value of rotor to the end to complete rotor 
+                          var rotor3= rotor3.concat(rotaterotor3);
+                    }
+                
+                encrypteduser=usersub3
 
 
 
