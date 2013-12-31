@@ -59,8 +59,9 @@
                             <div id="partSummary"><h5>Part Summary</h5><textarea id="summary" rows="5" style="width:100%"></textarea></div>
                         </div>
 
-                        <button class="btn next"><strong>Next</strong></button>
                         <button class="btn back"><strong>Back</strong></button>
+                        <button class="btn next"><strong>Next</strong></button>
+                        
                     </div>
                 </div>
 
@@ -83,8 +84,9 @@
 
                             </div>        
                         </div>
+                        <button class="btn back"><strong>Back</strong></button>
                         <button class="btn next"><strong>Next</strong></button>
-                        <button class="btn back"><strong>Back</strong></button>                    
+                                            
                     </div>
                 </div>
                 <!--Standard Required Design Information-->
@@ -110,8 +112,9 @@
 
                             </div>
                         </div>
+                        <button class="btn back"><strong>Back</strong></button>
                         <button class="btn next"><strong>Next</strong></button>
-                        <button class="btn back"><strong>Back</strong></button>                    
+                                            
                     </div>
                 </div>    
 
@@ -133,8 +136,8 @@
                             <option id="flow1">
                                 Flow Cytometry
                             </option>
-                            <option id="otherOption1">
-                                Other
+                            <option id="addNewAsaay">
+                                Add New Assay 
                             </option>
                         </select> 
                         <div id="restrictionDigestandGel" class="hidden">    
@@ -169,13 +172,15 @@
                                         <div id="location"><h5>Location</h5><input></div>
                                         <div id="dataFormat"><h5>Data Format</h5><input></div>
                                         <div id="machineName"><h5>Machine Name</h5><input></div>
-                                    </div>
-                                    <div class="span6">
                                         <div id="protocolDetails"><h5>Protocol Details</h5><input></div>
                                         <div id="protocolLink"><h5>Link to Protocol</h5><input></div>
-                                        <div id="lasers"><h5>Lasers(filters)</h5><input></div>
+                                    </div>
+                                    <div class="span6">
+                                        <div id="lasers"><h5>Lasers(filters) Used</h5><input></div>
                                         <div id="transerCurve"><h5>Link to Transfer Curve Image</h5><input></div>
                                         <div id="transerCurveCaption"><h5>Caption for Transfer Curve</h5><input></div>
+                                        <div id="timeCurve"><h5>Time Sequence Graph</h5><input></div>
+                                        <div id="timeCurveCaption"><h5>Caption for Time Sequence Graph</h5><input></div>
                                     </div>
                                 </div>
                             </div>
@@ -196,22 +201,73 @@
                                         <div id="vessel"><h5>Vessel</h5><input></div>
                                         <div id="volume"><h5>Volume</h5><input></div>
                                         <div id="incubation"><h5>Incubation</h5><input></div>
-                                        <div id="time"><h5>Time(mins)</h5><input></div>
+                                        <div id="incubationTime"><h5>Incubation Time(mins)</h5><input></div>
+                                        <div id="phase"><h5>Bacteria Phase</h5><input></div>
 
                                     </div>
                                 </div> 
                                 <button id="btn7" type="button"><Strong>Add additional assays</strong></button>
-                                <button class="btn next"><strong>Next</strong></button>
+                                <br>
+                                <br>
                                 <button class="btn back"><strong>Back</strong></button>
+                                <button class="btn next"><strong>Next</strong></button>
+                         
+                                
                             </div>
                         </div>    
-
+                            <div id="newAssay" class="hidden">   
+                            <h3>Add New Assay</h3>
+                            <div class="well">    
+                                <div class="row-fluid">
+                                    <div class="span4">   
+                                        <div id="newAssayName"><h5>New Assay Name</h5><input></div>
+                                        <div id="newAssayPurpose"><h5>New Assay Purpose</h5><input></div>
+                                        <div id="newPar1"><h5>Parameter</h5><input></div>
+                                        <div id="newPar2"><h5>Parameter</h5><input></div>
+                                        <div id="newPar3"><h5>Parameter</h5><input></div>
+                                        <div id="additionalPar" class="hidden"><h5>Parameter</h5><input></div>
+                                        <br>
+                                        <button class="btn back"><strong>Back</strong></button>
+                                        <button class="btn additionalFields"><strong>Add Additional Fields</strong></button>
+                                    </div>
+                                    <div class="span6">
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <div id="newVal1"><h5>Value</h5><input></div>
+                                        <div id="newVal2"><h5>Value</h5><input></div>
+                                        <div id="newVal3"><h5>Value</h5><input></div>
+                                        <div id="additionalVal" class="hidden"><h5>Value</h5><input></div>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>          
+                        </div> 
                     </div>
                 </div>
             </div>
         </div>
         
         <script>
+
+//Jquerty to reveal assays 
+  $("#rd1").click(function(){
+        $("#restrictionDigestandGel").show();
+     });
+ 
+    $("#flow1").click(function(){
+        $("#flowCytometry").show();
+     });
+   $(".btn additionalFields").click(function(){
+        $("#additionalPar").show();
+        $("#additionalVal").show();
+     });  
+                                
+
 
  //JSON object 
    function createJSON() {
