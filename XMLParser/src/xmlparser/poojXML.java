@@ -14,119 +14,36 @@ import org.jsoup.parser.Parser;
 public class poojXML {
 
     public static void main(String[] args) throws JSONException {
-        //call parseXML function
         
         //There will be an arraylist of actual part names
         ArrayList<String> partNames = new ArrayList<String>();
+        partNames.add("J23100");
+        partNames.add("I13453");
+        partNames.add("B0033");
         partNames.add("B0034");
-        partNames.add("B0030");
+        partNames.add("E1010");
+        partNames.add("E0040");
+        partNames.add("E0030");
+        partNames.add("B0015");
         
+        //Get part XML pages from Parts Registry
         ArrayList<String> partXMLs = getXML(partNames);
         
-        String[] parsedString = parseXML("<!--\n" +
-"Parts from the iGEM Registry of Standard Biological Parts\n" +
-"-->\n" +
-"<rsbpml>\n" +
-"<part_list>\n" +
-"<part>\n" +
-"<part_id>151</part_id>\n" +
-"<part_name>BBa_B0034</part_name>\n" +
-"<part_short_name>B0034</part_short_name>\n" +
-"<part_short_desc>RBS (Elowitz 1999) -- defines RBS efficiency</part_short_desc>\n" +
-"<part_type>RBS</part_type>\n" +
-"<release_status>Released HQ 2013</release_status>\n" +
-"<sample_status>In stock</sample_status>\n" +
-"<part_results>Works</part_results>\n" +
-"<part_nickname/>\n" +
-"<part_rating>1</part_rating>\n" +
-"<part_url>http://parts.igem.org/Part:BBa_B0034</part_url>\n" +
-"<part_entered>2003-01-31</part_entered>\n" +
-"<part_author>Vinay S Mahajan, Voichita D. Marinescu, Brian Chow, Alexander D Wissner-Gross and Peter Carr IAP, 2003</part_author>\n" +   
-"<deep_subparts/>\n" +
-"<specified_subparts/>\n" +
-"<specified_subscars/>\n" +
-"<sequences>\n" +
-"<seq_data>aaagaggagaaa</seq_data>\n" +
-"</sequences>\n" +
-"<features>\n" +
-"<feature>\n" +
-"<id>23325</id>\n" +
-"<title/>\n" +
-"<type>conserved</type>\n" +
-"<direction>forward</direction>\n" +
-"<startpos>5</startpos>\n" +
-"<endpos>8</endpos>\n" +
-"</feature>\n" +
-"</features>\n" +
-"<parameters>\n" +
-"<!--\n" +
-" NOTE: Currently, each parameter name can have only one value.\n" +
-"-->\n" +
-"<!--\n" +
-"This will change as we fully support the context of a parameter. RDR 4/2010 \n" +
-"-->\n" +
-"<parameter>\n" +
-"<name>efficiency</name>\n" +
-"<value>1</value>\n" +
-"<units/>\n" +
-"<url/>\n" +
-"<id>2480</id>\n" +
-"<m_date>2008-11-29 13:15:14</m_date>\n" +
-"<user_id>24</user_id>\n" +
-"<user_name>registry</user_name>\n" +
-"</parameter>\n" +
-"<parameter>\n" +
-"<name>biology</name>\n" +
-"<value>NA</value>\n" +
-"<units/>\n" +
-"<url/>\n" +
-"<id>3314</id>\n" +
-"<m_date>2008-11-29 13:15:14</m_date>\n" +
-"<user_id>24</user_id>\n" +
-"<user_name>registry</user_name>\n" +
-"</parameter>\n" +
-"</parameters>\n" +
-"<categories>\n" +
-"<category>//chassis/prokaryote/ecoli</category>\n" +
-"<category>//direction/forward</category>\n" +
-"<category>//function/coliroid</category>\n" +
-"<category>//rbs/prokaryote/constitutive/community</category>\n" +
-"<category>//regulation/constitutive</category>\n" +
-"<category>//ribosome/prokaryote/ecoli</category>\n" +
-"</categories>\n" +
-"<twins>\n" +
-"<twin>BBa_J34801</twin>\n" +
-"<twin>BBa_J70591</twin>\n" +
-"<twin>BBa_K773001</twin>\n" +
-"<twin>BBa_K783051</twin>\n" +
-"</twins>\n" +
-"<samples>\n" +
-"<!-- Samples have been turned off for now - rdr 2013 -->\n" +
-"</samples>\n" +
-"<references>\n" +
-"<!-- References are not available yet - rdr 2013 -->\n" +
-"</references>\n" +
-"<groups>\n" +
-"<!--\n" +
-" Group access information is not yet available - rdr 2013\n" +
-"-->\n" +
-"</groups>\n" +
-"</part>\n" +
-"</part_list>\n" +
-"</rsbpml>");
-
+        //Parse through XML pages for relevant info
+        String[] parsedString = parseXML(partXMLs);
         
-        //implement writeJSONObject
+        //Write relevant info to JSON Object for client
         JSONArray partInfo = writeJSONObject(parsedString);
 
-        //test print statements for writeJSONObject
+        //Test print statements for writeJSONObject
         System.out.println(partInfo);
 
 }
 
-    public static String[] parseXML(String XMLstring) {
+    public static String[] parseXML(ArrayList<String> partXMLs) {
+        //go through ArrayList and pull out each string?
+        
         //parse XML and convert to String array
-
         StringBuilder jsonStringOUT = new StringBuilder();
         String[] inputXMLLines = XMLstring.split("\n");
 
@@ -236,8 +153,7 @@ public class poojXML {
         ArrayList<String> xmlStrings = new ArrayList<String>();
         
         //For each of the names provided,
-        for (String name : partNames) {
-            
+        for (String name : partNames) { 
             Document partDocument = getPartDocument(name);
             xmlStrings.add(partDocument.toString());            
         }
@@ -247,19 +163,24 @@ public class poojXML {
     
     //given a part name, create a document object corresponding to the DOM
     public static Document getPartDocument(String partName) {
+        
         Document partDoc;
+        
         try {
-
             partDoc = Jsoup.connect("http://parts.igem.org/xml/part." + partName)
                     .timeout(10000000)
                     .parser(Parser.xmlParser())
                     .get();
 
             return partDoc;
-        } catch (Exception e) {
+        } 
+        
+        catch (Exception e) {
             e.printStackTrace();
             return null;
-        } finally {
+        } 
+        
+        finally {
         }
     }
 }
