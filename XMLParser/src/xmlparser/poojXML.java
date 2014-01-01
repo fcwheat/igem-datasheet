@@ -17,36 +17,57 @@ public class poojXML {
         
         //There will be an arraylist of actual part names
         ArrayList<String> partNames = new ArrayList<String>();
-        partNames.add("J23100");
-        partNames.add("I13453");
-        partNames.add("B0033");
-        partNames.add("B0034");
-        partNames.add("E1010");
-        partNames.add("E0040");
-        partNames.add("E0030");
-        partNames.add("B0015");
+        partNames.add("K1114107");
         
         //Get part XML pages from Parts Registry
         ArrayList<String> partXMLs = getXML(partNames);
         
         //Parse through XML pages for relevant info
         String[] parsedString = parseXML(partXMLs);
-        
+       
         //Write relevant info to JSON Object for client
         JSONArray partInfo = writeJSONObject(parsedString);
 
         //Test print statements for writeJSONObject
         System.out.println(partInfo);
-
 }
 
-    public static String[] parseXML(ArrayList<String> partXMLs) {
-        //go through ArrayList and pull out each string?
+        public static ArrayList<String> getXML(ArrayList<String> partNames) {
+        
+        ArrayList<String> xmlStrings = new ArrayList<String>();
+        
+        //For each of the names provided, create a part Document
+        //uses getPartDocument method 
+        for (String name : partNames) { 
+            Document partDocument = getPartDocument(name);
+            xmlStrings.add(partDocument.toString());            
+        }
+        
+        return xmlStrings;        
+    }
+    
+    //given a part name, create a document object corresponding to the DOM
+    public static Document getPartDocument(String partName) {
+        
+        Document partDoc;
+        try {
+            partDoc = Jsoup.connect("http://parts.igem.org/xml/part." + partName)
+                    .timeout(10000000)
+                    .parser(Parser.xmlParser())
+                    .get();
+            return partDoc;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+        }
+    }
+   
+    public static String[] parseXML(ArrayList<String> XMLstring) {
         
         //parse XML and convert to String array
         StringBuilder jsonStringOUT = new StringBuilder();
-        String[] inputXMLLines = XMLstring.split("\n");
-
+        
         //initialize variables for relevant data
         String partNameString = "";
         String partSummaryString = "";
@@ -56,51 +77,50 @@ public class poojXML {
         String partAuthorString = "";
         String seqDataString = "";
         String directionString = "";
-        String cellType = "";
-
+        
         //find relevant info and set to variable as String
-        for (String line : inputXMLLines) {
-            if (line.contains("<part_name>")) {
-                int start = line.indexOf(">") + 1;
+        for (String line : XMLstring) {
+            if (line.contains("<part_name>")) {               
+                int start = line.indexOf("<part_name>") + 11;
                 int end = line.indexOf("</part_name>");
                 jsonStringOUT.append(line);
-                partNameString = jsonStringOUT.substring(start, end);
-            } else if (line.contains("<part_short_desc>")) {
-                jsonStringOUT.replace(0, 1000, line);
-                int start = line.indexOf(">") + 1;
-                int end = line.indexOf("</");
-                partSummaryString = jsonStringOUT.substring(start, end);
-            } else if (line.contains("<part_type>")) {
-                jsonStringOUT.replace(0, 1000, line);
-                int start = line.indexOf(">") + 1;
-                int end = line.indexOf("</");
-                partTypeString = jsonStringOUT.substring(start, end);
-            } else if (line.contains("<part_url>")) {
-                jsonStringOUT.replace(0, 1000, line);
-                int start = line.indexOf(">") + 1;
-                int end = line.indexOf("</");
-                partURLString = jsonStringOUT.substring(start, end);
-            } else if (line.contains("<part_entered>")) {
-                jsonStringOUT.replace(0, 1000, line);
-                int start = line.indexOf(">") + 1;
-                int end = line.indexOf("</");
-                partDateString = jsonStringOUT.substring(start, end);
-            } else if (line.contains("<part_author>")) {
-                jsonStringOUT.replace(0, 1000, line);
-                int start = line.indexOf(">") + 1;
-                int end = line.indexOf("</");
-                partAuthorString = jsonStringOUT.substring(start, end);
-            } else if (line.contains("<seq_data>")) {
-                jsonStringOUT.replace(0, 1000, line);
-                int start = line.indexOf(">") + 1;
-                int end = line.indexOf("</");
-                seqDataString = jsonStringOUT.substring(start, end);
-            } else if (line.contains("<direction>")) {
-                jsonStringOUT.replace(0, 1000, line);
-                int start = line.indexOf(">") + 1;
-                int end = line.indexOf("</");
-                directionString = jsonStringOUT.substring(start, end);
+                partNameString = jsonStringOUT.substring(start, end).replaceAll("\n", "").trim();
             }
+            if (line.contains("<part_short_desc>")) {
+                int start = line.indexOf("<part_short_desc>") + 17;
+                int end = line.indexOf("</part_short_desc>");
+                partSummaryString = jsonStringOUT.substring(start, end).replaceAll("\n", "").trim();
+            } 
+            if (line.contains("<part_type>")) {
+                int start = line.indexOf("<part_type>") + 11;
+                int end = line.indexOf("</part_type>");
+                partTypeString = jsonStringOUT.substring(start, end).replaceAll("\n", "").trim();            
+            }
+            if (line.contains("<part_url>")) {
+                int start = line.indexOf("<part_url>") + 10;
+                int end = line.indexOf("</part_url>");
+                partURLString = jsonStringOUT.substring(start, end).replaceAll("\n", "").trim();
+            }   
+          if (line.contains("<part_entered>")) {
+                int start = line.indexOf("<part_entered>") + 14;
+                int end = line.indexOf("</part_entered>");
+                partDateString = jsonStringOUT.substring(start, end).replaceAll("\n", "").trim();
+          }
+          if (line.contains("<part_author>")) {
+                int start = line.indexOf("<part_author>") + 13;
+                int end = line.indexOf("</part_author");
+                partAuthorString = jsonStringOUT.substring(start, end).replaceAll("\n", "").trim();
+          }
+          if (line.contains("<seq_data>")) {
+                int start = line.indexOf("<seq_data>") + 10;
+                int end = line.indexOf("</seq_data");
+                seqDataString = jsonStringOUT.substring(start, end).replaceAll("\n", "").trim();
+          }
+          if (line.contains("<direction>")) {
+                int start = line.indexOf("<direction>") + 11;
+                int end = line.indexOf("</direction>");
+                directionString = jsonStringOUT.substring(start, end).replaceAll("\n", "").trim();
+          }
         }
 
         //put all variables into a String array
@@ -146,41 +166,5 @@ public class poojXML {
         partInfoJSON.put(directionJSON);
         
         return partInfoJSON; //return JSONArray of JSONobjects of relevant info
-    }
-    
-    public static ArrayList<String> getXML(ArrayList<String> partNames) {
-        
-        ArrayList<String> xmlStrings = new ArrayList<String>();
-        
-        //For each of the names provided,
-        for (String name : partNames) { 
-            Document partDocument = getPartDocument(name);
-            xmlStrings.add(partDocument.toString());            
-        }
-        
-        return xmlStrings;        
-    }
-    
-    //given a part name, create a document object corresponding to the DOM
-    public static Document getPartDocument(String partName) {
-        
-        Document partDoc;
-        
-        try {
-            partDoc = Jsoup.connect("http://parts.igem.org/xml/part." + partName)
-                    .timeout(10000000)
-                    .parser(Parser.xmlParser())
-                    .get();
-
-            return partDoc;
-        } 
-        
-        catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        } 
-        
-        finally {
-        }
     }
 }
