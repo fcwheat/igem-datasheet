@@ -8,6 +8,10 @@
         <servlet-name>AuthenticationServlet</servlet-name>
         <servlet-class>datasheet.AuthenticationServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CommunicationExampleServlet</servlet-name>
+        <servlet-class>datasheet.CommunicationExampleServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>DataServlet</servlet-name>
         <url-pattern>/DataServlet</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>AuthenticationServlet</servlet-name>
         <url-pattern>/AuthenticationServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CommunicationExampleServlet</servlet-name>
+        <url-pattern>/CommunicationExampleServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
