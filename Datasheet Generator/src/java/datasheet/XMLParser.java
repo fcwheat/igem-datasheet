@@ -230,10 +230,10 @@ public class XMLParser {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response, JSONArray partInfoJSON)
             throws ServletException, IOException {
         try {
-            processGetRequest(request, response);
+            processGetRequest(request, response, partInfoJSON);
         } catch (JSONException ex) {
             Logger.getLogger(CommunicationExampleServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
