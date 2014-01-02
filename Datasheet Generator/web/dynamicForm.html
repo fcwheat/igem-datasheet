@@ -136,7 +136,7 @@
                             <option id="flow1">
                                 Flow Cytometry
                             </option>
-                            <option id="addNewAsaay">
+                            <option id="addNewAssay">
                                 Add New Assay 
                             </option>
                         </select> 
@@ -256,16 +256,26 @@
             </div>
         </div>
         
-        <script>
+<script>
 
-//Jquerty to reveal assays 
+//Jquerty to initially hide assays 
+  $("#rd1").hide(); 
+  $("#flow1").hide(); 
+  $("#newAssay").hide(); 
+
+//Show assay when clicked in options
   $("#rd1").click(function(){
-        $("#restrictionDigestandGel").show();
-     });
- 
-    $("#flow1").click(function(){
-        $("#flowCytometry").show();
-     });
+     $("#restrictionDigestandGel").show();
+  });
+  $("#flow1").click(function(){
+     $("#flowCytometry").show();
+  });
+  $("#addNewAssay").click(function(){
+     $("#newAssay").show();
+  });
+  
+    
+    //Add additional fields to new add new assay section  
    $(".btn additionalFields").click(function(){
         $("#additionalPar").show();
         $("#additionalVal").show();
@@ -295,7 +305,7 @@
 
 
 
-        </script>
+ </script>
         
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> 
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
