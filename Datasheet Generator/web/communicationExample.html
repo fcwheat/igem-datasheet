@@ -28,3 +28,18 @@ and open the template in the editor.
     </body>
 
 </html>
+
+
+//DHD communication for datasheet
+<button id="Autofill">Autofill from Parts Registry</button>
+<button id="getButton">Get JSON from Sever</button>
+        <script>
+            $('#sendButton').click(function() {
+                $.post("CommunicationExampleServlet", {"data": "data sent from the client"});
+            });
+            $('#getButton').click(function() {
+                $.get("CommunicationExampleServlet", function(data){
+                    alert(JSON.stringify(data));
+                });
+            });
+        </script>
