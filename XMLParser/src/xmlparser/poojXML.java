@@ -8,6 +8,8 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.parser.Parser;
 
+
+
 /**
  * @author Pooja Shah
  */
@@ -17,7 +19,7 @@ public class poojXML {
         
         //There will be an arraylist of actual part names
         ArrayList<String> partNames = new ArrayList<String>();
-        partNames.add("K1114107");
+        partNames.add("K1114000");
         
         //Get part XML pages from Parts Registry
         ArrayList<String> partXMLs = getXML(partNames);
@@ -167,4 +169,5 @@ public class poojXML {
         
         return partInfoJSON; //return JSONArray of JSONobjects of relevant info
     }
+   
 }
