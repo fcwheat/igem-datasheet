@@ -30,13 +30,13 @@ and open the template in the editor.
 </html>
 
 
-//DHD communication for datasheet
+// DHD communication for datasheet
 <button id="Autofill">Autofill from Parts Registry</button>
         <script>
             $('#sendButton').click(function() {
-                $.post("CommunicationExampleServlet", {"partinfoJSON": "data sent from the client"});
+                $.post("XMLParser.java", {"partinfoJSON": "data sent from the client"});
             });
-                $.get("CommunicationExampleServlet", function(data){
+                $.get("XMLParser.java", function(data){
                     alert(JSON.stringify(data));
                 });
         </script>

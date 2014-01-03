@@ -127,19 +127,12 @@
                     <div class="well">
                         Assay Type
                         <select id="selectAssay"> 
-                            <option>
-                                Choose Assay
-                            </option>
-                            <option id="rd1">
-                                Restriction Digest and Gel Electrophoresis
-                            </option>
-                            <option id="flow1">
-                                Flow Cytometry
-                            </option>
-                            <option id="addNewAssay">
-                                Add New Assay 
-                            </option>
+                            <option>Choose Assay</option>
+                            <option id="rd1">Restriction Digest and Gel Electrophoresis</option>
+                            <option id="flow1">Flow Cytometry</option>
+                            <option id="addNewAssay">Add New Assay</option>
                         </select> 
+                        
                         <div id="restrictionDigestandGel">    
                             <h3>Restriction Digest and Gel Electrophoresis</h3>
                             <div class="well">
@@ -255,31 +248,29 @@
                 </div>
             </div>
         </div>
-        
-<script>
-
-//Jquerty to initially hide assays 
-  $("#rd1").hide(); 
-  $("#flow1").hide(); 
-  $("#newAssay").hide(); 
-
-//Show assay when clicked in options
-  $("#rd1").click(function(){
-     $("#restrictionDigestandGel").show();
-  });
-  $("#flow1").click(function(){
-     $("#flowCytometry").show();
-  });
-  $("#addNewAssay").click(function(){
-     $("#newAssay").show();
-  });
   
-    
-    //Add additional fields to new add new assay section  
-   $(".btn additionalFields").click(function(){
-        $("#additionalPar").show();
-        $("#additionalVal").show();
-     });  
+<script src="libraries/jquery-1.9.1.min.js"></script>        
+<script>
+//hide assays    
+$('#restrictionDigestandGel').hide();
+$('#flowCytometry').hide();
+$('#newAssay').hide();
+
+
+//display assays when selected
+$('#rd1').click(function(){
+    $('#restrictionDigestandGel').show();
+});
+$('#flow').click(function(){
+    $('#flowCytometry').show();
+});
+$('#addNewAssay').click(function(){
+    $('#newAssay').show();
+});
+
+
+
+
                                 
 
 
