@@ -133,7 +133,7 @@
                             <option id="addNewAssay">Add New Assay</option>
                         </select> 
                         
-                        <div id="restrictionDigestandGel">    
+                        <div id="restrictionDigestandGel" class="hidden">    
                             <h3>Restriction Digest and Gel Electrophoresis</h3>
                             <div class="well">
                                 <div class="row-fluid">
@@ -155,8 +155,9 @@
                                 <br>
                                 <button id="btn5" type="button"><Strong>Add additional assays</strong></button>
                             </div> 
-                        </div>    
-                        <div id="flowCytometry">   
+                        </div> 
+                        
+                        <div id="flowCytometry"class="hidden">   
                             <h3>Flow Cytometry</h3>
                             <div class="well">    
                                 <div class="row-fluid">
@@ -209,7 +210,7 @@
                                 
                             </div>
                         </div>    
-                            <div id="newAssay">   
+                            <div id="newAssay" class="hidden">   
                             <h3>Add New Assay</h3>
                             <div class="well">    
                                 <div class="row-fluid">
@@ -251,26 +252,23 @@
   
 <script src="libraries/jquery-1.9.1.min.js"></script>        
 <script>
-//hide assays    
-$('#restrictionDigestandGel').hide();
-$('#flowCytometry').hide();
-$('#newAssay').hide();
-
-
-//display assays when selected
+//Display assay when chosen from dropdown menu
 $('#rd1').click(function(){
-    $('#restrictionDigestandGel').show();
+    $('#restrictionDigestandGel').removeClass('hidden');
 });
-$('#flow').click(function(){
-    $('#flowCytometry').show();
+$('#flow1').click(function(){
+    $('#flowCytometry').removeClass('hidden');
 });
 $('#addNewAssay').click(function(){
-    $('#newAssay').show();
+    $('#newAssay').removeClass('hidden');
 });
 
-
-
-
+//in add new assay, adds additional fields
+$('.btn additionalFields').click(function(){
+    $('#additionalPar').removeClass('hidden');
+    $('#additionalVal').removeClass('hidden');
+    
+});
                                 
 
 
