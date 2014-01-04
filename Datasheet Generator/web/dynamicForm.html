@@ -222,7 +222,6 @@
                                         <div id="newPar1"><h5>Parameter</h5><input></div>
                                         <div id="newPar2"><h5>Parameter</h5><input></div>
                                         <div id="newPar3"><h5>Parameter</h5><input></div>
-                                        <div id="additionalPar" class="hidden"><h5>Parameter</h5><input></div>
                                         <br>
                                     </div>
                                     <div class="span6">
@@ -233,7 +232,6 @@
                                         <div id="newVal1"><h5>Value</h5><input></div>
                                         <div id="newVal2"><h5>Value</h5><input></div>
                                         <div id="newVal3"><h5>Value</h5><input></div>
-                                        <div id="additionalVal" class="hidden"><h5>Value</h5><input></div>
                                         <br>
                                     </div>
                                     <br>
@@ -263,12 +261,11 @@ $('#addNewAssay').click(function(){
     $('#newAssay').removeClass('hidden');
 });
 
+
 //in add new assay, adds additional fields
-$('.btn additionalFields').click(function(){
-    $('#additionalPar').removeClass('hidden');
-    $('#additionalVal').removeClass('hidden');
+document.getElementByClass('btn additionalFields').click =function (){
     
-});
+};
                                 
 
 
