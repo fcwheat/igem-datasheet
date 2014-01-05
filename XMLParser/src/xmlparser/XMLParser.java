@@ -29,7 +29,8 @@ public class XMLParser {
         System.out.println("Name: " + getName(BBa_J23119Doc));
         //use the document to parse out the sequence
         System.out.println("Sequence: " + getSequence(BBa_J23119Doc));
-        
+        //print out the entire document
+        System.out.println(BBa_J23119Doc.toString());
         ArrayList<Integer> indexMatches = poojaMethod("", "");
         System.out.println(indexMatches);
     }
