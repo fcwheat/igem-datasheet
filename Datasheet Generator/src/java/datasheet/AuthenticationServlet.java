@@ -44,13 +44,13 @@ public class AuthenticationServlet extends HttpServlet {
                 response.addCookie(authenticateCookie);
                 response.addCookie(userCookie);
                 //redirect client to the same page
-                response.sendRedirect("testLogin.html");
+                response.sendRedirect("index.html");
             } else {
                 //if the password matches, return a cookie with a failed authentication value
                 Cookie authenticateCookie = new Cookie("authenticate", "failed");
                 authenticateCookie.setMaxAge(60 * 60); //cookie lasts for an hour
                 response.addCookie(authenticateCookie);
-                response.sendRedirect("testLogin.html");
+                response.sendRedirect("index.html");
             }
         } finally {
             out.close();
