@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>OWL Datasheet Generator</title>
+        <title>OWL</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
@@ -26,11 +26,11 @@
         </div>
         <div class="container">
             <div class="page-header" style="margin-top:50px">
-                <h1>Datasheet Builder<small>Automagically build data sheets</small></h1>
+                <h1>OWL <small>Automagically build data sheets</small></h1>
             </div>
             <div class="hero-unit" align="center">
                 <h2>Welcome to</h2>
-                <h1><strong>Datasheet Builder</strong></h1>
+                <h1><strong>OWL Datasheet Generator </strong></h1>
                 <h2>Automagically build data sheets.</h2>
                 <br>
                 <p> <a id="startLink" class="btn btn-primary btn-large" href="dynamicForm.html"> Get Started</a> </p>
@@ -75,20 +75,85 @@
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Dismiss</button>
             </div>
         </div>
-
+        <!--modal dialogs-->
+        <div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+            <div class="modal-header">
+                <h4 id="loginLabel">Sign in</h4>
+            </div>
+            <div class="modal-body">
+                <p>Please enter your user name and password to sign in.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Dismiss</button>
+            </div>
+        </div>
         <!--scripts placed at the end to enhance page loading speed--> 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> 
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
         <script>
-            $(document).ready(function() {
-                $('#poojaButton').click(function() {
-                    $.get("DataServlet", {command: "test", data: "" + $(document).html()}, function(response) {
-                        alert("this is your response\n" + JSON.stringify(response));
-                        var data = response["data"];
-                        $('body').html(response["data"]);
-                    })
-                })
-            })
+            function getCookie(c_name) {
+                var c_value = document.cookie;
+                var c_start = c_value.indexOf(" " + c_name + "=");
+                if (c_start === -1) {
+                    c_start = c_value.indexOf(c_name + "=");
+                }
+                if (c_start === -1) {
+                    c_value = null;
+                }
+                else {
+                    c_start = c_value.indexOf("=", c_start) + 1;
+                    var c_end = c_value.indexOf(";", c_start);
+                    if (c_end === -1) {
+                        c_end = c_value.length;
+                    }
+                    c_value = unescape(c_value.substring(c_start, c_end));
+                }
+                return c_value;
+            }
+
+            function deleteCookie(key) {
+                // Delete a cookie by setting the date of expiry to yesterday
+                date = new Date();
+                date.setDate(date.getDate() - 1);
+                document.cookie = escape(key) + '=;expires=' + date;
+            }
+
+            if (getCookie("authenticate") !== "authenticated") {
+                deleteCookie("user");
+            }
+
+            if (getCookie("authenticate") === "authenticated") {
+                $('#loginArea').html('<p class="pull-right">You are logged in as <strong>' + getCookie("user") + '</strong> <a id="logout">Log Out</a></p>');
+                $('#logout').click(function() {
+                    $.get("RavenServlet", {"command": "logout"}, function() {
+                        deleteCookie("authenticate");
+                        deleteCookie("user");
+                        window.location.replace("index.html");
+                    });
+                });
+            }
+            $('#loginForm').submit(function(e) {
+                var self = this;
+                e.preventDefault();
+                if ($('#loginForm input[name="user"]').val() === "") {
+                    $('#loginModal').modal();
+                } else if ($('#loginForm input[name="password"]').val() === "") {
+                    $('#loginModal').modal();
+                } else {
+                    self.submit();
+                }
+            });
+            $('#loginForm').submit(function(e) {
+                var self = this;
+                e.preventDefault();
+                if ($('#loginFormMain input[name="user"]').val() === "") {
+                    $('#loginModal').modal();
+                } else if ($('#loginForm input[name="password"]').val() === "") {
+                    $('#loginModal').modal();
+                } else {
+                    self.submit();
+                }
+            });
         </script>
         <footer>
             <div class="container" align="center">

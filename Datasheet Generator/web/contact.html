@@ -185,6 +185,71 @@
         <!--scripts placed at the end to enhance page loading speed--> 
         <script type="text/javascript" src="libraries/jquery-1.9.1.min.js"></script> 
         <script src="libraries/bootstrap.min.js"></script> 
+        <script>
+            function getCookie(c_name) {
+                var c_value = document.cookie;
+                var c_start = c_value.indexOf(" " + c_name + "=");
+                if (c_start === -1) {
+                    c_start = c_value.indexOf(c_name + "=");
+                }
+                if (c_start === -1) {
+                    c_value = null;
+                }
+                else {
+                    c_start = c_value.indexOf("=", c_start) + 1;
+                    var c_end = c_value.indexOf(";", c_start);
+                    if (c_end === -1) {
+                        c_end = c_value.length;
+                    }
+                    c_value = unescape(c_value.substring(c_start, c_end));
+                }
+                return c_value;
+            }
+
+            function deleteCookie(key) {
+                // Delete a cookie by setting the date of expiry to yesterday
+                date = new Date();
+                date.setDate(date.getDate() - 1);
+                document.cookie = escape(key) + '=;expires=' + date;
+            }
+
+            if (getCookie("authenticate") !== "authenticated") {
+                deleteCookie("user");
+            }
+
+            if (getCookie("authenticate") === "authenticated") {
+                $('#loginArea').html('<p class="pull-right">You are logged in as <strong>' + getCookie("user") + '</strong> <a id="logout">Log Out</a></p>');
+                $('#logout').click(function() {
+                    $.get("RavenServlet", {"command": "logout"}, function() {
+                        deleteCookie("authenticate");
+                        deleteCookie("user");
+                        window.location.replace("index.html");
+                    });
+                });
+            }
+            $('#loginForm').submit(function(e) {
+                var self = this;
+                e.preventDefault();
+                if ($('#loginForm input[name="user"]').val() === "") {
+                    $('#loginModal').modal();
+                } else if ($('#loginForm input[name="password"]').val() === "") {
+                    $('#loginModal').modal();
+                } else {
+                    self.submit();
+                }
+            });
+            $('#loginForm').submit(function(e) {
+                var self = this;
+                e.preventDefault();
+                if ($('#loginFormMain input[name="user"]').val() === "") {
+                    $('#loginModal').modal();
+                } else if ($('#loginForm input[name="password"]').val() === "") {
+                    $('#loginModal').modal();
+                } else {
+                    self.submit();
+                }
+            });
+        </script>
         <footer>
             <div class="container" align="center">
                 <p>Designed and built by <a href="contact.html">BU iGEM Team</a> at <a href="http://wiki.bu.edu/ece-cidar/index.php/Main_Page">CIDAR</a></p>
