@@ -30,8 +30,8 @@
         <div class="tabbable tabs-left">
             <ul class="nav nav-tabs nav-pills">
                 <li class="active"><a data-toggle="tab" href="#basicInfo">Basic Information</a></li>
-                <li><a data-toggle="tab" href="#contactInfo">Contact Information</a></li>
-                <li><a data-toggle="tab" href="#standardDesignInfo">Standard Design Information</a></li>
+                <li><a data-toggle="tab" href="#contactInformation">Contact Information</a></li>
+                <li><a data-toggle="tab" href="#designInformation">Standard Design Information</a></li>
                 <li><a data-toggle="tab" href="#assayOptions">Assays</a></li>
                 <li><button class="btn btn-success" id="designButton" style="width:100%">Make Datasheet</button></li>
             </ul>
@@ -42,8 +42,8 @@
                     <div class="well">
                         <div class="row-fluid">
                             <div class="span4">
-                                <div><h5>Part Name</h5><input id="partName"/></div>
-                                <div id="partType"><h5>Part Type</h5>
+                                <div><h5>Part Name</h5><input id="name"/></div>
+                                <div id="deviceType"><h5>Part Type</h5>
                                     <select>
                                         <option>
                                             Basic Part
@@ -57,7 +57,7 @@
                             </div>                       
                         </div>
                         <div class="row-fluid">
-                            <div><h5>Link to Pigeon image of device</h5><input class="data" id="pigeonImage"></div>
+                            <div><h5>Link to Pigeon image of device</h5><input class="data" id="deviceImage"></div>
                             <div><h5>Link to plasmid map of device</h5><input class="data" id="plasmidMap"></div>
 
                         </div>
@@ -73,7 +73,7 @@
 
                 <!--Contact Info-->
 
-                <div id="contactInfo" class="tab-pane">
+                <div id="contactInformation" class="tab-pane">
                     <h2>Contact Information</h2>
                     <div class="well">     
                         <div class="row-fluid">
@@ -96,7 +96,7 @@
                     </div>
                 </div>
                 <!--Standard Required Design Information-->
-                <div id="standardDesignInfo" class="tab-pane">
+                <div id="designInformation" class="tab-pane">
                     <h2>Standard Required Design Information</h2>
                     <div class="well"> 
                         <div class="row-fluid">
@@ -139,20 +139,20 @@
                         </select> 
                         <button class="btn btn-primary" id="addAssayButton">Add Assay</button>
                         <br/>
-                        <div id="restrictionDigestandGel" class="hidden">    
+                        <div id="standardAssays" class="hidden">    
                             <h3>Restriction Digest and Gel Electrophoresis</h3>
                             <div class="well">
                                 <div class="row-fluid">
                                     <div class="span4">    
-                                        <div><h5>Purpose</h5><input class="assayData" id="rdRurpose"></div>
-                                        <div><h5>Data Type</h5><input class="assayData" id="rdDataType"></div>
-                                        <div><h5>Location</h5><input class="assayData" id="rdLocation"></div>
-                                        <div><h5>Data Format</h5><input class="assayData" id="rdDataFormat"></div>
-                                        <div><h5>Enzymes</h5><input class="assayData" id="rdEnzymes"></div>
+                                        <div><h5>Purpose</h5><input class="assayData" id="Purpose"></div>
+                                        <div><h5>Data Type</h5><input class="assayData" id="dataType"></div>
+                                        <div><h5>Location</h5><input class="assayData" id="location"></div>
+                                        <div><h5>Data Format</h5><input class="assayData" id="dataFormat"></div>
+                                        <div><h5>Enzymes</h5><input class="assayData" id="enzymes"></div>
                                     </div>   
                                     <div class="span6"> 
-                                        <div><h5>Ladder</h5><input class="assayData" id="rdLadder"></div>
-                                        <div><h5>Protocol Details</h5><input class="assayData" id="rdProtocolDetails"></div>
+                                        <div><h5>Ladder</h5><input class="assayData" id="ladder"></div>
+                                        <div><h5>Protocol Details</h5><input class="assayData" id="details"></div>
                                         <div><h5>Link to Protocol</h5><input class="assayData" id="rdProtocolLink"></div>
                                         <div><h5>Link to gel image</h5><input class="assayData" id="gelImage"></div>
                                         <div><h5>Caption for gel image</h5><input class="assayData" id="gelImageCaption"></div>
@@ -163,15 +163,15 @@
                             </div> 
                         </div> 
 
-                        <div id="flowCytometry" class="hidden">   
+                        <div id="functionalityAssays" class="hidden">   
                             <h3>Flow Cytometry</h3>
                             <div class="well">    
                                 <div class="row-fluid">
                                     <div class="span4">    
                                         <div><h5>Purpose</h5><input class="assayData" id="purpose"></div>
-                                        <div><h5>Data Type</h5><input class="assayData" id="assayDataType"></div>
+                                        <div><h5>Data Type</h5><input class="assayData" id="dataType"></div>
                                         <div><h5>Location</h5><input class="assayData" id="location"></div>
-                                        <div><h5>Data Format</h5><input class="assayData" id="DataFormat"></div>
+                                        <div><h5>Data Format</h5><input class="assayData" id="dataFormat"></div>
                                         <div><h5>Machine Name</h5><input class="assayData" id="machineName"></div>
                                         <div><h5>Protocol Details</h5><input class="assayData" id="protocolDetails"></div>
                                         <div><h5>Link to Protocol</h5><input class="assayData" id="protocolLink"></div>
@@ -189,20 +189,20 @@
                                 <div class="row-fluid">
                                     <div class="span4">
                                         <h4 id="preinductionGrowthConditions">Pre-Induction Growth Conditions</h4>
-                                        <div><h5>Media Type</h5><input class="assayData" id="preMediaType"></div>
-                                        <div><h5>Vessel</h5><input class="assayData" id="preVessel"></div>
-                                        <div><h5>Volume</h5><input class="assayData" id="preVolume"></div>
-                                        <div><h5>Incubation</h5><input class="assayData" id="preIncubation"></div>
-                                        <div><h5>Time(mins)</h5><input class="assayData" id="preTime"></div>
+                                        <div><h5>Media Type</h5><input class="assayData" id="media"></div>
+                                        <div><h5>Vessel</h5><input class="assayData" id="vessel"></div>
+                                        <div><h5>Volume</h5><input class="assayData" id="volume"></div>
+                                        <div><h5>Incubation</h5><input class="assayData" id="incubation"></div>
+                                        <div><h5>Time(mins)</h5><input class="assayData" id="time"></div>
 
                                     </div>
                                     <div class="span6">
                                         <h4 id="inductionGrowthConditions">Induction Growth Conditions</h4>
-                                        <div><h5>Media Type</h5><input class="assayData" id="mediaType"></div>
+                                        <div><h5>Media Type</h5><input class="assayData" id="media"></div>
                                         <div><h5>Vessel</h5><input class="assayData" id="vessel"></div>
                                         <div><h5>Volume</h5><input class="assayData" id="volume"></div>
                                         <div><h5>Incubation</h5><input class="assayData" id="incubation"></div>
-                                        <div><h5>Incubation Time(mins)</h5><input class="assayData" id="incubationTime"></div>
+                                        <div><h5>Incubation Time(mins)</h5><input class="assayData" id="time"></div>
                                         <div><h5>Bacteria Phase</h5><input class="assayData" id="phase"></div>
                                     </div>
                                 </div> 
