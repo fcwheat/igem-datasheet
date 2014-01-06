@@ -50,25 +50,59 @@ $(document).ready(function() {
         $("#flowCytometry").hide();
         $("#other").show();
     });
-    
-    
-    $('#designButton').click(function(){
-        //collect information here
-       data["name"] = $('#partName').val(); 
-       data["summary"] = $('#summary').val(); 
-       data["deviceImage"] = $('#summary').val(); 
-       var contactInformation = {};
-       data["contactInformation"] = contactInformation;
-       var designInformation = {};
-       data["designInformation"] = designInformation;
-       var standardAssays = {};
-       data["standardAssays"] = standardAssays;
-       var functionalityAssays = {};
-       data["functionalityAssays"] = {};
-       
-       //temporarily redirect to example
-        window.location.replace("betterexample.html");
+    //Display assay when chosen from dropdown menu
+    $('#rd1').click(function() {
+        $('#restrictionDigestandGel').removeClass('hidden');
+    });
+    $('#flow1').click(function() {
+        $('#flowCytometry').removeClass('hidden');
+    });
+    $('#addNewAssay').click(function() {
+        $('#newAssay').removeClass('hidden');
 
     });
-    
+
+
+
+    //JSON object 
+    function createJSON() {
+        var jsonObj = [];
+        $("input").each(function() {
+
+            var id = $(this).attr('id');
+            var value = $(this).val();
+
+            item = {};
+            item ["id"] = id;
+            item["value"] = value;
+
+            jsonObj.push(item);
+        });
+        return jsonObj;
+
+    }
+
+    $('#designButton').click(function() {
+        //collect information here
+        data["name"] = $('#partName').val();
+        data["summary"] = $('#summary').val();
+        data["deviceImage"] = $('#summary').val();
+        var contactInformation = {};
+        data["contactInformation"] = contactInformation;
+        var designInformation = {};
+        data["designInformation"] = designInformation;
+        var standardAssays = {};
+        data["standardAssays"] = standardAssays;
+        var functionalityAssays = {};
+        data["functionalityAssays"] = {};
+        data = createJSON();
+        alert(JSON.stringify(data))
+
+    });
+
+
+
+
+
+
 });
