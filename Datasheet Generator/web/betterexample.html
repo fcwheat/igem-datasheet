@@ -207,8 +207,8 @@
                     "date": "8-17-2013"
                 },
                 "designInformation": {
-                    "chassis": {"name": "E. Coli",
-                        "strain": "Bioline Alpha Gold"},
+                    "chassisName": "E. Coli",
+                     "strain": "Bioline Alpha Gold",
                     "deviceName": "operon",
                     "deviceType": "level 1",
                     "safetyLevel": "0",
@@ -274,8 +274,8 @@
             $("#contact").text(data.contactInformation.contact);
 
             //Changing Standard Design Information          
-            $("#chassis").text(data.designInformation.chassis.name);
-            $("#strain").text(data.designInformation.chassis.strain);
+            $("#chassis").text(data.designInformation.chassisName);
+            $("#strain").text(data.designInformation.strain);
             $("#deviceType").text(data.designInformation.deviceType);
             $("#deviceName").text(data.designInformation.deviceName);
             $("#safetyLevel").text(data.designInformation.safetyLevel);
@@ -285,7 +285,7 @@
             $("#scars").text(data.designInformation.scars);
             $("#insertion").text(data.designInformation.insertion);
             $("#vector").text(data.designInformation.vector);
-            $("#additionalComments").text(data.designInformation.comments);
+            $("#additionalComments").text(data.designInformation.designComments);
 
 
             //Changing Standard Assay Table   
@@ -323,7 +323,7 @@
                     fuctAssayTable = fuctAssayTable + '</tr>';
                 }
                 fuctAssayTable = fuctAssayTable + '</tbody></table>';
-                fuctAssayTable = fuctAssayTable + '<h5>PreInductionGrowthConditions</h5>'
+                fuctAssayTable = fuctAssayTable + '<h5>PreInductionGrowthConditions</h5>';
                 fuctAssayTable = fuctAssayTable + '<table><tbody>';
                 for (var indkey in data["functionalityAssays"][i]["inductionGrowthConditions"]) {
                     fuctAssayTable = fuctAssayTable + '<tr>';

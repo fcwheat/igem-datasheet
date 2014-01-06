@@ -51,38 +51,49 @@ $(document).ready(function() {
 
 
     //JSON object 
-    function createJSON() {
-        var jsonObj = [];
-        $("input").each(function() {
-
-            var id = $(this).attr('id');
-            var value = $(this).val();
-
-            item = {};
-            item ["id"] = id;
-            item["value"] = value;
-
-            jsonObj.push(item);
-        });
-        return jsonObj;
-
-    }
-
     $('#designButton').click(function() {
         //collect information here
+        var data = {};
         data["name"] = $('#partName').val();
         data["summary"] = $('#summary').val();
-        data["deviceImage"] = $('#summary').val();
+        data["deviceImage"] = $('#pigeonImage').val();
+        //gather contact information
         var contactInformation = {};
+        $('div#contactInfo input').each(function() {
+            var key = $(this).attr("id");
+            var value = $(this).val();
+            contactInformation[key] = value;
+        });
+        $('div#contactInfo textarea').each(function() {
+            var key = $(this).attr("id");
+            var value = $(this).val();
+            contactInformation[key] = value;
+        });
         data["contactInformation"] = contactInformation;
+        //gather design information
         var designInformation = {};
+        $('div#standardDesignInfo input').each(function() {
+            var key = $(this).attr("id");
+            var value = $(this).val();
+            contactInformation[key] = value;
+        });
+        $('div#standardDesignInfo textarea').each(function() {
+            var key = $(this).attr("id");
+            var value = $(this).val();
+            contactInformation[key] = value;
+        });
         data["designInformation"] = designInformation;
-        var standardAssays = {};
-        data["standardAssays"] = standardAssays;
-        var functionalityAssays = {};
-        data["functionalityAssays"] = {};
-        data = createJSON();
-        alert(JSON.stringify(data))
+
+
+        var standardAssays = [];
+        //DEVINA POPULATE THIS ARRAY
+        
+        data["standardAssays"]=standardAssays;
+        var functionalityAssays =[];
+        //DEVINA POPULATE THIS ARRAY
+
+        data["functionalityAssays"] =functionalityAssays
+        alert(JSON.stringify(data));
 
     });
 
