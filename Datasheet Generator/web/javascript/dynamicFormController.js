@@ -12,55 +12,41 @@ $(document).ready(function() {
         $tabs.filter('.active').next('li').find('a[data-toggle="tab"]').tab('show');
     });
 
-
-    // Functions for dropdown menus     
-    $('#rd1').click(function() {
-        $("#restrictionDigestandGel").show();
-    });
-    $('#rd1').click(function() {
-        $("#assayType1").hide();
-    });
-    $('#flow1').click(function() {
-        $("#flowCytometry").show();
-    });
-    $('#flow1').click(function() {
-        $("#assayType1").hide();
-    });
-
-    // If loop for adding addition assays 
-    $('#btn5').click(function() {
-        $("#assayType1").show();
-        $("#restrictionDigestandGel").hide();
-        $("#flowCytometry").hide();
-    });
-    $('#btn7').click(function() {
-        $("#assayType1").show();
-        $("#restrictionDigestandGel").hide();
-        $("#flowCytometry").hide();
-    });
-    $('#btn6').click(function() {
-        $("#assayType1").hide();
-        $("#restrictionDigestandGel").hide();
-        $("#flowCytometry").hide();
-        $("#other").show();
-    });
-    $('#btn8').click(function() {
-        $("#assayType1").hide();
-        $("#restrictionDigestandGel").hide();
-        $("#flowCytometry").hide();
-        $("#other").show();
-    });
-    //Display assay when chosen from dropdown menu
-    $('#rd1').click(function() {
-        $('#restrictionDigestandGel').removeClass('hidden');
-    });
-    $('#flow1').click(function() {
-        $('#flowCytometry').removeClass('hidden');
-    });
-    $('#addNewAssay').click(function() {
-        $('#newAssay').removeClass('hidden');
+    //handlers for assays
+    $('button#addAssayButton').click(function() {
+        var selected = $('#selectAssay :selected').text();
+        if (selected === "Other") {
+            //append new assay code
+            $('#otherAssay').removeClass("hidden");
+        } else if (selected === "Restriction Digest and Gel Electrophoresis") {
+            $('#restrictionDigestandGel').removeClass("hidden");
+        } else if (selected === "Flow Cytometry") {
+            $('#flowCytometry').removeClass("hidden");
+        }
 
     });
+    $('button#removeRDButton').click(function() {
+        $('#restrictionDigestandGel').addClass("hidden");
+        $('#restrictionDigestandGel input').each(function() {
+            //clear the values
+            $(this).val("");
+        });
+    });
+    $('button#removeFlowCytometryButton').click(function() {
+        $('#flowCytometry').addClass("hidden");
+        $('#flowCytometry input').each(function() {
+            //clear the values
+            $(this).val("");
+        });
+    });
+    $('button#removeOtherButton').click(function() {
+        $('#otherAssay').addClass("hidden");
+        $('#otherAssay input').each(function() {
+            //clear the values
+            $(this).val("");
+        });
+    });
+
 
 
 
@@ -99,6 +85,11 @@ $(document).ready(function() {
         alert(JSON.stringify(data))
 
     });
+
+
+
+
+
 
 
 
