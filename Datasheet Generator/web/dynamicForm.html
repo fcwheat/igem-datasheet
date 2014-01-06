@@ -9,17 +9,23 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner"> 
                 <div class="container">
-                    <a class="brand" href="index.html">Datasheet Builder</a>
+                    <a class="brand" href="index.html">OWL</a>
                     <ul class="nav">
-                        <li ><a href="#">Browse Data Sheets</a></li>
+                        <li><a href="#">Browse Data Sheets</a></li>
                         <li class="active"><a href="design.html">Create New Data Sheet</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul> 
+                    <div id="loginArea"><form id="loginForm" class="navbar-form pull-right" action="AuthenticationServlet" method="POST">
+                            <input name="user" type="text" class="span2" placeholder="Login">
+                            <input name="password" type="password" class="span2" placeholder="Password">
+                            <input type="submit" value="Login" class="btn"/>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="page-header" style="margin-top:50px">
-            <h1>Datasheet Builder <small>Build your data sheet here</small></h1>
+            <h1>OWL<small>Build your data sheet here</small></h1>
         </div>
         <div class="tabbable tabs-left">
             <ul class="nav nav-tabs nav-pills">
@@ -46,22 +52,22 @@
                                             Composite Part
                                         </option>
                                     </select>
-                                    <div id="sequence"><h5>Sequence</h5><input></div>     
+                                    <div><h5>Sequence</h5><input class="data" id="sequence"></div>     
                                 </div>
                             </div>                       
                         </div>
                         <div class="row-fluid">
-                            <div id="pigeonImage"><h5>Link to Pigeon image of device</h5><input></div>
-                            <div id="plasmidMap"><h5>Link to plasmid map of device</h5><input></div>
+                            <div><h5>Link to Pigeon image of device</h5><input class="data" id="pigeonImage"></div>
+                            <div><h5>Link to plasmid map of device</h5><input class="data" id="plasmidMap"></div>
 
                         </div>
                         <div class="row-fluid">
-                            <div id="partSummary"><h5>Part Summary</h5><textarea id="summary" rows="5" style="width:100%"></textarea></div>
+                            <div><h5>Part Summary</h5><textarea  class="data" id="summary" rows="5" style="width:100%"></textarea></div>
                         </div>
 
                         <button class="btn back"><strong>Back</strong></button>
                         <button class="btn next"><strong>Next</strong></button>
-                        
+
                     </div>
                 </div>
 
@@ -72,21 +78,21 @@
                     <div class="well">     
                         <div class="row-fluid">
                             <div class="span4">
-                                <div id="partAuthor"><h5>Author(s)</h5><input/></div>
-                                <div id="team"><h5>Team</h5><input/></div>  
-                                <div id="dataCollectors"><h5>Data Collectors</h5><input/></div>
-                                <div id="partDate"><h5>Date</h5><input/></div>
+                                <div><h5>Author(s)</h5><input class="data" id="authors"/></div>
+                                <div><h5>Team</h5><input class="data" id="team"/></div>  
+                                <div><h5>Data Collectors</h5><input class="data" id="dataCollection"/></div>
+                                <div><h5>Date</h5><input class="data" id="date"/></div>
                             </div>   
                             <div class="span6">
-                                <div id="affiliation"><h5>Affiliation</h5><input/></div>
-                                <div id="contact"><h5>Contact</h5><input/></div>
-                                <div id="relatedParts"><h5>Related Parts</h5><textarea rows="5"></textarea></div>
+                                <div><h5>Affiliation</h5><input class="data" id="affiliation"/></div>
+                                <div><h5>Contact</h5><input class="data" id="contact"/></div>
+                                <div><h5>Related Parts</h5><textarea rows="5" class ="data" id="relatedParts"></textarea></div>
 
                             </div>        
                         </div>
                         <button class="btn back"><strong>Back</strong></button>
                         <button class="btn next"><strong>Next</strong></button>
-                                            
+
                     </div>
                 </div>
                 <!--Standard Required Design Information-->
@@ -95,26 +101,26 @@
                     <div class="well"> 
                         <div class="row-fluid">
                             <div class="span4">    
-                                <div id="chassis"><h5>Chasis</h5><input></div>
-                                <div id="deviceName"><h5>Device Name</h5><input></div>
-                                <div id="deviceType"><h5>Device Type</h5><input></div>
-                                <div id="safetyLevel"><h5>Safety Level</h5><input></div>  
-                                <div id="strain"><h5>Strain</h5><input></div>
-                                <div id="components"><h5>Components</h5><textarea rows="5"></textarea></div>
+                                <div><h5>Chasis</h5><input class="data" id="chassisName"></div>
+                                <div><h5>Device Name</h5><input class="data" id="deviceName"></div>
+                                <div><h5>Device Type</h5><input class="data" id="deviceType"></div>
+                                <div><h5>Safety Level</h5><input class="data" id="safetyLevel"></div>  
+                                <div><h5>Strain</h5><input class="data" id="strain"></div>
+                                <div><h5>Components</h5><textarea rows="5" id="components"></textarea></div>
                             </div>
                             <div class="span6">                 
-                                <div id="assembly"><h5>Assembly</h5><input></div>
-                                <div id="protocol"><h5>Protocol</h5><input></div>
-                                <div id="scars"><h5>Scars</h5><input></div>
-                                <div id="insertion"><h5>Insertion</h5><input></div>
-                                <div id="vector"><h5>Vector</h5><input></div>
-                                <div id="additionalDetails"><h5>Additional Details</h5><textarea rows="5"></textarea></div>
+                                <div><h5>Assembly</h5><input class="data" id="assembly"></div>
+                                <div><h5>Protocol</h5><input class="data" id="protocol"></div>
+                                <div><h5>Scars</h5><input class="data" id="scars"></div>
+                                <div><h5>Insertion</h5><input class="data" id="insertion"></div>
+                                <div><h5>Vector</h5><input class="data" id="vector"></div>
+                                <div><h5>Additional Details</h5><textarea rows="5" class="data" id="designComments"></textarea></div>
 
                             </div>
                         </div>
                         <button class="btn back"><strong>Back</strong></button>
                         <button class="btn next"><strong>Next</strong></button>
-                                            
+
                     </div>
                 </div>    
 
@@ -124,58 +130,58 @@
 
                 <div id="assayOptions" class="tab-pane">  
                     <h2>Demonstration of Device Functionality</h2>   
-                    <div class="well">
-                        Assay Type
+                    <div class="well">Assay Type
                         <select id="selectAssay"> 
                             <option>Choose Assay</option>
-                            <option id="rd1">Restriction Digest and Gel Electrophoresis</option>
-                            <option id="flow1">Flow Cytometry</option>
-                            <option id="addNewAssay">Add New Assay</option>
+                            <option>Restriction Digest and Gel Electrophoresis</option>
+                            <option>Flow Cytometry</option>
+                            <option>Other</option>
                         </select> 
-                        
+                        <button class="btn btn-primary" id="addAssayButton">Add Assay</button>
+                        <br/>
                         <div id="restrictionDigestandGel" class="hidden">    
                             <h3>Restriction Digest and Gel Electrophoresis</h3>
                             <div class="well">
                                 <div class="row-fluid">
                                     <div class="span4">    
-                                        <div id="rdRurpose"><h5>Purpose</h5><input></div>
-                                        <div id="rdDataType"><h5>Data Type</h5><input></div>
-                                        <div id="rdLocation"><h5>Location</h5><input></div>
-                                        <div id="rdDataFormat"><h5>Data Format</h5><input></div>
-                                        <div id="rdEnzymes"><h5>Enzymes</h5><input></div>
+                                        <div><h5>Purpose</h5><input class="assayData" id="rdRurpose"></div>
+                                        <div><h5>Data Type</h5><input class="assayData" id="rdDataType"></div>
+                                        <div><h5>Location</h5><input class="assayData" id="rdLocation"></div>
+                                        <div><h5>Data Format</h5><input class="assayData" id="rdDataFormat"></div>
+                                        <div><h5>Enzymes</h5><input class="assayData" id="rdEnzymes"></div>
                                     </div>   
                                     <div class="span6"> 
-                                        <div id="rdLadder"><h5>Ladder</h5><input></div>
-                                        <div id="rdProtocolDetails"><h5>Protocol Details</h5><input></div>
-                                        <div id="rdProtocolLink"><h5>Link to Protocol</h5><input></div>
-                                        <div id="gelImage"><h5>Link to gel image</h5><input></div>
-                                        <div id="gelImageCaption"><h5>Caption for gel image</h5><input></div>
+                                        <div><h5>Ladder</h5><input class="assayData" id="rdLadder"></div>
+                                        <div><h5>Protocol Details</h5><input class="assayData" id="rdProtocolDetails"></div>
+                                        <div><h5>Link to Protocol</h5><input class="assayData" id="rdProtocolLink"></div>
+                                        <div><h5>Link to gel image</h5><input class="assayData" id="gelImage"></div>
+                                        <div><h5>Caption for gel image</h5><input class="assayData" id="gelImageCaption"></div>
                                     </div> 
                                 </div>
                                 <br>
-                                <button id="btn5" type="button"><Strong>Add additional assays</strong></button>
+                                <button id="removeRDButton" type="button"><Strong>Remove</strong></button>
                             </div> 
                         </div> 
-                        
-                        <div id="flowCytometry"class="hidden">   
+
+                        <div id="flowCytometry" class="hidden">   
                             <h3>Flow Cytometry</h3>
                             <div class="well">    
                                 <div class="row-fluid">
                                     <div class="span4">    
-                                        <div id="purpose"><h5>Purpose</h5><input></div>
-                                        <div id="dataType"><h5>Data Type</h5><input></div>
-                                        <div id="location"><h5>Location</h5><input></div>
-                                        <div id="dataFormat"><h5>Data Format</h5><input></div>
-                                        <div id="machineName"><h5>Machine Name</h5><input></div>
-                                        <div id="protocolDetails"><h5>Protocol Details</h5><input></div>
-                                        <div id="protocolLink"><h5>Link to Protocol</h5><input></div>
+                                        <div><h5>Purpose</h5><input class="assayData" id="purpose"></div>
+                                        <div><h5>Data Type</h5><input class="assayData" id="assayDataType"></div>
+                                        <div><h5>Location</h5><input class="assayData" id="location"></div>
+                                        <div><h5>Data Format</h5><input class="assayData" id="DataFormat"></div>
+                                        <div><h5>Machine Name</h5><input class="assayData" id="machineName"></div>
+                                        <div><h5>Protocol Details</h5><input class="assayData" id="protocolDetails"></div>
+                                        <div><h5>Link to Protocol</h5><input class="assayData" id="protocolLink"></div>
                                     </div>
                                     <div class="span6">
-                                        <div id="lasers"><h5>Lasers(filters) Used</h5><input></div>
-                                        <div id="transerCurve"><h5>Link to Transfer Curve Image</h5><input></div>
-                                        <div id="transerCurveCaption"><h5>Caption for Transfer Curve</h5><input></div>
-                                        <div id="timeCurve"><h5>Time Sequence Graph</h5><input></div>
-                                        <div id="timeCurveCaption"><h5>Caption for Time Sequence Graph</h5><input></div>
+                                        <div><h5>Lasers(filters) Used</h5><input class="assayData" id="lasers"></div>
+                                        <div><h5>Link to Transfer Curve Image</h5><input class="assayData" id="transerCurve"></div>
+                                        <div><h5>Caption for Transfer Curve</h5><input class="assayData" id="transerCurveCaption"></div>
+                                        <div><h5>Time Sequence Graph</h5><input class="assayData" id="timeCurve"></div>
+                                        <div><h5>Caption for Time Sequence Graph</h5><input class="assayData" id="timeCurveCaption"></div>
                                     </div>
                                 </div>
                             </div>
@@ -183,116 +189,135 @@
                                 <div class="row-fluid">
                                     <div class="span4">
                                         <h4 id="preinductionGrowthConditions">Pre-Induction Growth Conditions</h4>
-                                        <div id="preMediaType"><h5>Media Type</h5><input></div>
-                                        <div id="preeVessel"><h5>Vessel</h5><input></div>
-                                        <div id="preVolume"><h5>Volume</h5><input></div>
-                                        <div id="preIncubation"><h5>Incubation</h5><input></div>
-                                        <div id="preTime"><h5>Time(mins)</h5><input></div>
+                                        <div><h5>Media Type</h5><input class="assayData" id="preMediaType"></div>
+                                        <div><h5>Vessel</h5><input class="assayData" id="preVessel"></div>
+                                        <div><h5>Volume</h5><input class="assayData" id="preVolume"></div>
+                                        <div><h5>Incubation</h5><input class="assayData" id="preIncubation"></div>
+                                        <div><h5>Time(mins)</h5><input class="assayData" id="preTime"></div>
 
                                     </div>
                                     <div class="span6">
                                         <h4 id="inductionGrowthConditions">Induction Growth Conditions</h4>
-                                        <div id="mediaType"><h5>Media Type</h5><input></div>
-                                        <div id="vessel"><h5>Vessel</h5><input></div>
-                                        <div id="volume"><h5>Volume</h5><input></div>
-                                        <div id="incubation"><h5>Incubation</h5><input></div>
-                                        <div id="incubationTime"><h5>Incubation Time(mins)</h5><input></div>
-                                        <div id="phase"><h5>Bacteria Phase</h5><input></div>
-
+                                        <div><h5>Media Type</h5><input class="assayData" id="mediaType"></div>
+                                        <div><h5>Vessel</h5><input class="assayData" id="vessel"></div>
+                                        <div><h5>Volume</h5><input class="assayData" id="volume"></div>
+                                        <div><h5>Incubation</h5><input class="assayData" id="incubation"></div>
+                                        <div><h5>Incubation Time(mins)</h5><input class="assayData" id="incubationTime"></div>
+                                        <div><h5>Bacteria Phase</h5><input class="assayData" id="phase"></div>
                                     </div>
                                 </div> 
-                                <button id="btn7" type="button"><Strong>Add additional assays</strong></button>
-                                <br>
-                                <br>
-                                <button class="btn back"><strong>Back</strong></button>
-                                <button class="btn next"><strong>Next</strong></button>
-                         
-                                
+                                <button id="removeFlowCytometryButton" type="button"><Strong>Remove</strong></button>
+                                <br>   
+
                             </div>
                         </div>    
-                            <div id="newAssay" class="hidden">   
+                        <div id="otherAssay" class="hidden">   
                             <h3>Add New Assay</h3>
                             <div class="well">    
                                 <div class="row-fluid">
                                     <div class="span4">   
-                                        <div id="newAssayName"><h5>New Assay Name</h5><input></div>
-                                        <div id="newAssayPurpose"><h5>New Assay Purpose</h5><input></div>
-                                        <div id="newAssayImage"><h5>Add Link to Image</h5><input></div>
-                                        <div id="newAssayDataLink"><h5>Add Additional Data (Link)</h5><input></div>
-                                        <div id="newPar1"><h5>Parameter</h5><input></div>
-                                        <div id="newPar2"><h5>Parameter</h5><input></div>
-                                        <div id="newPar3"><h5>Parameter</h5><input></div>
+                                        <div><h5>New Assay Name</h5><input class="assayData" id="newAssayName"></div>
+                                        <div><h5>New Assay Purpose</h5><input class="assayData" id="newAssayPurpose"></div>
+                                        <div><h5>Add Link to Image</h5><input class="assayData" id="newAssayImage"></div>
+                                        <div><h5>Add Additional Data (Link)</h5><input class="assayData" id="newAssayDataLink"></div>
+                                        <div><h5>Parameter</h5><input class="assayData" id="newPar1"></div>
+                                        <div><h5>Parameter</h5><input class="assayData" id="newPar2"></div>
+                                        <div><h5>Parameter</h5><input class="assayData" id="newPar3"></div>
                                         <br>
                                     </div>
                                     <div class="span6">
-                                        <div id="newProtocol"><h5>Protocol Details </h5><input></div>
-                                        <div id="newProtocolLink"><h5>Link to Protocol</h5><input></div>
-                                        <div id="newAssayImageCaption"><h5>Add Caption for Image</h5><input></div>
-                                        <div id="newAssayDataDetails"><h5>Add Additional Data (Details)</h5><input></div>
-                                        <div id="newVal1"><h5>Value</h5><input></div>
-                                        <div id="newVal2"><h5>Value</h5><input></div>
-                                        <div id="newVal3"><h5>Value</h5><input></div>
+                                        <div><h5>Protocol Details </h5><input class="assayData" id="newProtocol"></div>
+                                        <div><h5>Link to Protocol</h5><input class="assayData" id="newProtocolLink"></div>
+                                        <div><h5>Add Caption for Image</h5><input class="assayData" id="newAssayImageCaption"></div>
+                                        <div><h5>Add Additional Data (Details)</h5><input class="assayData" id="newAssayDataDetails"></div>
+                                        <div><h5>Value</h5><input class="assayData" id="newVal1"></div>
+                                        <div><h5>Value</h5><input class="assayData" id="newVal2"></div>
+                                        <div><h5>Value</h5><input class="assayData" id="newVal3"></div>
                                         <br>
                                     </div>
                                     <br>
                                 </div>
                                 <div class="row-fluid">
-                                        <div id="additionalAssayComments"><h5>Additional Comments</h5><textarea id="comments" rows="5" style="width:100%"></textarea></div>
+                                    <div id="additionalAssayComments"><h5>Additional Comments</h5><textarea class = "assayData" id="comments" rows="5" style="width:100%"></textarea></div>
                                 </div>
-                                    <button class="btn back"><strong>Back</strong></button>
-                                    <button class="btn additionalFields"><strong>Add Additional Fields</strong></button>
+                                <button class="btn" id="removeOtherButton"><strong>Remove</strong></button>
                             </div>          
-                        </div> 
+                        </div>
+                        <button class="btn back"><strong>Back</strong></button>
                     </div>
                 </div>
             </div>
         </div>
-  
-<script src="libraries/jquery-1.9.1.min.js"></script>        
-<script>
-//Display assay when chosen from dropdown menu
-$('#rd1').click(function(){
-    $('#restrictionDigestandGel').removeClass('hidden');
-});
-$('#flow1').click(function(){
-    $('#flowCytometry').removeClass('hidden');
-});
-$('#addNewAssay').click(function(){
-    $('#newAssay').removeClass('hidden');
-});
+
+        <script src="libraries/jquery-1.9.1.min.js"></script>       
+        <script>
+            function getCookie(c_name) {
+                var c_value = document.cookie;
+                var c_start = c_value.indexOf(" " + c_name + "=");
+                if (c_start === -1) {
+                    c_start = c_value.indexOf(c_name + "=");
+                }
+                if (c_start === -1) {
+                    c_value = null;
+                }
+                else {
+                    c_start = c_value.indexOf("=", c_start) + 1;
+                    var c_end = c_value.indexOf(";", c_start);
+                    if (c_end === -1) {
+                        c_end = c_value.length;
+                    }
+                    c_value = unescape(c_value.substring(c_start, c_end));
+                }
+                return c_value;
+            }
+
+            function deleteCookie(key) {
+                //Delete a cookie by setting the date of expiry to yesterday
+                date = new Date();
+                date.setDate(date.getDate() - 1);
+                document.cookie = escape(key) + '=;expires=' + date;
+            }
+
+            if (getCookie("authenticate") !== "authenticated") {
+                deleteCookie("user");
+                window.location.replace("index.html")
+            }
+
+            if (getCookie("authenticate") === "authenticated") {
+                $('#loginArea').html('<p class="pull-right">You are logged in as <strong>' + getCookie("user") + '</strong> <a id="logout">Log Out</a></p>');
+                $('#logout').click(function() {
+                    $.get("RavenServlet", {"command": "logout"}, function() {
+                        deleteCookie("authenticate");
+                        deleteCookie("user");
+                        window.location.replace("index.html");
+                    });
+                });
+            }
+            $('#loginForm').submit(function(e) {
+                var self = this;
+                e.preventDefault();
+                if ($('#loginForm input[name="user"]').val() === "") {
+                    $('#loginModal').modal();
+                } else if ($('#loginForm input[name="password"]').val() === "") {
+                    $('#loginModal').modal();
+                } else {
+                    self.submit();
+                }
+            });
+            $('#loginForm').submit(function(e) {
+                var self = this;
+                e.preventDefault();
+                if ($('#loginFormMain input[name="user"]').val() === "") {
+                    $('#loginModal').modal();
+                } else if ($('#loginForm input[name="password"]').val() === "") {
+                    $('#loginModal').modal();
+                } else {
+                    self.submit();
+                }
+            });
+        </script>
 
 
-//in add new assay, adds additional fields
-document.getElementByClass('btn additionalFields').click =function (){
-    
-};
-                                
-
-
- //JSON object 
-   function createJSON() {
-        jsonObj= [];   
-        $("input").each(function() {    
-         
-            var id = $(this).attr('id'); 
-            var value = $(this).val();   
-        
-            item ={};
-            item ["id"]=id; 
-            item["value"]=value;
-            
-            jsonObj.push(item);
-        }); 
-
-           
-       }
-
-
-
-
-
- </script>
-        
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> 
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
         <script src="javascript/dynamicFormController.js"></script>
