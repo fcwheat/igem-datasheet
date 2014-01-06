@@ -88,11 +88,9 @@ public class XMLParser {
         String partNameString = "";
         String partSummaryString = "";
         String partTypeString = "";
-        String partURLString = "";
         String partDateString = "";
         String partAuthorString = "";
         String seqDataString = "";
-        String directionString = "";
         
         //Parse XML, find relevant info, and set to variable as String
         for (String line : XMLstring) {
@@ -111,12 +109,7 @@ public class XMLParser {
                 int start = line.indexOf("<part_type>") + 11;
                 int end = line.indexOf("</part_type>");
                 partTypeString = jsonStringOUT.substring(start, end).replaceAll("\n", "").trim();            
-            }
-            if (line.contains("<part_url>")) {
-                int start = line.indexOf("<part_url>") + 10;
-                int end = line.indexOf("</part_url>");
-                partURLString = jsonStringOUT.substring(start, end).replaceAll("\n", "").trim();
-            }   
+            } 
             if (line.contains("<part_entered>")) {
                 int start = line.indexOf("<part_entered>") + 14;
                 int end = line.indexOf("</part_entered>");
@@ -132,17 +125,11 @@ public class XMLParser {
                 int end = line.indexOf("</seq_data");
                 seqDataString = jsonStringOUT.substring(start, end).replaceAll("\n", "").trim();
             }
-            if (line.contains("<direction>")) {
-                int start = line.indexOf("<direction>") + 11;
-                int end = line.indexOf("</direction>");
-                directionString = jsonStringOUT.substring(start, end).replaceAll("\n", "").trim();
-            }
         }
 
         //put all variables into a String array
         String[] partInfoStrArr = {partNameString, partSummaryString, 
-            partTypeString, partURLString, partDateString, 
-            partAuthorString, seqDataString, directionString};
+            partTypeString, partDateString, partAuthorString, seqDataString};
 
         return partInfoStrArr;    //return String array of relevant info
     }
@@ -151,37 +138,31 @@ public class XMLParser {
         //take elements from array in String form and convert to JSON objects       
         
         //initialize all JSONObjects
-        JSONObject partNameJSON;
-        JSONObject partSummaryJSON;
-        JSONObject partTypeJSON;        
-        JSONObject partURLJSON;
-        JSONObject partDateJSON;
-        JSONObject partAuthorJSON;
-        JSONObject seqDataJSON;
-        JSONObject directionJSON;
+        JSONObject name;
+        JSONObject summary;
+        JSONObject deviceType;        
+        JSONObject date;
+        JSONObject authors;
+        JSONObject sequence;
                 
         //make JSONObjects {string : value}
-        partNameJSON = new JSONObject().put("partName", partInfoStrArr[0]);
-        partSummaryJSON = new JSONObject().put("partSummary", partInfoStrArr[1]);       
-        partTypeJSON = new JSONObject().put("partType", partInfoStrArr[2]);
-        partURLJSON = new JSONObject().put("partURL", partInfoStrArr[3]);
-        partDateJSON = new JSONObject().put("partDate", partInfoStrArr[4]);
-        partAuthorJSON = new JSONObject().put("partAuthor", partInfoStrArr[5]);
-        seqDataJSON = new JSONObject().put("seqData", partInfoStrArr[6]);
-        directionJSON = new JSONObject().put("direction", partInfoStrArr[7]);
+        name = new JSONObject().put("name", partInfoStrArr[0]);
+        summary = new JSONObject().put("summary", partInfoStrArr[1]);       
+        deviceType = new JSONObject().put("deviceType", partInfoStrArr[2]);
+        date = new JSONObject().put("date", partInfoStrArr[3]);
+        authors = new JSONObject().put("authors", partInfoStrArr[4]);
+        sequence = new JSONObject().put("sequence", partInfoStrArr[5]);
 
         //put each piece of info (JSONObject) into JSONArray
-        JSONArray partInfoJSON = new JSONArray();
-        partInfoJSON.put(partNameJSON);
-        partInfoJSON.put(partSummaryJSON);
-        partInfoJSON.put(partTypeJSON);
-        partInfoJSON.put(partURLJSON);
-        partInfoJSON.put(partDateJSON);
-        partInfoJSON.put(partAuthorJSON);
-        partInfoJSON.put(seqDataJSON);
-        partInfoJSON.put(directionJSON);
+        JSONArray partsInfoJSON = new JSONArray();
+        partsInfoJSON.put(name);
+        partsInfoJSON.put(summary);
+        partsInfoJSON.put(deviceType);
+        partsInfoJSON.put(date);
+        partsInfoJSON.put(authors);
+        partsInfoJSON.put(sequence);
         
-        return partInfoJSON; //return JSONArray of JSONobjects of relevant info
+        return partsInfoJSON; //return JSONArray of JSONobjects of relevant info
     }
     
 //    public class CommunicationExampleServlet extends HttpServlet {
@@ -204,7 +185,7 @@ public class XMLParser {
 //        System.out.println(data.toString());
 //        }
 //
-//        protected void processGetRequest(HttpServletRequest request, HttpServletResponse response, JSONArray partInfoJSON)
+//        protected void processGetRequest(HttpServletRequest request, HttpServletResponse response, JSONArray partsInfoJSON)
 //            throws ServletException, IOException, JSONException {
 //        response.setContentType("application/json");
 //        PrintWriter out = response.getWriter();
@@ -217,7 +198,7 @@ public class XMLParser {
 //            
 //        //return the json object as a string
 //        //out.write(toReturn.toString());
-//        out.write(partInfoJSON.toString());
+//        out.write(partsInfoJSON.toString());
 //        
 //        }
 //    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -230,10 +211,10 @@ public class XMLParser {
 //     * @throws IOException if an I/O error occurs
 //     */
 //    @Override
-//    protected void doGet(HttpServletRequest request, HttpServletResponse response, JSONArray partInfoJSON)
+//    protected void doGet(HttpServletRequest request, HttpServletResponse response, JSONArray partsInfoJSON)
 //            throws ServletException, IOException {
 //        try {
-//            processGetRequest(request, response, partInfoJSON);
+//            processGetRequest(request, response, partsInfoJSON);
 //        } catch (JSONException ex) {
 //            Logger.getLogger(CommunicationExampleServlet.class.getName()).log(Level.SEVERE, null, ex);
 //        }
