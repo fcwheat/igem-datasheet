@@ -12,63 +12,99 @@ $(document).ready(function() {
         $tabs.filter('.active').next('li').find('a[data-toggle="tab"]').tab('show');
     });
 
+    //handlers for assays
+    $('button#addAssayButton').click(function() {
+        var selected = $('#selectAssay :selected').text();
+        if (selected === "Other") {
+            //append new assay code
+            $('#otherAssay').removeClass("hidden");
+        } else if (selected === "Restriction Digest and Gel Electrophoresis") {
+            $('#restrictionDigestandGel').removeClass("hidden");
+        } else if (selected === "Flow Cytometry") {
+            $('#flowCytometry').removeClass("hidden");
+        }
 
-    // Functions for dropdown menus     
-    $('#rd1').click(function() {
-        $("#restrictionDigestandGel").show();
     });
-    $('#rd1').click(function() {
-        $("#assayType1").hide();
+    $('button#removeRDButton').click(function() {
+        $('#restrictionDigestandGel').addClass("hidden");
+        $('#restrictionDigestandGel input').each(function() {
+            //clear the values
+            $(this).val("");
+        });
     });
-    $('#flow1').click(function() {
-        $("#flowCytometry").show();
+    $('button#removeFlowCytometryButton').click(function() {
+        $('#flowCytometry').addClass("hidden");
+        $('#flowCytometry input').each(function() {
+            //clear the values
+            $(this).val("");
+        });
     });
-    $('#flow1').click(function() {
-        $("#assayType1").hide();
+    $('button#removeOtherButton').click(function() {
+        $('#otherAssay').addClass("hidden");
+        $('#otherAssay input').each(function() {
+            //clear the values
+            $(this).val("");
+        });
     });
 
-    // If loop for adding addition assays 
-    $('#btn5').click(function() {
-        $("#assayType1").show();
-        $("#restrictionDigestandGel").hide();
-        $("#flowCytometry").hide();
-    });
-    $('#btn7').click(function() {
-        $("#assayType1").show();
-        $("#restrictionDigestandGel").hide();
-        $("#flowCytometry").hide();
-    });
-    $('#btn6').click(function() {
-        $("#assayType1").hide();
-        $("#restrictionDigestandGel").hide();
-        $("#flowCytometry").hide();
-        $("#other").show();
-    });
-    $('#btn8').click(function() {
-        $("#assayType1").hide();
-        $("#restrictionDigestandGel").hide();
-        $("#flowCytometry").hide();
-        $("#other").show();
-    });
-    
-    
-    $('#designButton').click(function(){
+
+
+
+    //JSON object 
+    $('#designButton').click(function() {
         //collect information here
-       data["name"] = $('#partName').val(); 
-       data["summary"] = $('#summary').val(); 
-       data["deviceImage"] = $('#summary').val(); 
-       var contactInformation = {};
-       data["contactInformation"] = contactInformation;
-       var designInformation = {};
-       data["designInformation"] = designInformation;
-       var standardAssays = {};
-       data["standardAssays"] = standardAssays;
-       var functionalityAssays = {};
-       data["functionalityAssays"] = {};
-       
-       //temporarily redirect to example
-        window.location.replace("betterexample.html");
+        var data = {};
+        data["name"] = $('#partName').val();
+        data["summary"] = $('#summary').val();
+        data["deviceImage"] = $('#pigeonImage').val();
+        //gather contact information
+        var contactInformation = {};
+        $('div#contactInfo input').each(function() {
+            var key = $(this).attr("id");
+            var value = $(this).val();
+            contactInformation[key] = value;
+        });
+        $('div#contactInfo textarea').each(function() {
+            var key = $(this).attr("id");
+            var value = $(this).val();
+            contactInformation[key] = value;
+        });
+        data["contactInformation"] = contactInformation;
+        //gather design information
+        var designInformation = {};
+        $('div#standardDesignInfo input').each(function() {
+            var key = $(this).attr("id");
+            var value = $(this).val();
+            contactInformation[key] = value;
+        });
+        $('div#standardDesignInfo textarea').each(function() {
+            var key = $(this).attr("id");
+            var value = $(this).val();
+            contactInformation[key] = value;
+        });
+        data["designInformation"] = designInformation;
+
+
+        var standardAssays = [];
+        //DEVINA POPULATE THIS ARRAY
+        
+        data["standardAssays"]=standardAssays;
+        var functionalityAssays =[];
+        //DEVINA POPULATE THIS ARRAY
+
+        data["functionalityAssays"] =functionalityAssays
+        alert(JSON.stringify(data));
 
     });
-    
+
+
+
+
+
+
+
+
+
+
+
 });

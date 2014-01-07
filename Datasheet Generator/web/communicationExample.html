@@ -28,3 +28,15 @@ and open the template in the editor.
     </body>
 
 </html>
+
+
+// DHD communication for datasheet
+<button id="Autofill">Autofill from Parts Registry</button>
+        <script>
+            $('#sendButton').click(function() {
+                $.post("XMLParser.java", {"partinfoJSON": "data sent from the client"});
+            });
+                $.get("XMLParser.java", function(data){
+                    alert(JSON.stringify(data));
+                });
+        </script>
