@@ -5,8 +5,12 @@
  */
 package datasheet;
 
+import static datasheet.XMLParser.getXML;
+import static datasheet.XMLParser.parseXML;
+import static datasheet.XMLParser.writeJSONObject;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -45,13 +49,29 @@ public class CommunicationExampleServlet extends HttpServlet {
             throws ServletException, IOException, JSONException {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
+        
         //create a new json object
-        JSONObject toReturn = new JSONObject();
+        //JSONObject toReturn = new JSONObject();
         //add new key value pair to json object
-        toReturn.put("message", "received from the server");
+        //toReturn.put("message", "received from the server");
         //return the json object as a string
-        out.write(toReturn.toString());
+        //out.write(toReturn.toString());
 
+        //There will be an arraylist of actual part names
+        ArrayList<String> partNames = new ArrayList<String>();
+        partNames.add("K1114000");
+        
+        //Get part XML pages from Parts Registry
+        ArrayList<String> partXMLs = getXML(partNames);
+        
+        //Parse through XML pages for relevant info
+        String[] parsedString = parseXML(partXMLs);
+       
+        //Write relevant info to JSON Object for client
+        JSONObject partInfo = writeJSONObject(parsedString);
+
+        //Print JSON object
+        out.write(partInfo.toString());
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
