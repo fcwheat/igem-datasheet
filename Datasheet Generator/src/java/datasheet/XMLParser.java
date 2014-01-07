@@ -44,7 +44,7 @@ public class XMLParser {
         JSONArray partInfo = writeJSONObject(parsedString);
 
         //Test print statements for writeJSONObject
-        System.out.println(partInfo);
+        System.out.println(partInfo.toString());
     
     }
 
