@@ -87,10 +87,21 @@ $(document).ready(function() {
 
         var standardAssays = [];
         //DEVINA POPULATE THIS ARRAY
+        $('div#standardAssays input').each(function() {
+            var key = $(this).attr("id");
+            var value = $(this).val(); 
+            standardAssay[key] = value; 
+        })
         
         data["standardAssays"]=standardAssays;
         var functionalityAssays =[];
         //DEVINA POPULATE THIS ARRAY
+        $('div#functionalityAssays input').each(function() {
+            var key = $(this).attr("id");
+            var value = $(this).val(); 
+            functionalityAssays[key] = value; 
+        })
+        
 
         data["functionalityAssays"] =functionalityAssays
         alert(JSON.stringify(data));
