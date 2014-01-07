@@ -5,7 +5,6 @@
 package datasheet;
 
 import java.util.ArrayList;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
@@ -41,7 +40,7 @@ public class XMLParser {
         String[] parsedString = parseXML(partXMLs);
        
         //Write relevant info to JSON Object for client
-        JSONArray partInfo = writeJSONObject(parsedString);
+        JSONObject partInfo = writeJSONObject(parsedString);
 
         //Test print statements for writeJSONObject
         System.out.println(partInfo.toString());
@@ -134,35 +133,27 @@ public class XMLParser {
         return partInfoStrArr;    //return String array of relevant info
     }
 
-    public static JSONArray writeJSONObject(String[] partInfoStrArr) throws JSONException {
+    public static JSONObject writeJSONObject(String[] partInfoStrArr) throws JSONException {
         //take elements from array in String form and convert to JSON objects       
         
-        //initialize all JSONObjects
-        JSONObject name;
-        JSONObject summary;
-        JSONObject deviceType;        
-        JSONObject date;
-        JSONObject authors;
-        JSONObject sequence;
+        //initialize JSONObjects
+        JSONObject partsInfoJSON = new JSONObject();
+        JSONObject designInformation = new JSONObject();      
+        JSONObject contactInformation = new JSONObject();
                 
-        //make JSONObjects {string : value}
-        name = new JSONObject().put("name", partInfoStrArr[0]);
-        summary = new JSONObject().put("summary", partInfoStrArr[1]);       
-        deviceType = new JSONObject().put("deviceType", partInfoStrArr[2]);
-        date = new JSONObject().put("date", partInfoStrArr[3]);
-        authors = new JSONObject().put("authors", partInfoStrArr[4]);
-        sequence = new JSONObject().put("sequence", partInfoStrArr[5]);
-
-        //put each piece of info (JSONObject) into JSONArray
-        JSONArray partsInfoJSON = new JSONArray();
-        partsInfoJSON.put(name);
-        partsInfoJSON.put(summary);
-        partsInfoJSON.put(deviceType);
-        partsInfoJSON.put(date);
-        partsInfoJSON.put(authors);
-        partsInfoJSON.put(sequence);
+        //make JSONObject partsInfoJSON
+        partsInfoJSON.put("name", partInfoStrArr[0]);
+        partsInfoJSON.put("summary", partInfoStrArr[1]);
         
-        return partsInfoJSON; //return JSONArray of JSONobjects of relevant info
+        designInformation.put("deviceType", partInfoStrArr[2]);
+        designInformation.put("date", partInfoStrArr[3]);
+        partsInfoJSON.put("designInformation", designInformation);
+        
+        contactInformation.put("authors", partInfoStrArr[4]);
+        partsInfoJSON.put("contactInformation", contactInformation);
+        partsInfoJSON.put("sequence", partInfoStrArr[5]);
+        
+        return partsInfoJSON; //return partsInfoJSON JSON object
     }
     
 //    public class CommunicationExampleServlet extends HttpServlet {
