@@ -5,21 +5,11 @@
 package datasheet;
 
 import java.util.ArrayList;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.parser.Parser;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 
 /**
  *
@@ -41,10 +31,10 @@ public class XMLParser {
         String[] parsedString = parseXML(partXMLs);
        
         //Write relevant info to JSON Object for client
-        JSONArray partInfo = writeJSONObject(parsedString);
+        JSONObject partInfo = writeJSONObject(parsedString);
 
         //Test print statements for writeJSONObject
-        System.out.println(partInfo);
+        System.out.println(partInfo.toString());
     
     }
 
@@ -88,11 +78,9 @@ public class XMLParser {
         String partNameString = "";
         String partSummaryString = "";
         String partTypeString = "";
-        String partURLString = "";
         String partDateString = "";
         String partAuthorString = "";
         String seqDataString = "";
-        String directionString = "";
         
         //Parse XML, find relevant info, and set to variable as String
         for (String line : XMLstring) {
@@ -111,12 +99,7 @@ public class XMLParser {
                 int start = line.indexOf("<part_type>") + 11;
                 int end = line.indexOf("</part_type>");
                 partTypeString = jsonStringOUT.substring(start, end).replaceAll("\n", "").trim();            
-            }
-            if (line.contains("<part_url>")) {
-                int start = line.indexOf("<part_url>") + 10;
-                int end = line.indexOf("</part_url>");
-                partURLString = jsonStringOUT.substring(start, end).replaceAll("\n", "").trim();
-            }   
+            } 
             if (line.contains("<part_entered>")) {
                 int start = line.indexOf("<part_entered>") + 14;
                 int end = line.indexOf("</part_entered>");
@@ -132,136 +115,36 @@ public class XMLParser {
                 int end = line.indexOf("</seq_data");
                 seqDataString = jsonStringOUT.substring(start, end).replaceAll("\n", "").trim();
             }
-            if (line.contains("<direction>")) {
-                int start = line.indexOf("<direction>") + 11;
-                int end = line.indexOf("</direction>");
-                directionString = jsonStringOUT.substring(start, end).replaceAll("\n", "").trim();
-            }
         }
 
         //put all variables into a String array
         String[] partInfoStrArr = {partNameString, partSummaryString, 
-            partTypeString, partURLString, partDateString, 
-            partAuthorString, seqDataString, directionString};
+            partTypeString, partDateString, partAuthorString, seqDataString};
 
         return partInfoStrArr;    //return String array of relevant info
     }
 
-    public static JSONArray writeJSONObject(String[] partInfoStrArr) throws JSONException {
+    public static JSONObject writeJSONObject(String[] partInfoStrArr) throws JSONException {
         //take elements from array in String form and convert to JSON objects       
         
-        //initialize all JSONObjects
-        JSONObject partNameJSON;
-        JSONObject partSummaryJSON;
-        JSONObject partTypeJSON;        
-        JSONObject partURLJSON;
-        JSONObject partDateJSON;
-        JSONObject partAuthorJSON;
-        JSONObject seqDataJSON;
-        JSONObject directionJSON;
+        //initialize JSONObjects
+        JSONObject partsInfoJSON = new JSONObject();
+        JSONObject designInformation = new JSONObject();      
+        JSONObject contactInformation = new JSONObject();
                 
-        //make JSONObjects {string : value}
-        partNameJSON = new JSONObject().put("partName", partInfoStrArr[0]);
-        partSummaryJSON = new JSONObject().put("partSummary", partInfoStrArr[1]);       
-        partTypeJSON = new JSONObject().put("partType", partInfoStrArr[2]);
-        partURLJSON = new JSONObject().put("partURL", partInfoStrArr[3]);
-        partDateJSON = new JSONObject().put("partDate", partInfoStrArr[4]);
-        partAuthorJSON = new JSONObject().put("partAuthor", partInfoStrArr[5]);
-        seqDataJSON = new JSONObject().put("seqData", partInfoStrArr[6]);
-        directionJSON = new JSONObject().put("direction", partInfoStrArr[7]);
-
-        //put each piece of info (JSONObject) into JSONArray
-        JSONArray partInfoJSON = new JSONArray();
-        partInfoJSON.put(partNameJSON);
-        partInfoJSON.put(partSummaryJSON);
-        partInfoJSON.put(partTypeJSON);
-        partInfoJSON.put(partURLJSON);
-        partInfoJSON.put(partDateJSON);
-        partInfoJSON.put(partAuthorJSON);
-        partInfoJSON.put(seqDataJSON);
-        partInfoJSON.put(directionJSON);
+        //make JSONObject partsInfoJSON
+        partsInfoJSON.put("name", partInfoStrArr[0]);
+        partsInfoJSON.put("summary", partInfoStrArr[1]);
         
-        return partInfoJSON; //return JSONArray of JSONobjects of relevant info
+        designInformation.put("deviceType", partInfoStrArr[2]);
+        designInformation.put("date", partInfoStrArr[3]);
+        partsInfoJSON.put("designInformation", designInformation);
+        
+        contactInformation.put("authors", partInfoStrArr[4]);
+        partsInfoJSON.put("contactInformation", contactInformation);
+        partsInfoJSON.put("sequence", partInfoStrArr[5]);
+        
+        return partsInfoJSON; //return partsInfoJSON JSON object
     }
     
-//    public class CommunicationExampleServlet extends HttpServlet {
-//
-//    /**
-//     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-//     * methods.
-//     *
-//     * @param request servlet request
-//     * @param response servlet response
-//     * @throws ServletException if a servlet-specific error occurs
-//     * @throws IOException if an I/O error occurs
-//     */
-//        
-//        protected void processPostRequest(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//        response.setContentType("application/json");
-//        String data = request.getParameter("data");
-//        //print out data posted to server
-//        System.out.println(data.toString());
-//        }
-//
-//        protected void processGetRequest(HttpServletRequest request, HttpServletResponse response, JSONArray partInfoJSON)
-//            throws ServletException, IOException, JSONException {
-//        response.setContentType("application/json");
-//        PrintWriter out = response.getWriter();
-//        
-//        //create a new json object
-//        //JSONObject toReturn = new JSONObject();
-//        
-//        //add new key value pair to json object        
-//        //toReturn.put("message", "received from the server");
-//            
-//        //return the json object as a string
-//        //out.write(toReturn.toString());
-//        out.write(partInfoJSON.toString());
-//        
-//        }
-//    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-//    /**
-//     * Handles the HTTP <code>GET</code> method.
-//     *
-//     * @param request servlet request
-//     * @param response servlet response
-//     * @throws ServletException if a servlet-specific error occurs
-//     * @throws IOException if an I/O error occurs
-//     */
-//    @Override
-//    protected void doGet(HttpServletRequest request, HttpServletResponse response, JSONArray partInfoJSON)
-//            throws ServletException, IOException {
-//        try {
-//            processGetRequest(request, response, partInfoJSON);
-//        } catch (JSONException ex) {
-//            Logger.getLogger(CommunicationExampleServlet.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
-//
-//    /**
-//     * Handles the HTTP <code>POST</code> method.
-//     *
-//     * @param request servlet request
-//     * @param response servlet response
-//     * @throws ServletException if a servlet-specific error occurs
-//     * @throws IOException if an I/O error occurs
-//     */
-//    @Override
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//        processPostRequest(request, response);
-//    }
-//
-//    /**
-//     * Returns a short description of the servlet.
-//     *
-//     * @return a String containing servlet description
-//     */
-//    @Override
-//    public String getServletInfo() {
-//        return "Short description";
-//    }// </editor-fold>
-//    
-//    }
 }
