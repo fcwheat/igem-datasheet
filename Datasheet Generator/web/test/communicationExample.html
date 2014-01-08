@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!Client side communication code>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -33,7 +34,7 @@ and open the template in the editor.
 // DHD communication for datasheet
 <button id="Autofill">Autofill from Parts Registry</button>
         <script>
-            $('#sendButton').click(function() {
+            $('#Autofill').click(function() {
                 $.post("XMLParser.java", {"partinfoJSON": "data sent from the client"});
             });
                 $.get("XMLParser.java", function(data){

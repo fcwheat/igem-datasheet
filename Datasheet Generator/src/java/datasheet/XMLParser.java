@@ -17,7 +17,9 @@ import org.jsoup.parser.Parser;
  */
 
 public class XMLParser {
-
+/*Parses iGEM Parts Registry XML pages for a given part
+ Returns JSON object of relevant information*/
+    
     public static void main(String[] args) throws JSONException {
         
         //There will be an arraylist of actual part names

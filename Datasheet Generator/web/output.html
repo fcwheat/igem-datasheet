@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title class="name">BBa_K783067</title>
+        <title class="name"></title>
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
 
@@ -39,9 +39,6 @@
                     <dl>
                         <dt>Related Parts</dt>
                         <dd id="relatedParts">
-                            <a href="#"></a>,
-                            <a href="#"></a>,
-                            <a href="#"></a>
                         </dd>
                         <dt>Contact</dt>
                         <dd id="contact"></dd>
@@ -112,8 +109,88 @@
         <div class="well">
             <h4>Future Work</h4>
         </div>	
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> 
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script>
+            $.get("DataServlet", function(data) {
+                $(".name").text(data.name);
+                $("#summary").text(data.summary);
+                $("#deviceImage img").attr('src', data.deviceImage);
+                $("#authors").text(data.contactInformation.authors);
+                $("#team").text(data.contactInformation.team);
+                $("#dataCollection").text(data.contactInformation.dataCollection);
+                $("#affiliation").text(data.contactInformation.affiliation);
+                $("#date").text(data.contactInformation.date);
+                $("#contact").text(data.contactInformation.contact);
+                //Changing Standard Design Information          
+                $("#chassis").text(data.designInformation.chassisName);
+                $("#strain").text(data.designInformation.strain);
+                $("#deviceType").text(data.designInformation.deviceType);
+                $("#deviceName").text(data.designInformation.deviceName);
+                $("#safetyLevel").text(data.designInformation.safetyLevel);
+                $("#components").text(data.designInformation.components);
+                $("#assembly").text(data.designInformation.assembly);
+                $("#protocol").text(data.designInformation.protocol);
+                $("#scars").text(data.designInformation.scars);
+                $("#insertion").text(data.designInformation.insertion);
+                $("#vector").text(data.designInformation.vector);
+                $("#additionalComments").text(data.designInformation.designComments);
+                //Changing Standard Assay Table   
+                var standAssayTable = '';
+                standAssayTable = standAssayTable + '<table><tbody>';
+                for (var key in data["standardAssays"]) {
+                    standAssayTable = standAssayTable + '<tr>';
+                    standAssayTable = standAssayTable + '<th align="left">' + key + '</th><td>' + data["standardAssays"][key] + '</td>';
+                    standAssayTable = standAssayTable + '</tr>';
+                }
+                standAssayTable = standAssayTable + '</tbody></table>';
+                $('#standard').html(standAssayTable);
+                //Changing Functionality Table         
+                var fuctAssayTable = '';
+                fuctAssayTable = fuctAssayTable + '<table><tbody>';
+                for (var key1 in data["functionalityAssays"]) {
+                    if (data["functionalityAssays"][key1.toString()].toString().indexOf("object Object") < 0) {
+                        fuctAssayTable = fuctAssayTable + '<tr>';
+                        fuctAssayTable = fuctAssayTable + '<th align ="left">' + key1 + '</th><td>' + data["functionalityAssays"][key1] + '</td>';
+                        fuctAssayTable = fuctAssayTable + '</tr>';
+                    }
+                }
+                fuctAssayTable = fuctAssayTable + '</tbody></table>';
+                fuctAssayTable = fuctAssayTable + '<h5>PreInductionGrowthConditions</h5>';
+                fuctAssayTable = fuctAssayTable + '<table><tbody>';
+                for (var prekey in data["functionalityAssays"]["preInductionGrowthConditions"]) {
+                    fuctAssayTable = fuctAssayTable + '<tr>';
+                    fuctAssayTable = fuctAssayTable + '<th align ="left">' + prekey + '</th><td>' + data["functionalityAssays"]["preInductionGrowthConditions"][prekey] + '</td>';
+                    fuctAssayTable = fuctAssayTable + '</tr>';
+                }
+                fuctAssayTable = fuctAssayTable + '</tbody></table>';
+                fuctAssayTable = fuctAssayTable + '<h5>PreInductionGrowthConditions</h5>';
+                fuctAssayTable = fuctAssayTable + '<table><tbody>';
+                for (var indkey in data["functionalityAssays"]["inductionGrowthConditions"]) {
+                    fuctAssayTable = fuctAssayTable + '<tr>';
+                    fuctAssayTable = fuctAssayTable + '<th align ="left">' + indkey + '</th><td>' + data["functionalityAssays"]["inductionGrowthConditions"][indkey] + '</td>';
+                    fuctAssayTable = fuctAssayTable + '</tr>';
+                }
+                fuctAssayTable = fuctAssayTable + '</tbody></table>';
+                $('#flowCytometry').html(fuctAssayTable);
+                //Changing PreInduction Growth Conditions
+                var something = data.functionalityAssays;
+                $("#preMedia").text(data.functionalityAssays.preInductionGrowthConditions.media);
+                $("#preVessel").text(data.functionalityAssays.preInductionGrowthConditions.vessel);
+                $("#preVolume").text(data.functionalityAssays.preInductionGrowthConditions.volume);
+                $("#preIncubation").text(data.functionalityAssays.preInductionGrowthConditions.incubation);
+                $("#preTime").text(data.functionalityAssays.preInductionGrowthConditions.time);
+                //Changing Induction Growth Conditions
+                $("#media").text(data.functionalityAssays.inductionGrowthConditions.media);
+                $("#vessel").text(data.functionalityAssays.inductionGrowthConditions.vessel);
+                $("#volume").text(data.functionalityAssays.inductionGrowthConditions.volume);
+                $("#incubation").text(data.functionalityAssays.inductionGrowthConditions.incubation);
+                $("#time").text(data.functionalityAssays.inductionGrowthConditions.time);
 
 
+
+            });
+        </script>
     </body>
 </html>
 
