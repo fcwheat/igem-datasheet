@@ -1,6 +1,12 @@
 // Javascript for dynamicForm
 // Function to hide sections 
 $(document).ready(function() {
+    $.get("ParserServlet",function(data) {
+       //use data to fill out parts of the form.
+       
+    });
+    
+    
     var data = {};
 
     var $tabs = $('.tabbable li');

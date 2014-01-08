@@ -24,9 +24,9 @@ import org.json.JSONObject;
  *
  * @author jenhantao
  */
-public class CommunicationExampleServlet extends HttpServlet {
+public class ParserServlet extends HttpServlet {
 //Server side communication code
-    
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,35 +37,41 @@ public class CommunicationExampleServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processPostRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("application/json");
-        String data = request.getParameter("data");
-        //print out data posted to server
-        System.out.println(data.toString());
- 
+            throws ServletException, IOException, JSONException {
+
+        String name = request.getParameter("name");
+        //There will be an arraylist of actual part names
+        ArrayList<String> partNames = new ArrayList<String>();
+//        partNames.add("K1114000");
+        partNames.add(name);
+
+        //Get part XML pages from Parts Registry
+        ArrayList<String> partXMLs = getXML(partNames);
+
+        //Parse through XML pages for relevant info
+        String[] parsedString = parseXML(partXMLs);
+
+        //Write relevant info to JSON Object for client
+        JSONObject partInfo = writeJSONObject(parsedString);
+        //save the data for use after redirect
+        data = partInfo;
+        holdingData = true;
+        PrintWriter out = response.getWriter();
+            out.write(data.toString());
+        response.sendRedirect("/Datasheet_Generator/output.html");
 
     }
 
     protected void processGetRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, JSONException {
-        response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
+        if (holdingData) {
+            holdingData = false;
+            //return the held data and vacate the stored data
+            response.setContentType("application/json");
+            PrintWriter out = response.getWriter();
+            out.write(data.toString());
+        }
 
-        //There will be an arraylist of actual part names
-        ArrayList<String> partNames = new ArrayList<String>();
-        partNames.add("K1114000");
-        
-        //Get part XML pages from Parts Registry
-        ArrayList<String> partXMLs = getXML(partNames);
-        
-        //Parse through XML pages for relevant info
-        String[] parsedString = parseXML(partXMLs);
-       
-        //Write relevant info to JSON Object for client
-        JSONObject partInfo = writeJSONObject(parsedString);
-
-        //Print JSON object
-        out.write(partInfo.toString());
     }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -82,7 +88,7 @@ public class CommunicationExampleServlet extends HttpServlet {
         try {
             processGetRequest(request, response);
         } catch (JSONException ex) {
-            Logger.getLogger(CommunicationExampleServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ParserServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -97,7 +103,11 @@ public class CommunicationExampleServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processPostRequest(request, response);
+        try {
+            processPostRequest(request, response);
+        } catch (JSONException ex) {
+            Logger.getLogger(ParserServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -109,5 +119,6 @@ public class CommunicationExampleServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+    private Boolean holdingData = false;
+    private JSONObject data;
 }
