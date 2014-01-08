@@ -228,17 +228,17 @@
                     "vector": "someVector",
                     "comments": "demo data"
                 },
-                "standardAssays": [{
-                        "Name": "Restriction Digest and Gel Electrophoresis",
-                        "Purpose": "Verifiying Restriction Mapping",
+                "standardAssays": {
+                        "name": "Restriction Digest and Gel Electrophoresis",
+                        "purpose": "Verifiying Restriction Mapping",
                         "dataType": "DNA size bands",
                         "location": "Boston University Center for Advanced Biotechnology",
                         "dataFormat": "Gel Image(link)",
                         "enzymes": "XbaI,PstI",
                         "ladder": "NEB 2Kb ladder",
                         "details": "1% TAE gel; Sybr Safe dye used for staining(link)"
-                    }],
-                "functionalityAssays": [{
+                    },
+                "functionalityAssays": {
                         "name": "Flow Cytometry",
                         "purpose": "Measures fluorescence for induction curve data",
                         "dataType": "Single-cell fluorescence",
@@ -261,7 +261,7 @@
                             "incubation": "37 C, 300 rpm",
                             "time": "870"
                         }
-                    }]
+                    }
             };
 
             $(".name").text(data.name);
@@ -291,48 +291,44 @@
 
             //Changing Standard Assay Table   
             var standAssayTable = '';
-            for (var i = 0; i < data["standardAssays"].length; i++) {
                 standAssayTable = standAssayTable + '<table><tbody>';
-                for (var key in data["standardAssays"][i]) {
+                for (var key in data["standardAssays"]) {
                     standAssayTable = standAssayTable + '<tr>';
                     standAssayTable = standAssayTable + '<th align="left">' + key + '</th><td>' + data["standardAssays"][i][key] + '</td>';
                     standAssayTable = standAssayTable + '</tr>';
                 }
                 standAssayTable = standAssayTable + '</tbody></table>';
-            }
             $('#standard').html(standAssayTable);
 
 
 
             //Changing Functionality Table         
             var fuctAssayTable = '';
-            for (var i = 0; i < data["functionalityAssays"].length; i++) {
                 fuctAssayTable = fuctAssayTable + '<table><tbody>';
-                for (var key1 in data["functionalityAssays"][i]) {
-                    if (data["functionalityAssays"][i][key1.toString()].toString().indexOf("object Object") < 0) {
+                for (var key1 in data["functionalityAssays"]) {
+                    if (data["functionalityAssays"][key1.toString()].toString().indexOf("object Object") < 0) {
                         fuctAssayTable = fuctAssayTable + '<tr>';
-                        fuctAssayTable = fuctAssayTable + '<th align ="left">' + key1 + '</th><td>' + data["functionalityAssays"][i][key1] + '</td>';
+                        fuctAssayTable = fuctAssayTable + '<th align ="left">' + key1 + '</th><td>' + data["functionalityAssays"][key1] + '</td>';
                         fuctAssayTable = fuctAssayTable + '</tr>';
                     }
                 }
                 fuctAssayTable = fuctAssayTable + '</tbody></table>';
                 fuctAssayTable = fuctAssayTable + '<h5>PreInductionGrowthConditions</h5>';
                 fuctAssayTable = fuctAssayTable + '<table><tbody>';
-                for (var prekey in data["functionalityAssays"][i]["preInductionGrowthConditions"]) {
+                for (var prekey in data["functionalityAssays"]["preInductionGrowthConditions"]) {
                     fuctAssayTable = fuctAssayTable + '<tr>';
-                    fuctAssayTable = fuctAssayTable + '<th align ="left">' + prekey + '</th><td>' + data["functionalityAssays"][i]["preInductionGrowthConditions"][prekey] + '</td>';
+                    fuctAssayTable = fuctAssayTable + '<th align ="left">' + prekey + '</th><td>' + data["functionalityAssays"]["preInductionGrowthConditions"][prekey] + '</td>';
                     fuctAssayTable = fuctAssayTable + '</tr>';
                 }
                 fuctAssayTable = fuctAssayTable + '</tbody></table>';
                 fuctAssayTable = fuctAssayTable + '<h5>PreInductionGrowthConditions</h5>';
                 fuctAssayTable = fuctAssayTable + '<table><tbody>';
-                for (var indkey in data["functionalityAssays"][i]["inductionGrowthConditions"]) {
+                for (var indkey in data["functionalityAssays"]["inductionGrowthConditions"]) {
                     fuctAssayTable = fuctAssayTable + '<tr>';
-                    fuctAssayTable = fuctAssayTable + '<th align ="left">' + indkey + '</th><td>' + data["functionalityAssays"][i]["inductionGrowthConditions"][indkey] + '</td>';
+                    fuctAssayTable = fuctAssayTable + '<th align ="left">' + indkey + '</th><td>' + data["functionalityAssays"]["inductionGrowthConditions"][indkey] + '</td>';
                     fuctAssayTable = fuctAssayTable + '</tr>';
                 }
                 fuctAssayTable = fuctAssayTable + '</tbody></table>';
-            }
             $('#flowCytometry').html(fuctAssayTable);
 
 

@@ -136,7 +136,7 @@
                             <option>Choose Assay</option>
                             <option>Restriction Digest and Gel Electrophoresis</option>
                             <option>Flow Cytometry</option>
-                            <option>Other</option>
+                            <!--<option>Other</option>-->
                         </select> 
                         <button class="btn btn-primary" id="addAssayButton">Add Assay</button>
                         <br/>
@@ -167,7 +167,7 @@
                         <div id="functionalityAssays" class="hidden">   
                             <h3>Flow Cytometry</h3>
                             <div class="well">    
-                                <div class="row-fluid">
+                                <div class="row-fluid experiment">
                                     <div class="span4">    
                                         <div><h5>Purpose</h5><input class="assayData" id="purpose"></div>
                                         <div><h5>Data Type</h5><input class="assayData" id="dataType"></div>
@@ -187,9 +187,9 @@
                                 </div>
                             </div>
                             <div class="well">
-                                <div class="row-fluid">
-                                    <div class="span4">
-                                        <h4 id="preinductionGrowthConditions">Pre-Induction Growth Conditions</h4>
+                                <div class="row-fluid setup">
+                                    <div class="span4" id="preinductionGrowthConditions">
+                                        <h4 >Pre-Induction Growth Conditions</h4>
                                         <div><h5>Media Type</h5><input class="assayData" id="media"></div>
                                         <div><h5>Vessel</h5><input class="assayData" id="vessel"></div>
                                         <div><h5>Volume</h5><input class="assayData" id="volume"></div>
@@ -197,8 +197,8 @@
                                         <div><h5>Time(mins)</h5><input class="assayData" id="time"></div>
 
                                     </div>
-                                    <div class="span6">
-                                        <h4 id="inductionGrowthConditions">Induction Growth Conditions</h4>
+                                    <div class="span6" id="inductionGrowthConditions">
+                                        <h4 >Induction Growth Conditions</h4>
                                         <div><h5>Media Type</h5><input class="assayData" id="media"></div>
                                         <div><h5>Vessel</h5><input class="assayData" id="vessel"></div>
                                         <div><h5>Volume</h5><input class="assayData" id="volume"></div>
