@@ -25,7 +25,8 @@ import org.json.JSONObject;
  * @author jenhantao
  */
 public class CommunicationExampleServlet extends HttpServlet {
-
+//Server side communication code
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -49,13 +50,6 @@ public class CommunicationExampleServlet extends HttpServlet {
             throws ServletException, IOException, JSONException {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
-        
-        //create a new json object
-        //JSONObject toReturn = new JSONObject();
-        //add new key value pair to json object
-        //toReturn.put("message", "received from the server");
-        //return the json object as a string
-        //out.write(toReturn.toString());
 
         //There will be an arraylist of actual part names
         ArrayList<String> partNames = new ArrayList<String>();
