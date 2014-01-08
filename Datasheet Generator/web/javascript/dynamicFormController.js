@@ -54,17 +54,17 @@ $(document).ready(function() {
     $('#designButton').click(function() {
         //collect information here
         var data = {};
-        data["name"] = $('#partName').val();
+        data["name"] = $('#name').val();
         data["summary"] = $('#summary').val();
         data["deviceImage"] = $('#pigeonImage').val();
         //gather contact information
         var contactInformation = {};
-        $('div#contactInfo input').each(function() {
+        $('div#contactInformation input').each(function() {
             var key = $(this).attr("id");
             var value = $(this).val();
             contactInformation[key] = value;
         });
-        $('div#contactInfo textarea').each(function() {
+        $('div#contactInformation textarea').each(function() {
             var key = $(this).attr("id");
             var value = $(this).val();
             contactInformation[key] = value;
@@ -72,12 +72,12 @@ $(document).ready(function() {
         data["contactInformation"] = contactInformation;
         //gather design information
         var designInformation = {};
-        $('div#standardDesignInfo input').each(function() {
+        $('div#standardDesignInformation input').each(function() {
             var key = $(this).attr("id");
             var value = $(this).val();
             contactInformation[key] = value;
         });
-        $('div#standardDesignInfo textarea').each(function() {
+        $('div#standardDesignInformation textarea').each(function() {
             var key = $(this).attr("id");
             var value = $(this).val();
             contactInformation[key] = value;
@@ -85,26 +85,44 @@ $(document).ready(function() {
         data["designInformation"] = designInformation;
 
 
-        var standardAssays = [];
+        var standardAssays = {};
         //DEVINA POPULATE THIS ARRAY
         $('div#standardAssays input').each(function() {
             var key = $(this).attr("id");
             var value = $(this).val(); 
-            standardAssay[key] = value; 
+            standardAssays[key] = value; 
         })
         
         data["standardAssays"]=standardAssays;
-        var functionalityAssays =[];
+        var functionalityAssays ={};
         //DEVINA POPULATE THIS ARRAY
-        $('div#functionalityAssays input').each(function() {
+        $('div#functionalityAssays div.experiment input').each(function() {
             var key = $(this).attr("id");
             var value = $(this).val(); 
             functionalityAssays[key] = value; 
-        })
+        });
+        var pre ={};
+        $('div#functionalityAssays div.setup div#preinductionGrowthConditions input').each(function() {
+            var key = $(this).attr("id");
+            var value = $(this).val(); 
+            pre[key] = value; 
+        });
+
+        var post ={};
+        $('div#functionalityAssays div.setup div#inductionGrowthConditions input').each(function() {
+            var key = $(this).attr("id");
+            var value = $(this).val(); 
+            post[key] = value; 
+        });
+        functionalityAssays["preInductionGrowthConditions"] = pre;
+        functionalityAssays["inductionGrowthConditions"] = post;
         
 
-        data["functionalityAssays"] =functionalityAssays
-        alert(JSON.stringify(data));
+
+        data["functionalityAssays"] =functionalityAssays;
+        $.post("DataServlet",{"sending":JSON.stringify(data)},function(){
+            window.location.replace("/Datasheet_Generator/output.html")
+        });
 
     });
 
