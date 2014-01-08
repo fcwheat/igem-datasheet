@@ -1,3 +1,4 @@
+// Javascript for dynamicForm
 // Function to hide sections 
 $(document).ready(function() {
     var data = {};
