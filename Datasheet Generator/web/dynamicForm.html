@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <!contains form and login code>
 <html>
+    
     <head>
         <title>Owl</title>
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
     </head>
+    
     <body class="container">
+        
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner"> 
                 <div class="container">
@@ -16,7 +19,7 @@
                         <li class="active"><a href="dynamicForm.html">Create New Data Sheet</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul> 
-                    <div id="loginArea" style="margin-top:10px">
+                    <div id="loginArea">
                         <form id="loginForm" class="navbar-form pull-right" action="AuthenticationServlet" method="POST">
                             <input name="user" type="text" class="span2" placeholder="Login">
                             <input name="password" type="password" class="span2" placeholder="Password">
@@ -37,7 +40,7 @@
                 <li class="active"><a data-toggle="tab" href="#basicInfo">Basic Information</a></li>
                 <li><a data-toggle="tab" href="#contactInformation">Contact Information</a></li>
                 <li><a data-toggle="tab" href="#designInformation">Standard Design Information</a></li>
-                <li><a data-toggle="tab" href="#assayOptions">Assays</a></li>
+                <li><a data-toggle="tab" href="#assayOptions">Assay</a></li>
                 <li><button class="btn btn-success" id="designButton" style="width:100%">Make Datasheet</button></li>
             </ul>
             
@@ -78,7 +81,6 @@
                 </div>
 
                 <!--Contact Info-->
-
                 <div id="contactInformation" class="tab-pane" style="margin-top:-15px">
                     <h2>Contact Information</h2>
                     <div class="well">     
@@ -108,7 +110,7 @@
                     <div class="well"> 
                         <div class="row-fluid">
                             <div class="span4">    
-                                <div><h5>Chasis</h5><input class="data" id="chassisName"></div>
+                                <div><h5>Chassis</h5><input class="data" id="chassisName"></div>
                                 <div><h5>Device Name</h5><input class="data" id="deviceName"></div>
                                 <div><h5>Device Type</h5><input class="data" id="deviceType"></div>
                                 <div><h5>Safety Level</h5><input class="data" id="safetyLevel"></div>  
@@ -134,7 +136,7 @@
 
                 <!--Demonstration of Device Functionality-->
                 <div id="assayOptions" class="tab-pane" style="margin-top:-15px">  
-                    <h2>Assays</h2>   
+                    <h2>Assay</h2>   
                     <div class="well" style="margin-left: 10px">
                         <select id="selectAssay" > 
                             <option>Choose Assay</option>
@@ -254,22 +256,10 @@
                 </div>
             </div>
         </div>
-        
-         <!--modal dialogs-->
-        <!--modal dialogs-->
-        <div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
-            <div class="modal-header">
-                <h4 id="loginLabel">Sign in</h4>
-            </div>
-            <div class="modal-body">
-                <p>Please enter your user name and password to sign in.</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Dismiss</button>
-            </div>
-        </div>
 
-        <script src="libraries/jquery-1.9.1.min.js"></script>       
+        <!--scripts placed at the end to enhance page loading speed--> 
+        <script type="text/javascript" src="libraries/jquery-1.9.1.min.js"></script> 
+        <script src="libraries/bootstrap.min.js"></script> 
         <script>
             function getCookie(c_name) {
                 var c_value = document.cookie;
@@ -292,7 +282,7 @@
             }
 
             function deleteCookie(key) {
-                //Delete a cookie by setting the date of expiry to yesterday
+                // Delete a cookie by setting the date of expiry to yesterday
                 date = new Date();
                 date.setDate(date.getDate() - 1);
                 document.cookie = escape(key) + '=;expires=' + date;
@@ -300,13 +290,12 @@
 
             if (getCookie("authenticate") !== "authenticated") {
                 deleteCookie("user");
-                window.location.replace("index.html")
             }
 
             if (getCookie("authenticate") === "authenticated") {
-                $('#loginArea').html('<p class="pull-right">You are logged in as <strong>' + getCookie("user") + '</strong> <a id="logout">Log Out</a></p>');
+                $('#loginArea').html('<p class="pull-right" style="margin-top:10px">You are logged in as <strong>' + getCookie("user") + '</strong> <a id="logout">Log Out</a></p>');
                 $('#logout').click(function() {
-                    $.get("RavenServlet", {"command": "logout"}, function() {
+                    $.get("AuthenticationServlet", {"command": "logout"}, function() {
                         deleteCookie("authenticate");
                         deleteCookie("user");
                         window.location.replace("index.html");

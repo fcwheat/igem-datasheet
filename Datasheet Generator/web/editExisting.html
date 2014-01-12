@@ -1,17 +1,13 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<!search for an existing part in registry page>
 <html>
+    
     <head>
         <title>Owl</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
     </head>
+    
     <body class="container">
         
         <div class="navbar navbar-fixed-top">
@@ -23,7 +19,7 @@ and open the template in the editor.
                         <li><a href="dynamicForm.html">Create New Data Sheet</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul> 
-                    <div id="loginArea" style="margin-top:10px">
+                    <div id="loginArea">
                         <form id="loginForm" class="navbar-form pull-right" action="AuthenticationServlet" method="POST">
                             <input name="user" type="text" class="span2" placeholder="Login">
                             <input name="password" type="password" class="span2" placeholder="Password">
@@ -38,10 +34,11 @@ and open the template in the editor.
             <h1>Owl <small>Search for an existing part</small></h1>
         </div>
         
-        <div><input id="searchName" placeholder="K1114000"/></div>
-        <button class="btn btn-primary" id="editButton">Edit</button>
+        <div><input id="searchName" placeholder="K1114000" style="margin-top:-25px"/></div>
+        <button class="btn btn-primary" id="editButton" style="margin-top:7px">Edit</button>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> 
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        
         <script>
             $("#editButton").click(function(){
                 var searchTerm = $('#searchName').attr("placeholder");
@@ -58,21 +55,6 @@ and open the template in the editor.
 //            this is how you get data from the registry
 
         </script>
-        
-        
-         <!--modal dialogs-->
-        <!--modal dialogs-->
-        <div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
-            <div class="modal-header">
-                <h4 id="loginLabel">Sign in</h4>
-            </div>
-            <div class="modal-body">
-                <p>Please enter your user name and password to sign in.</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Dismiss</button>
-            </div>
-        </div>
 
         <!--scripts placed at the end to enhance page loading speed--> 
         <script type="text/javascript" src="libraries/jquery-1.9.1.min.js"></script> 
@@ -110,9 +92,9 @@ and open the template in the editor.
             }
 
             if (getCookie("authenticate") === "authenticated") {
-                $('#loginArea').html('<p class="pull-right">You are logged in as <strong>' + getCookie("user") + '</strong> <a id="logout">Log Out</a></p>');
+                $('#loginArea').html('<p class="pull-right" style="margin-top:10px">You are logged in as <strong>' + getCookie("user") + '</strong> <a id="logout">Log Out</a></p>');
                 $('#logout').click(function() {
-                    $.get("RavenServlet", {"command": "logout"}, function() {
+                    $.get("AuthenticationServlet", {"command": "logout"}, function() {
                         deleteCookie("authenticate");
                         deleteCookie("user");
                         window.location.replace("index.html");
@@ -142,6 +124,7 @@ and open the template in the editor.
                 }
             });
         </script>
+        
         <footer>
             <div class="container" align="center">
                 <p>Designed and built by <a href="contact.html">BU iGEM Team</a> at <a href="http://wiki.bu.edu/ece-cidar/index.php/Main_Page">CIDAR</a></p>
