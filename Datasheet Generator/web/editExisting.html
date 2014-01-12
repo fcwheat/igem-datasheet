@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Owl</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+    </head>
+    <body class="container">
+        
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner"> 
+                <div class="container">
+                    <a class="brand" href="index.html">Owl</a>
+                    <ul class="nav">
+                        <li class="active"><a href="editExisting.html">Browse Data Sheets</a></li>
+                        <li><a href="design.html">Create New Data Sheet</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul> 
+                    <div id="loginArea" style="margin-top:10px">
+                        <form id="loginForm" class="navbar-form pull-right" action="AuthenticationServlet" method="POST">
+                            <input name="user" type="text" class="span2" placeholder="Login">
+                            <input name="password" type="password" class="span2" placeholder="Password">
+                            <input type="submit" value="Login" class="btn"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-header" style="margin-top:50px">
+            <h1>Owl <small>Search for an existing part</small></h1>
+        </div>
+        
+        <div><input id="searchName" placeholder="K1114000"/></div>
+        <button class="btn btn-primary" id="editButton">Edit</button>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> 
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script>
+            $("#editButton").click(function(){
+                var searchTerm = $('#searchName').attr("placeholder");
+                if($('#searchName').val() !== "") {
+                    searchTerm = $('#searchName').val();
+                }
+                $.post("ParserServlet", {"name": searchTerm}, function(data) {
+
+                    //use data to populate dynamic form after posting it to server for safe keeping
+                    window.location.replace("dynamicForm.html");
+                    //page will redirect from server
+                });
+            });
+//            this is how you get data from the registry
+
+        </script>
+    </body>
+
+</html>

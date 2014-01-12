@@ -19,31 +19,16 @@ import org.json.JSONObject;
  */
 public class DataServlet extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP
-     * <code>GET</code> and
-     * <code>POST</code> methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    protected void processGetRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
-        String command = request.getParameter("command");
         try {
-            if (command.equals("test")) {
-                JSONObject toReturn = new JSONObject();
-                String data = request.getParameter("data");
-                //System.out.println("data: " + data);
-                String parsedHTML = ParseHTML.parseHTML(data);
-                toReturn.put("status", "good");
-                toReturn.put("data", parsedHTML);
-                out.write(toReturn.toString());
+            if(holdingData) {
+                out.write(heldData.toString());
+                holdingData = false;
             }
+           
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -59,10 +44,32 @@ public class DataServlet extends HttpServlet {
         }
     }
 
+    protected void processPostRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
+        String data = request.getParameter("sending");
+        try {
+            heldData = new JSONObject(data);
+            holdingData = true;
+            response.sendRedirect("/Datasheet_Generator/output.html");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            StringWriter stringWriter = new StringWriter();
+            PrintWriter printWriter = new PrintWriter(stringWriter);
+            e.printStackTrace(printWriter);
+            String exceptionAsString = stringWriter.toString().replaceAll("[\r\n\t]+", "<br/>");
+            if (out != null) {
+                out.write("{\"data\":\"" + exceptionAsString + "\",\"status\":\"bad\"}");
+            }
+        } finally {
+            out.close();
+        }
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP
-     * <code>GET</code> method.
+     * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -72,12 +79,11 @@ public class DataServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        processGetRequest(request, response);
     }
 
     /**
-     * Handles the HTTP
-     * <code>POST</code> method.
+     * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -87,7 +93,7 @@ public class DataServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        processPostRequest(request, response);
     }
 
     /**
@@ -99,4 +105,6 @@ public class DataServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    private Boolean holdingData = false;
+    private JSONObject heldData;
 }
