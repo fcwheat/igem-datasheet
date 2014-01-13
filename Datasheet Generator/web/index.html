@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>OWL</title>
+        <title>Owl</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
@@ -9,13 +9,14 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">
-                    <a class="brand" href="index.html">OWL</a>
+                    <a class="brand" href="index.html">Owl</a>
                     <ul class="nav">
                         <li><a href="editExisting.html">Browse Data Sheets</a></li>
                         <li><a href="dynamicForm.html">Create New Data Sheet</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>     
-                    <div id="loginArea"><form id="loginForm" class="navbar-form pull-right" action="AuthenticationServlet" method="POST">
+                    <div id="loginArea">
+                        <form id="loginForm" class="navbar-form pull-right" action="AuthenticationServlet" method="POST">
                             <input name="user" type="text" class="span2" placeholder="Login">
                             <input name="password" type="password" class="span2" placeholder="Password">
                             <input type="submit" value="Login" class="btn"/>
@@ -26,12 +27,12 @@
         </div>
         <div class="container">
             <div class="page-header" style="margin-top:50px">
-                <h1>OWL <small>Automagically build data sheets</small></h1>
+                <h1>Owl <small>Automatically build data sheets</small></h1>
             </div>
             <div class="hero-unit" align="center">
                 <h2>Welcome to</h2>
-                <h1><strong>OWL Datasheet Generator </strong></h1>
-                <h2>Automagically build data sheets.</h2>
+                <h1><strong>Owl Datasheet Generator </strong></h1>
+                <h2>Automatically build data sheets.</h2>
                 <br>
                 <p> <a id="startLink" class="btn btn-primary btn-large" href="dynamicForm.html"> Get Started</a> </p>
                 <!--<p> <button id="poojaButton" class="btn btn-primary btn-large btn-danger">Click here pooja</button> </p>-->
@@ -43,19 +44,19 @@
                 <div class="span4">
                     <h3>Save Time and Money</h3>
                     <p>
-                        Building html data sheets by hand is time consuming - this is time that could be spent running yet another gel
+                        Building HTML data sheets by hand is time consuming - this is time that could be spent running yet another gel
                     </p>
                 </div>
                 <div class="span4">
-                    <h3>Aesthetics</h3>
+                    <h3>Standard Layout</h3>
                     <p>
-                        Our datasheets look good
+                        Owl Datasheets have a standard layout
                     </p>
                 </div>
                 <div class="span4">
                     <h3>Leverage existing data</h3>
                     <p>
-                        Datasheet Builder automatically pulls data from existing Registries to help you make your data sheet
+                        Owl automatically pulls data from existing Registries to help you make your data sheet
                     </p>
                 </div>
             </div>
@@ -64,29 +65,18 @@
         </div>
 
         <!--modal dialogs-->
-        <div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
-            <div class="modal-header">
+<!--        <div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
+            <div class="modal-header" style="margin-top:-10px">
                 <h4 id="loginLabel">Sign in</h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="margin-top:-10px">
                 <p>Please enter your user name and password to sign in.</p>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer" style="margin-top:-10px">
                 <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Dismiss</button>
             </div>
-        </div>
-        <!--modal dialogs-->
-        <div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
-            <div class="modal-header">
-                <h4 id="loginLabel">Sign in</h4>
-            </div>
-            <div class="modal-body">
-                <p>Please enter your user name and password to sign in.</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Dismiss</button>
-            </div>
-        </div>
+        </div>-->
+        
         <!--scripts placed at the end to enhance page loading speed--> 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> 
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
@@ -123,9 +113,9 @@
             }
 
             if (getCookie("authenticate") === "authenticated") {
-                $('#loginArea').html('<p class="pull-right">You are logged in as <strong>' + getCookie("user") + '</strong> <a id="logout">Log Out</a></p>');
+                $('#loginArea').html('<p class="pull-right" style="margin-top:10px">You are logged in as <strong>' + getCookie("user") + '</strong> <a id="logout">Log Out</a></p>');
                 $('#logout').click(function() {
-                    $.get("RavenServlet", {"command": "logout"}, function() {
+                    $.get("AuthenticationServlet", {"command": "logout"}, function() {
                         deleteCookie("authenticate");
                         deleteCookie("user");
                         window.location.replace("index.html");

@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <!contains form and login code>
 <html>
+    
     <head>
-        <title></title>
+        <title>Owl</title>
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
     </head>
+    
     <body class="container">
+        
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner"> 
                 <div class="container">
-                    <a class="brand" href="index.html">OWL</a>
+                    <a class="brand" href="index.html">Owl</a>
                     <ul class="nav">
                         <li><a href="editExisting.html">Browse Data Sheets</a></li>
-                        <li class="active"><a href="design.html">Create New Data Sheet</a></li>
+                        <li class="active"><a href="dynamicForm.html">Create New Data Sheet</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul> 
-                    <div id="loginArea"><form id="loginForm" class="navbar-form pull-right" action="AuthenticationServlet" method="POST">
+                    <div id="loginArea">
+                        <form id="loginForm" class="navbar-form pull-right" action="AuthenticationServlet" method="POST">
                             <input name="user" type="text" class="span2" placeholder="Login">
                             <input name="password" type="password" class="span2" placeholder="Password">
                             <input type="submit" value="Login" class="btn"/>
@@ -25,20 +29,24 @@
                 </div>
             </div>
         </div>
+        
         <div class="page-header" style="margin-top:50px">
-            <h1>OWL<small>Build your data sheet here</small></h1>
+            <h1>Owl <small>Build your data sheet here</small></h1>
         </div>
+        
         <div class="tabbable tabs-left">
-            <ul class="nav nav-tabs nav-pills">
+            
+            <ul class="nav nav-tabs nav-pills well">
                 <li class="active"><a data-toggle="tab" href="#basicInfo">Basic Information</a></li>
                 <li><a data-toggle="tab" href="#contactInformation">Contact Information</a></li>
                 <li><a data-toggle="tab" href="#designInformation">Standard Design Information</a></li>
-                <li><a data-toggle="tab" href="#assayOptions">Assays</a></li>
+                <li><a data-toggle="tab" href="#assayOptions">Assay</a></li>
                 <li><button class="btn btn-success" id="designButton" style="width:100%">Make Datasheet</button></li>
             </ul>
+            
             <div class="tab-content" id="tabs">
                 <!--Basic Info-->
-                <div id="basicInfo" class="active tab-pane">
+                <div id="basicInfo" class="active tab-pane" style="margin-top:-15px">
                     <h2>Basic Information</h2>
                     <div class="well">
                         <div class="row-fluid">
@@ -73,8 +81,7 @@
                 </div>
 
                 <!--Contact Info-->
-
-                <div id="contactInformation" class="tab-pane">
+                <div id="contactInformation" class="tab-pane" style="margin-top:-15px">
                     <h2>Contact Information</h2>
                     <div class="well">     
                         <div class="row-fluid">
@@ -96,13 +103,14 @@
 
                     </div>
                 </div>
+                
                 <!--Standard Required Design Information-->
-                <div id="designInformation" class="tab-pane">
+                <div id="designInformation" class="tab-pane" style="margin-top:-15px">
                     <h2>Standard Required Design Information</h2>
                     <div class="well"> 
                         <div class="row-fluid">
                             <div class="span4">    
-                                <div><h5>Chasis</h5><input class="data" id="chassisName"></div>
+                                <div><h5>Chassis</h5><input class="data" id="chassisName"></div>
                                 <div><h5>Device Name</h5><input class="data" id="deviceName"></div>
                                 <div><h5>Device Type</h5><input class="data" id="deviceType"></div>
                                 <div><h5>Safety Level</h5><input class="data" id="safetyLevel"></div>  
@@ -127,18 +135,17 @@
 
 
                 <!--Demonstration of Device Functionality-->
-
-
-                <div id="assayOptions" class="tab-pane">  
-                    <h2>Demonstration of Device Functionality</h2>   
-                    <div class="well">Assay Type
-                        <select id="selectAssay"> 
+                <div id="assayOptions" class="tab-pane" style="margin-top:-15px">  
+                    <h2>Assay</h2>   
+                    <div class="well" style="margin-left: 10px">
+                        <select id="selectAssay" > 
                             <option>Choose Assay</option>
                             <option>Restriction Digest and Gel Electrophoresis</option>
                             <option>Flow Cytometry</option>
                             <!--<option>Other</option>-->
-                        </select> 
-                        <button class="btn btn-primary" id="addAssayButton">Add Assay</button>
+                        </select>
+                        
+                        <button class="btn btn-primary" id="addAssayButton" style="margin-left:10px; margin-top: -10px">Add Assay</button>
                         <br/>
                         <div id="standardAssays" class="hidden">    
                             <h3>Restriction Digest and Gel Electrophoresis</h3>
@@ -250,7 +257,9 @@
             </div>
         </div>
 
-        <script src="libraries/jquery-1.9.1.min.js"></script>       
+        <!--scripts placed at the end to enhance page loading speed--> 
+        <script type="text/javascript" src="libraries/jquery-1.9.1.min.js"></script> 
+        <script src="libraries/bootstrap.min.js"></script> 
         <script>
             function getCookie(c_name) {
                 var c_value = document.cookie;
@@ -273,7 +282,7 @@
             }
 
             function deleteCookie(key) {
-                //Delete a cookie by setting the date of expiry to yesterday
+                // Delete a cookie by setting the date of expiry to yesterday
                 date = new Date();
                 date.setDate(date.getDate() - 1);
                 document.cookie = escape(key) + '=;expires=' + date;
@@ -281,13 +290,12 @@
 
             if (getCookie("authenticate") !== "authenticated") {
                 deleteCookie("user");
-                window.location.replace("index.html")
             }
 
             if (getCookie("authenticate") === "authenticated") {
-                $('#loginArea').html('<p class="pull-right">You are logged in as <strong>' + getCookie("user") + '</strong> <a id="logout">Log Out</a></p>');
+                $('#loginArea').html('<p class="pull-right" style="margin-top:10px">You are logged in as <strong>' + getCookie("user") + '</strong> <a id="logout">Log Out</a></p>');
                 $('#logout').click(function() {
-                    $.get("RavenServlet", {"command": "logout"}, function() {
+                    $.get("AuthenticationServlet", {"command": "logout"}, function() {
                         deleteCookie("authenticate");
                         deleteCookie("user");
                         window.location.replace("index.html");
@@ -318,6 +326,12 @@
             });
         </script>
 
+        <footer>
+            <div class="container" align="center">
+                <p>Designed and built by <a href="contact.html">BU iGEM Team</a> at <a href="http://wiki.bu.edu/ece-cidar/index.php/Main_Page">CIDAR</a></p>
+                <p>Code licensed under <a href="license.html">LICENSE</a></p>
+            </div>
+        </footer>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> 
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>

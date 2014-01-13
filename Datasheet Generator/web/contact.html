@@ -1,23 +1,26 @@
 <!DOCTYPE html>
+<!contains contact information>
 <html>
+    
     <head>
-        <title>OWL</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Owl</title>
         <link rel="shortcut icon" href="images/shortcutIcon.ico">
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
     </head>
+    
     <body data-spy="scroll" data-target="#sidebar">
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner"> 
                 <div class="container">
-                    <a class="brand" href="index.html">Datasheet Builder</a>
+                    <a class="brand" href="index.html">Owl</a>
                     <ul class="nav">
                         <li><a href="editExisting.html">Browse Data Sheets</a></li>
                         <li><a href="dynamicForm.html">Create New Data Sheet</a></li>
                         <li class="active"><a href="contact.html">Contact</a></li>
                     </ul> 
-                    <div id="loginArea"><form id="loginForm" class="navbar-form pull-right" action="AuthenticationServlet" method="POST">
+                    <div id="loginArea">
+                        <form id="loginForm" class="navbar-form pull-right" action="AuthenticationServlet" method="POST">
                             <input name="user" type="text" class="span2" placeholder="Login">
                             <input name="password" type="password" class="span2" placeholder="Password">
                             <input type="submit" value="Login" class="btn"/>
@@ -27,47 +30,51 @@
             </div>
         </div>
         <div class="container">
+            
             <div class="page-header" style="margin-top:50px">
-                <h1>Datasheet Builder <small>Let us know how we can make your experience better</small></h1>
+                <h1>Owl <small>Let us know how we can make your experience better</small></h1>
             </div>
+            
             <div class="row-fluid">
                 <div class="span2">
                     <div id="sidebar">
-                        <ul  class=" well nav nav-list affix">
-                            <li class="active"><a href="#company">CIDAR</a></li>
+                        <ul class="well nav-list nav affix">
+                            <li class="active"><a href="#CIDAR">Organization</a></li>
                             <li><a href="#support">Support</a></li>
                             <li><a href="#creators">Development Team</a></li>
                         </ul>
                     </div>
                 </div>
+                
                 <div class="span10">
                     <div class="row-fluid">
-                        <div id="company">
-                            <h3>Company</h3>
+                        <div id="CIDAR">
+                            <h3>Organization</h3>
                             <hr/>
                             <div class="hero-unit" align="center">
-                                <p>Datasheet Builder is brought to you by CIDAR</p>
+                                <p>Owl is brought to you by CIDAR</p>
                                 <p>Please contact us if you're interested in having CIDAR build solutions for your research goals</p>
-                                <a href="http://wiki.bu.edu/ece-cidar/index.php/Main_Page"><image src="https://cidar.bu.edu/ravencad/images/cidar.png"/></a>
+                                <a href="http://cidarlab.org"><image src="images/cidar-logo-adjusted.png" style="width:480px;height:170px"/></a>
                                 <br/>
-                                <a class="btn btn-primary btn-large" href="mailto:ravencadhelp@gmail.com">Email Us</a>
+                                <a style="margin-top:25px" class="btn btn-primary btn-large" href="mailto:dougd@bu.edu">Email Us</a>
                             </div>
                         </div>
                     </div>
+                    
                     <div id="support" class="well">
                         <h3>Support</h3>
                         <hr/>
-                        <p>Please send all questions and comments to <a href="eappleton.bu.edu">eappleton.bu.edu</a></p>
-                        <p>Our dedicated support team is composed of software developers that have contributed to Datasheet Builder. 
+                        <p>Please send all questions and comments to <a href="mailto:eapple@bu.edu">eapple@bu.edu</a></p>
+                        <p>Our dedicated support team is composed of software developers that have contributed to the Owl Datasheet Builder. 
                             We will address your questions and concerns in under 24 hours.</p>
                         <p>
                             In your email, please follow these guidelines for email communication:
                         </p>
                         <ul>
                             <li>Indicate your name and professional affiliation</li>
-                            <li>If you are interested in forming an commercial or research relationship with CIDAR, 
+                            <li>If you are interested in forming a commercial or research relationship with CIDAR, 
                                 please contact Doug directly</li>
-                            <li>If your email is about a bug or problem in Datasheet Builder:
+                            <li>If your email is about a bug or problem in Owl:
                                 <ul>
                                     <li>Please use a short description of the problem as the message header</li>
                                     <li>Include the stack trace error message if applicable</li>
@@ -77,43 +84,16 @@
                         <p>We appreciate all forms of feedback.</p>
                         <p>Thanks</p>
                         <br/>
-                        <cite><small>Datasheet Builder Dev Team</small></cite>
+                        <cite><small>Owl Development Team</small></cite>
                     </div>
                     <div id="creators" class="well">
                         <h3>Development Team</h3>
                         <hr/>
-                        <div class="row-fluid">
-                            <div class ="span4">
-                                <h5>Devina Desai</h5>
-                                <img class="img-polaroid" style="width:200px;height:200px" src="http://2013.igem.org/wiki/images/a/a2/Devina.jpg">
-                                <address>
-                                    <strong>Devina Desai</strong><br>
-                                    <a href="mailto:ddesai1@bu.edu">ddesai1@bu.edu</a><br/>
-                                    <em>B.S. 2014 Bioengineering, Boston University<br/></em>
-                                </address>
-                                <p>
-                                    Devina is a senior studying biomedical engineering. 
-                                    In her free time she enjoys participating in weight-lifting competitions and dunking basketballs.                            
-                                </p>
-                            </div>
-                            <div class ="offset4 span4">
-                                <h5>Pooja Shah</h5>
-                                <img class="img-polaroid" style="width:200px;height:200px" src="http://2013.igem.org/wiki/images/7/79/Pooja.jpg">
-                                <address>
-                                    <strong>Pooja Shah</strong><br>
-                                    <a href="mailto:pshah23@bu.edu">pshah23@bu.edu</a><br/>
-                                    <em>B.S. 2014 Bioengineering, Boston University<br/></em>
-                                </address>
-                                <p>
-                                    Pooja is a senior studying Biomedical Engineering in the College of Engineering. 
-                                    She enjoys spending her free time reading, watching Game of Thrones, and listening to music.         
-                                </p>
-                            </div>
-                        </div>
+                        
                         <div class ="row-fluid">
                             <div class ="span4">
                                 <h5>Jenhan Tao</h5>
-                                <img class="img-polaroid" style="width:200px;height:200px" src="https://cidar.bu.edu/ravencad/images/jenhan.jpg">
+                                <img class="img-polaroid" style="width:200px;height:200px" src="images/jenhan.jpg">
                                 <address>
                                     <strong>Jenhan Tao</strong><br>
                                     <a href="mailto:jenhantao@gmail.com">jenhantao@gmail.com</a><br/>
@@ -128,7 +108,7 @@
                             </div>
                             <div class="span4">
                                 <h5>Evan Appleton</h5>
-                                <img class="img-polaroid" style="width:300px;height:200px" src="https://cidar.bu.edu/ravencad/images/evan.jpg">
+                                <img class="img-polaroid" style="width:200px;height:200px" src="images/evan.jpg">
                                 <address>
                                     <strong>Evan Appleton</strong><br>
                                     <a href="mailto:eapple@bu.edu">eapple@bu.edu</a><br/>
@@ -144,7 +124,7 @@
                             </div>
                             <div class="span4">
                                 <h5>Douglas Densmore</h5>
-                                <img class="img-polaroid" style="width:225px;height:200px" src="https://cidar.bu.edu/ravencad/images/doug.jpg">
+                                <img class="img-polaroid" style="width:200px;height:200px" src="images/doug.jpg">
                                 <address>
                                     <strong>Douglas Densmore</strong><br>
                                     <a href="mailto:eapple@bu.edu">dougd@bu.edu</a><br/>
@@ -157,18 +137,47 @@
                                     Prof. Douglas Densmore is the Richard and Minda Reidy Family Career Development Assistant Professor at Boston University in the Department of Electrical and Computer Engineering. 
                                     He received his Ph.D. in Electrical Engineering in 2007 from UC Berkeley. He was a postdoctoral research fellow at SynBERC and the Joint BioEnergy Institute from 2007 to 2010. 
                                     His research centers on extracting design techniques from Electronic Design Automation and applying them to the design of synthetic biological systems. 
-                                    The “Clotho” unified toolset, a two time winner of the “best software tool” at the iGEM Competition, is a platform which captures many of these research concepts. 
+                                    The Clotho unified toolset, a two time winner of the best software tool at the iGEM Competition, is a platform which captures many of these research concepts. 
                                     He is the recipient of the NSF CARRER Award, the 2012 ECE Award for Excellence in Teaching at Boston University, and a 2012-2014 Hariri Institute for Computing and Computational Science & Engineering at BU Junior Faculty Fellow.
                                 </p>
                             </div>
                         </div>
+                        
+                        <div class="row-fluid">
+                            <div class ="span4">
+                                <h5>Devina Desai</h5>
+                                <img class="img-polaroid" style="width:200px;height:250px" src="images/Devina.jpg">
+                                <address>
+                                    <strong>Devina Desai</strong><br>
+                                    <a href="mailto:ddesai1@bu.edu">ddesai1@bu.edu</a><br/>
+                                    <em>B.S. 2014 Bioengineering, Boston University<br/></em>
+                                </address>
+                                <p>
+                                    Devina is a senior studying biomedical engineering. 
+                                    In her free time she enjoys participating in weight-lifting competitions and dunking basketballs.                            
+                                </p>
+                            </div>
+                            <div class ="span4">
+                                <h5>Pooja Shah</h5>
+                                <img class="img-polaroid" style="width:200px;height:250px" src="images/Pooja.jpg">
+                                <address>
+                                    <strong>Pooja Shah</strong><br>
+                                    <a href="mailto:pshah23@bu.edu">pshah23@bu.edu</a><br/>
+                                    <em>B.S. 2014 Bioengineering, Boston University<br/></em>
+                                </address>
+                                <p>
+                                    Pooja is a senior studying Biomedical Engineering in the College of Engineering. 
+                                    She enjoys spending her free time reading, watching Game of Thrones, and listening to music.         
+                                </p>
+                            </div>
+                        </div>
+                        
 
                     </div>
                 </div>
             </div>
         </div>
 
-        <!--modal dialogs-->
         <!--modal dialogs-->
         <div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="loginLabel" aria-hidden="true">
             <div class="modal-header">
@@ -218,9 +227,9 @@
             }
 
             if (getCookie("authenticate") === "authenticated") {
-                $('#loginArea').html('<p class="pull-right">You are logged in as <strong>' + getCookie("user") + '</strong> <a id="logout">Log Out</a></p>');
+                $('#loginArea').html('<p class="pull-right" style="margin-top:10px">You are logged in as <strong>' + getCookie("user") + '</strong> <a id="logout">Log Out</a></p>');
                 $('#logout').click(function() {
-                    $.get("RavenServlet", {"command": "logout"}, function() {
+                    $.get("AuthenticationServlet", {"command": "logout"}, function() {
                         deleteCookie("authenticate");
                         deleteCookie("user");
                         window.location.replace("index.html");
