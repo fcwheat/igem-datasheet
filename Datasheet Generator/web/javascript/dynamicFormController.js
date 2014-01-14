@@ -26,21 +26,21 @@ $(document).ready(function() {
             //append new assay code
             $('#otherAssay').removeClass("hidden");
         } else if (selected === "Restriction Digest and Gel Electrophoresis") {
-            $('#restrictionDigestandGel').removeClass("hidden");
+            $('#standardAssays').removeClass("hidden");
         } else if (selected === "Flow Cytometry") {
-            $('#flowCytometry').removeClass("hidden");
+            $('#functionalityAssays').removeClass("hidden");
         }
 
     });
     $('button#removeRDButton').click(function() {
-        $('#restrictionDigestandGel').addClass("hidden");
+        $('#standardAssays').addClass("hidden");
         $('#restrictionDigestandGel input').each(function() {
             //clear the values
             $(this).val("");
         });
     });
     $('button#removeFlowCytometryButton').click(function() {
-        $('#flowCytometry').addClass("hidden");
+        $('#functionalityAssays').addClass("hidden");
         $('#flowCytometry input').each(function() {
             //clear the values
             $(this).val("");
