@@ -55,10 +55,13 @@ public class ParserServlet extends HttpServlet {
         JSONObject partInfo = writeJSONObject(parsedString);
         //save the data for use after redirect
         data = partInfo;
+        
+        System.out.println("partInfo" + partInfo);
+        
         holdingData = true;
         PrintWriter out = response.getWriter();
             out.write(data.toString());
-        response.sendRedirect("/Datasheet_Generator/output.html");
+        response.sendRedirect("/Datasheet_Generator/dynamicForm.html");
 
     }
 
