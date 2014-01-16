@@ -29,16 +29,16 @@ $(document).ready(function() {
         if (selected === "Other") {
             //append new assay code
             $('#otherAssay').removeClass("hidden");
-        } else if (selected === "Restriction Digest and Gel Electrophoresis") {
-            $('#standardAssays').removeClass("hidden");
+        } else if (selected === "Restriction Map") {
+            $('#restrictionMap').removeClass("hidden");
         } else if (selected === "Flow Cytometry") {
             $('#functionalityAssays').removeClass("hidden");
         }
 
     });
     $('button#removeRDButton').click(function() {
-        $('#standardAssays').addClass("hidden");
-        $('#restrictionDigestandGel input').each(function() {
+        $('#restrictionMap').addClass("hidden");
+        $('#restrictionMap input').each(function() {
             //clear the values
             $(this).val("");
         });
@@ -96,15 +96,15 @@ $(document).ready(function() {
         data["designInformation"] = designInformation;
 
 
-        var standardAssays = {};
+        var restrictionMap = {};
         //DEVINA POPULATE THIS ARRAY
-        $('div#standardAssays input').each(function() {
+        $('div#restrictionMap input').each(function() {
             var key = $(this).attr("id");
             var value = $(this).val(); 
-            standardAssays[key] = value; 
+            restrictionMap[key] = value; 
         })
         
-        data["standardAssays"]=standardAssays;
+        data["restrictionMap"]=restrictionMap;
         var functionalityAssays ={};
         //DEVINA POPULATE THIS ARRAY
         $('div#functionalityAssays div.experiment input').each(function() {
