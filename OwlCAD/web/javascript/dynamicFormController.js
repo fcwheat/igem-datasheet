@@ -132,7 +132,7 @@ $(document).ready(function() {
 
         data["functionalityAssays"] =functionalityAssays;
         $.post("DataServlet",{"sending":JSON.stringify(data)},function(){
-            window.location.replace("/Datasheet_Generator/output.html")
+            window.location.replace("/OwlCAD/output.html")
         });
 
     });

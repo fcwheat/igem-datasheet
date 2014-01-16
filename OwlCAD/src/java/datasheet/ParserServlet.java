@@ -61,7 +61,7 @@ public class ParserServlet extends HttpServlet {
         holdingData = true;
         PrintWriter out = response.getWriter();
             out.write(data.toString());
-        response.sendRedirect("/Datasheet_Generator/dynamicForm.html");
+        response.sendRedirect("dynamicForm.html");
 
     }
 

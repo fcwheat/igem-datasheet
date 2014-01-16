@@ -52,7 +52,7 @@ public class DataServlet extends HttpServlet {
         try {
             heldData = new JSONObject(data);
             holdingData = true;
-            response.sendRedirect("/Datasheet_Generator/output.html");
+            response.sendRedirect("output.html");
 
         } catch (Exception e) {
             e.printStackTrace();
