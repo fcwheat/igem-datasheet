@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<!contains form and login code>
+<html>
+    
+    <head>
+        <title>Owl</title>
+        <link rel="shortcut icon" href="images/logo-Owl-Color_cropped.ico">
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+    </head>
+    
+    <body class="container">
+        
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner"> 
+                <div class="container">
+                    <a class="brand" href="index.html">Owl</a>
+                    <ul class="nav">
+                        <li><a href="editExisting.html">Search Existing Parts</a></li>
+                        <li class="active"><a href="dynamicForm.html">Create Datasheet</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul> 
+                    <div id="loginArea">
+                        <form id="loginForm" class="navbar-form pull-right" action="AuthenticationServlet" method="POST">
+                            <input name="user" type="text" class="span2" placeholder="Login">
+                            <input name="password" type="password" class="span2" placeholder="Password">
+                            <input type="submit" value="Login" class="btn"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-header" style="margin-top:60px">
+            <h1><img style="width: 48px; height: 40px; margin-bottom:5px" src="images/logo-Owl-Color_cropped.png"> <small> Build your Datasheet here</small></h1>
+        </div>
+        
+        <div class="tabbable tabs-left">
+            
+            <ul class="nav nav-tabs nav-pills well">
+                <li class="active"><a data-toggle="tab" href="#basicInfo">Basic Information</a></li>
+                <li><a data-toggle="tab" href="#contactInformation">Designer Information</a></li>
+                <li><a data-toggle="tab" href="#designDetails">Design Details</a></li>
+                <li><a data-toggle="tab" href="#assemblyInformation">Assembly Information</a></li>
+                <li><a data-toggle="tab" href="#assayOptions">Assay</a></li>
+                <li><button class="btn btn-success" id="designButton" style="width:100%">Make Datasheet</button></li>
+            </ul>
+            
+            <div class="tab-content" id="tabs">
+                <!--Basic Info-->
+                <div id="basicInfo" class="active tab-pane" style="margin-top:-15px">
+                    <h2>Basic Information</h2>
+                    <div class="well">
+                        <div class="row-fluid">
+                            <div class="span4">
+                                <div><h5>Part Name</h5><input id="name"/></div>
+                                <div><h5>Sequence</h5><input class="data" id="sequence"></div>  
+                                <div id="partType"><h5>Part Type</h5>
+                                    <select>
+                                        <option>
+                                            Basic Part
+                                        </option>
+                                        <option>
+                                            Composite Part
+                                        </option>
+                                    </select>      
+                                </div>
+                            </div> 
+                            
+                            <div class="span6"> 
+                                <div><h5>Link to Pigeon image of device</h5><input class="data" id="deviceImage"></div>
+                                <div><h5>Link to Plasmid Map image of device</h5><input class="data" id="plasmidMap"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="row-fluid">                            
+                            <div><h5>Part Summary</h5><textarea  class="data" id="summary" rows="5" style="width:98%"></textarea></div>
+                            <div><h5>Related Parts</h5><textarea rows="5" class ="data" id="relatedParts" style="width:98%"></textarea></div>
+                        </div>
+
+                        <button class="btn back"><strong>Back</strong></button>
+                        <button class="btn next"><strong>Next</strong></button>
+
+                    </div>
+                </div>
+
+                <!--Contact Info-->
+                <div id="contactInformation" class="tab-pane" style="margin-top:-15px">
+                    <h2>Designer Information</h2>
+                    <div class="well">     
+                        <div class="row-fluid">
+                            <div class="span4">
+                                <div><h5>Author(s)</h5><input class="data" id="authors"/></div>
+                                <div><h5>Date</h5><input class="data" id="date"/></div>
+                                <div><h5>Team</h5><input class="data" id="team"/></div>                                          
+                            </div>   
+                            <div class="span6">
+                                <div><h5>Data Collectors</h5><input class="data" id="dataCollection"/></div>
+                                <div><h5>Affiliation</h5><input class="data" id="affiliation"/></div>
+                                <div><h5>Contact</h5><input class="data" id="contact"/></div>                                
+                            </div>        
+                        </div>
+                        <button class="btn back" style ='margin-top: 10px'><strong>Back</strong></button>
+                        <button class="btn next" style ='margin-top: 10px'><strong>Next</strong></button>
+
+                    </div>
+                </div>
+                
+                <!--Standard Required Design Information-->
+                <div id="designDetails" class="tab-pane" style="margin-top:-15px">
+                    <h2>Design Details</h2>
+                    <div class="well"> 
+                        <div class="row-fluid">
+                            <div class="span4">                                    
+                                <div><h5>Type</h5><input class="data" id="type"></div>
+                                <div><h5>Design Components</h5><textarea rows="5" id="designComponents"></textarea></div>
+                            </div>
+                            <div class="span6">
+                                <div><h5>Vector</h5><input class="data" id="vector"></div>
+                                <div><h5>Additional Comments</h5><textarea rows="5" class="data" id="designComments"></textarea></div>
+                            </div>
+                        </div>
+                        <button class="btn back"><strong>Back</strong></button>
+                        <button class="btn next"><strong>Next</strong></button>
+
+                    </div>
+                </div>
+                
+                <!--Assembly Information-->
+                <div id="assemblyInformation" class="tab-pane" style="margin-top:-15px">
+                    <h2>Assembly Information</h2>
+                    <div class="well"> 
+                        <div class="row-fluid">
+                            <div class="span4">                                    
+                                <div><h5>Assembly Methods(s)</h5><input class="data" id="assemblyMethod"></div>
+                                <div><h5>Assembly RFC</h5><input class="data" id="assemblyRFC"></div>
+                                <div><h5>Scars</h5><input class="data" id="assemblyScars"></div>                                
+                                <div><h5>Assembly Components</h5><textarea rows="5" id="assemblyComponents"></textarea></div>
+                            </div>
+                            <div class="span6">                 
+                                <div><h5>Link to Assembly Graph Image</h5><input class="data" id="assemblyImage"></div>
+                                <div><h5>Chassis</h5><input class="data" id="chassis"></div>                                
+                                <div><h5>Strain</h5><input class="data" id="strain"></div>
+                                <div><h5>Additional Comments</h5><textarea rows="5" class="data" id="assemblyComments"></textarea></div>
+                            </div>
+                        </div>
+                        <button class="btn back"><strong>Back</strong></button>
+                        <button class="btn next"><strong>Next</strong></button>
+
+                    </div>
+                </div>  
+
+                <!--Assays-->
+                <div id="assayOptions" class="tab-pane" style="margin-top:-15px">  
+                    <h2>Assay</h2>   
+                    <div class="well" style="margin-left: 10px">
+                        <select id="selectAssay" > 
+                            <option>Choose Assay</option>
+                            <option>Restriction Map</option>
+                            <option>Flow Cytometry</option>
+                            <option>Other</option>
+                        </select>
+                        
+                        <button class="btn btn-primary" id="addAssayButton" style="margin-left:10px; margin-top: -10px">Add Assay</button>
+                        <br/>
+                        <div id="restrictionMap" class="hidden">    
+                            <h3>Restriction Map</h3>
+                            <div class="well">
+                                <div class="row-fluid">
+                                    <div class="span4">    
+                                        <div><h5>Gel Buffer</h5><input class="assayData" id="GelBuffer"></div>
+                                        <div><h5>Percent Agar</h5><input class="assayData" id="Agar"></div>
+                                        <div><h5>Ladder</h5><input class="assayData" id="Ladder"></div>
+                                        <div><h5>Staining Dye</h5><input class="assayData" id="StainingDye"></div>
+                                        <div><h5>Voltage</h5><input class="assayData" id="Voltage"></div>
+                                        <div><h5>Time</h5><input class="assayData" id="Time"></div>                        
+                                    </div>   
+                                    <div class="span6"> 
+                                        <div><h5>DNA Quantity (ng)</h5><input class="assayData" id="DNAQuantity"></div>
+                                        <div><h5>Enzymes</h5><input class="assayData" id="Enzymes"></div>
+                                        <div><h5>Digest Buffer</h5><input class="assayData" id="DigestBuffer"></div>
+                                        <div><h5>Digest Time</h5><input class="assayData" id="DigestTime"></div>
+                                        <div><h5>Link to Gel Image</h5><input class="assayData" id="Image"></div>
+                                        <div><h5>Caption for Gel Image</h5><input class="assayData" id="Caption"></div>
+                                    </div> 
+                                </div>
+                                <br>
+                                <button id="removeRDButton" type="button"><Strong>Remove</strong></button>
+                            </div> 
+                        </div> 
+
+                        <div id="functionalityAssays" class="hidden">   
+                            <h3>Flow Cytometry</h3>
+                            <div class="well">    
+                                <div class="row-fluid experiment">
+                                    <div class="span4">    
+                                        <div><h5>Purpose</h5><input class="assayData" id="Purpose"></div>
+                                        <div><h5>Experiment Type</h5><input class="assayData" id="ExperimentType"></div>
+                                        <div><h5>Location</h5><input class="assayData" id="Location"></div>
+                                        <div><h5>FCS Format</h5><input class="assayData" id="FCSFormat"></div>
+                                        <div><h5>Machine Name</h5><input class="assayData" id="MachineName"></div>
+                                        <div><h5>Protocol Details</h5><input class="assayData" id="FlowProtocolDetails"></div>
+                                        <div><h5>Link to Protocol</h5><input class="assayData" id="FlowProtocolLink"></div>
+                                    </div>
+                                    <div class="span6">
+                                        <div><h5>Lasers(Filters) Used</h5><input class="assayData" id="LasersFilters"></div>
+                                        <div><h5>Link to Transfer Curve Image</h5><input class="assayData" id="TranserCurve"></div>
+                                        <div><h5>Transfer Curve Caption</h5><input class="assayData" id="TranserCurveCaption"></div>
+                                        <div><h5>Link to Time Series Graph</h5><input class="assayData" id="TimeSeriesGraph"></div>
+                                        <div><h5>Caption for Time Series Graph</h5><input class="assayData" id="TimeSeriesGraphCaption"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="well">
+                                <div class="row-fluid setup">
+                                    <div class="span4" id="preinductionGrowthConditions">
+                                        <h4 >Pre-Induction Growth Conditions</h4>
+                                        <div><h5>Media Type</h5><input class="assayData" id="Media"></div>
+                                        <div><h5>Vessel</h5><input class="assayData" id="Vessel"></div>
+                                        <div><h5>Volume</h5><input class="assayData" id="Volume"></div>
+                                        <div><h5>Incubation Time (min)</h5><input class="assayData" id="IncubationTime"></div>                                   
+                                    </div>
+                                    <div class="span6" id="inductionGrowthConditions">
+                                        <h4 >Induction Growth Conditions</h4>
+                                        <div><h5>Media Type</h5><input class="assayData" id="Media"></div>
+                                        <div><h5>Vessel</h5><input class="assayData" id="Vessel"></div>
+                                        <div><h5>Volume</h5><input class="assayData" id="Volume"></div>
+                                        <div><h5>Incubation Time (min)</h5><input class="assayData" id="IncubationTime"></div>
+                                        <div><h5>Growth Phase</h5><input class="assayData" id="GrowthPhase"></div>
+                                        <div><h5>Inducer Concentrations</h5><input class="assayData" id="InducerConcentration"></div>
+                                    </div>
+                                </div> 
+                                <button id="removeFlowCytometryButton" type="button"><Strong>Remove</strong></button>
+                                <br>   
+
+                            </div>
+                        </div>    
+                        <div id="otherAssay" class="hidden">   
+                            <h3>Add New Assay</h3>
+                            <div class="well">    
+                                <div class="row-fluid">
+                                    <div class="span4">   
+                                        <div><h5>Assay Name</h5><input class="assayData" id="AssayName"></div>
+                                        <div><h5>Assay Type</h5><input class="assayData" id="AssayPurpose"></div>
+                                        <div><h5>Link to Image</h5><input class="assayData" id="AssayImage"></div>
+                                        <div><h5>Link to Additional Data</h5><input class="assayData" id="AssayDataLink"></div>
+                                        <div><h5>Parameter1</h5><input class="assayData" id="Parameter1"></div>
+                                        <div><h5>Parameter2</h5><input class="assayData" id="Parameter2"></div>
+                                        <div><h5>Parameter3</h5><input class="assayData" id="Parameter3"></div>
+                                        <br>
+                                    </div>
+                                    <div class="span6">
+                                        <div><h5>Protocol Details </h5><input class="assayData" id="ProtocolDetails"></div>
+                                        <div><h5>Link to Protocol</h5><input class="assayData" id="ProtocolLink"></div>
+                                        <div><h5>Image Caption</h5><input class="assayData" id="AssayImageCaption"></div>
+                                        <div><h5>Additional Data (Details)</h5><input class="assayData" id="AssayDataDetails"></div>
+                                        <div><h5>Value1</h5><input class="assayData" id="Value1"></div>
+                                        <div><h5>Value2</h5><input class="assayData" id="Value2"></div>
+                                        <div><h5>Value3</h5><input class="assayData" id="Value3"></div>
+                                        <br>
+                                    </div>
+                                    <br>
+                                </div>
+                                <div class="row-fluid">
+                                    <div id="additionalAssayComments"><h5>Additional Comments</h5><textarea class = "assayData" id="comments" rows="5" style="width:100%"></textarea></div>
+                                </div>
+                                <button class="btn" id="removeOtherButton"><strong>Remove</strong></button>
+                            </div>          
+                        </div>
+                        <button class="btn back"><strong>Back</strong></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+              
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> 
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script>
+            $.get("ParserServlet", function(data) {
+                $("#name").val(data.name);
+                $("#summary").val(data.summary);
+                $("#authors").val(data.contactInformation.authors);
+                $("#sequence").val(data.sequence);
+                $("#date").val(data.designInformation.date);
+                $("#deviceName").val(data.name);
+                $("#deviceType").val(data.designInformation.deviceType);
+            });
+        </script>
+        
+        <!--scripts placed at the end to enhance page loading speed--> 
+        <script type="text/javascript" src="libraries/jquery-1.9.1.min.js"></script> 
+        <script src="libraries/bootstrap.min.js"></script>         
+        <script>
+            function getCookie(c_name) {
+                var c_value = document.cookie;
+                var c_start = c_value.indexOf(" " + c_name + "=");
+                if (c_start === -1) {
+                    c_start = c_value.indexOf(c_name + "=");
+                }
+                if (c_start === -1) {
+                    c_value = null;
+                }
+                else {
+                    c_start = c_value.indexOf("=", c_start) + 1;
+                    var c_end = c_value.indexOf(";", c_start);
+                    if (c_end === -1) {
+                        c_end = c_value.length;
+                    }
+                    c_value = unescape(c_value.substring(c_start, c_end));
+                }
+                return c_value;
+            }
+
+            function deleteCookie(key) {
+                // Delete a cookie by setting the date of expiry to yesterday
+                date = new Date();
+                date.setDate(date.getDate() - 1);
+                document.cookie = escape(key) + '=;expires=' + date;
+            }
+
+            if (getCookie("authenticate") !== "authenticated") {
+                deleteCookie("user");
+            }
+
+            if (getCookie("authenticate") === "authenticated") {
+                $('#loginArea').html('<p class="pull-right" style="margin-top:10px">You are logged in as <strong>' + getCookie("user") + '</strong> <a id="logout">Log Out</a></p>');
+                $('#logout').click(function() {
+                    $.get("AuthenticationServlet", {"command": "logout"}, function() {
+                        deleteCookie("authenticate");
+                        deleteCookie("user");
+                        window.location.replace("index.html");
+                    });
+                });
+            }
+            $('#loginForm').submit(function(e) {
+                var self = this;
+                e.preventDefault();
+                if ($('#loginForm input[name="user"]').val() === "") {
+                    $('#loginModal').modal();
+                } else if ($('#loginForm input[name="password"]').val() === "") {
+                    $('#loginModal').modal();
+                } else {
+                    self.submit();
+                }
+            });
+            $('#loginForm').submit(function(e) {
+                var self = this;
+                e.preventDefault();
+                if ($('#loginFormMain input[name="user"]').val() === "") {
+                    $('#loginModal').modal();
+                } else if ($('#loginForm input[name="password"]').val() === "") {
+                    $('#loginModal').modal();
+                } else {
+                    self.submit();
+                }
+            });
+        </script>
+
+        <footer>
+            <div class="container" align="center">
+                <p>Designed and built by <a href="http://2013.igem.org/Team:BostonU">BU iGEM Team</a> at <a href="http://cidarlab.org">CIDAR</a></p>
+                <p>Code licensed under <a href="license.html">LICENSE</a></p>
+            </div>
+        </footer>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> 
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script src="javascript/dynamicFormController.js"></script>
+
+    </body>
+</html>
+
+
