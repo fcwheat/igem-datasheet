@@ -58,16 +58,14 @@ $(document).ready(function() {
         });
     });
 
-
-
-
     //JSON object 
     $('#designButton').click(function() {
         //collect information here
         var data = {};
         data["name"] = $('#name').val();
         data["summary"] = $('#summary').val();
-        data["deviceImage"] = $('#pigeonImage').val();
+        data["deviceImage"] = $('#deviceImage').val();
+        
         //gather contact information
         var contactInformation = {};
         $('div#contactInformation input').each(function() {
@@ -81,30 +79,65 @@ $(document).ready(function() {
             contactInformation[key] = value;
         });
         data["contactInformation"] = contactInformation;
+        
+        //gather contact information
+        var basicInfo = {};
+        $('div#basicInfo input').each(function() {
+            var key = $(this).attr("id");
+            var value = $(this).val();
+            basicInfo[key] = value;
+        });
+        $('div#basicInfo textarea').each(function() {
+            var key = $(this).attr("id");
+            var value = $(this).val();
+            basicInfo[key] = value;
+        });
+        data["basicInfo"] = basicInfo;
+        
         //gather design information
-        var designInformation = {};
-        $('div#standardDesignInformation input').each(function() {
+        var designDetails = {};
+        $('div#designDetails input').each(function() {
             var key = $(this).attr("id");
             var value = $(this).val();
-            contactInformation[key] = value;
+            designDetails[key] = value;
         });
-        $('div#standardDesignInformation textarea').each(function() {
+        $('div#designDetails textarea').each(function() {
             var key = $(this).attr("id");
             var value = $(this).val();
-            contactInformation[key] = value;
+            designDetails[key] = value;
         });
-        data["designInformation"] = designInformation;
+        data["designDetails"] = designDetails;
 
+        //gather contact information
+        var assemblyInformation = {};
+        $('div#assemblyInformation input').each(function() {
+            var key = $(this).attr("id");
+            var value = $(this).val();
+            assemblyInformation[key] = value;
+        });
+        $('div#assemblyInformation textarea').each(function() {
+            var key = $(this).attr("id");
+            var value = $(this).val();
+            assemblyInformation[key] = value;
+        });
+        data["assemblyInformation"] = assemblyInformation;
 
         var restrictionMap = {};
+        
         //DEVINA POPULATE THIS ARRAY
         $('div#restrictionMap input').each(function() {
             var key = $(this).attr("id");
-            var value = $(this).val(); 
-            restrictionMap[key] = value; 
+            var value = $(this).val();
+//            if (value.length > 0) {
+                restrictionMap[key] = value;
+//            }                     
         })
         
-        data["restrictionMap"]=restrictionMap;
+//        if (restrictionMap.length > 0) {
+            data["restrictionMap"]=restrictionMap;
+//        }
+        
+        
         var functionalityAssays ={};
         //DEVINA POPULATE THIS ARRAY
         $('div#functionalityAssays div.experiment input').each(function() {
@@ -113,7 +146,7 @@ $(document).ready(function() {
             functionalityAssays[key] = value; 
         });
         var pre ={};
-        $('div#functionalityAssays div.setup div#preinductionGrowthConditions input').each(function() {
+        $('div#functionalityAssays div.setup div#preInductionGrowthConditions input').each(function() {
             var key = $(this).attr("id");
             var value = $(this).val(); 
             pre[key] = value; 

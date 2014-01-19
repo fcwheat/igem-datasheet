@@ -134,7 +134,7 @@
                             <div class="span4">                                    
                                 <div><h5>Assembly Methods(s)</h5><input class="data" id="assemblyMethod"></div>
                                 <div><h5>Assembly RFC</h5><input class="data" id="assemblyRFC"></div>
-                                <div><h5>Scars</h5><input class="data" id="assemblyScars"></div>                                
+                                <div><h5>Scars (y/n)</h5><input class="data" id="assemblyScars"></div>                                
                                 <div><h5>Assembly Components</h5><textarea rows="5" id="assemblyComponents"></textarea></div>
                             </div>
                             <div class="span6">                 
@@ -197,12 +197,12 @@
                                         <div><h5>Purpose</h5><input class="assayData" id="Purpose"></div>
                                         <div><h5>Experiment Type</h5><input class="assayData" id="ExperimentType"></div>
                                         <div><h5>Location</h5><input class="assayData" id="Location"></div>
-                                        <div><h5>FCS Format</h5><input class="assayData" id="FCSFormat"></div>
-                                        <div><h5>Machine Name</h5><input class="assayData" id="MachineName"></div>
+                                        <div><h5>FCS Format</h5><input class="assayData" id="FCSFormat"></div>                                        
                                         <div><h5>Protocol Details</h5><input class="assayData" id="FlowProtocolDetails"></div>
                                         <div><h5>Link to Protocol</h5><input class="assayData" id="FlowProtocolLink"></div>
                                     </div>
                                     <div class="span6">
+                                        <div><h5>Machine Name</h5><input class="assayData" id="MachineName"></div>
                                         <div><h5>Lasers(Filters) Used</h5><input class="assayData" id="LasersFilters"></div>
                                         <div><h5>Link to Transfer Curve Image</h5><input class="assayData" id="TranserCurve"></div>
                                         <div><h5>Transfer Curve Caption</h5><input class="assayData" id="TranserCurveCaption"></div>
@@ -213,20 +213,22 @@
                             </div>
                             <div class="well">
                                 <div class="row-fluid setup">
-                                    <div class="span4" id="preinductionGrowthConditions">
+                                    <div class="span4" id="preInductionGrowthConditions">
                                         <h4 >Pre-Induction Growth Conditions</h4>
-                                        <div><h5>Media Type</h5><input class="assayData" id="Media"></div>
-                                        <div><h5>Vessel</h5><input class="assayData" id="Vessel"></div>
-                                        <div><h5>Volume</h5><input class="assayData" id="Volume"></div>
-                                        <div><h5>Incubation Time (min)</h5><input class="assayData" id="IncubationTime"></div>                                   
+                                        <div><h5>Media Type</h5><input class="assayData" id="PreMedia"></div>
+                                        <div><h5>Vessel</h5><input class="assayData" id="PreVessel"></div>
+                                        <div><h5>Volume</h5><input class="assayData" id="PreVolume"></div>
+                                        <div><h5>Incubation Time (min)</h5><input class="assayData" id="PreIncubationTime"></div>
+                                        <div><h5>Growth Phase</h5><input class="assayData" id="PreGrowthPhase"></div>
                                     </div>
                                     <div class="span6" id="inductionGrowthConditions">
                                         <h4 >Induction Growth Conditions</h4>
-                                        <div><h5>Media Type</h5><input class="assayData" id="Media"></div>
-                                        <div><h5>Vessel</h5><input class="assayData" id="Vessel"></div>
-                                        <div><h5>Volume</h5><input class="assayData" id="Volume"></div>
-                                        <div><h5>Incubation Time (min)</h5><input class="assayData" id="IncubationTime"></div>
-                                        <div><h5>Growth Phase</h5><input class="assayData" id="GrowthPhase"></div>
+                                        <div><h5>Media Type</h5><input class="assayData" id="IndMedia"></div>
+                                        <div><h5>Vessel</h5><input class="assayData" id="IndVessel"></div>
+                                        <div><h5>Volume</h5><input class="assayData" id="IndVolume"></div>
+                                        <div><h5>Incubation Time (min)</h5><input class="assayData" id="IndIncubationTime"></div>
+                                        <div><h5>Growth Phase</h5><input class="assayData" id="IndGrowthPhase"></div>
+                                        <div><h5>Inducer</h5><input class="assayData" id="Inducer"></div>
                                         <div><h5>Inducer Concentrations</h5><input class="assayData" id="InducerConcentration"></div>
                                     </div>
                                 </div> 
