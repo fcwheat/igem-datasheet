@@ -8,7 +8,7 @@
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
-    <body class="container">
+    <body class="container" id="main">
         <!--summary-->
         <div class="well" id ="basicInformation">
             
@@ -25,27 +25,15 @@
                 </div>
             </div>
             
-            <h4>Contact Information</h4>
-            <div class="row-fluid">                
-                <div class="span4">                                         
-                    <table>
+            <h4>Designer Information</h4>
+            <div class="row-fluid">                                          
+                    <table><col width="150"><col width="150">
                         <tbody>                        
-                            <tr><th align="left">Author(s)</th><td id="authors"></td></tr>
-                            <tr><th align="left">Date</th><td id="date"></td></tr>
-                            <tr><th align="left">Team</th><td id="team"></td></tr>                       
+                            <tr><th align="left">Author(s)</th><td id="authors"></td><th align="left">Data Collection</th><td id="dataCollection"></td></tr>
+                            <tr><th align="left">Date</th><td id="date"></td><th align="left">Affiliation</th><td id="affiliation"></td></tr>
+                            <tr><th align="left">Team</th><td id="team"></td><th align="left">Contact</th><td id="contact"></td></tr>                       
                         </tbody>    
                     </table>
-                </div>
-                
-                <div class="span6">
-                    <table>
-                        <tbody>                        
-                            <tr><th align="left">Data Collection</th><td id="dataCollection"></td></tr>
-                            <tr><th align="left">Affiliation</th><td id="affiliation"></td></tr>
-                            <tr><th align="left">Contact</th><td id="contact"></td></tr>                       
-                        </tbody>    
-                    </table>
-                </div>
             </div>
         </div>
         <hr/>
@@ -53,24 +41,13 @@
         <div class="well" id ="designDetails">
             
             <h4>Design Details</h4>
-            <div class="row-fluid">              
-                <div class="span4">
-                    <table>
+            <div class="row-fluid">   
+                    <table><col width="150"><col width="150">
                         <tbody>
-                            <tr><th align="left">Type</th><td id="type"></td></tr>
-                            <tr><th align="left">Design Components</th><td id="designComponents"></td></tr>
+                            <tr><th align="left">Type</th><td id="type"></td><th align="left">Vector</th><td id="vector"></td></tr>
+                            <tr><th align="left">Design Components</th><td id="designComponents"></td><th align="left">Additional Comments</th><td id="designComments"></td></tr>
                         </tbody>
                     </table>
-                </div>    
-
-                <div class="span6">
-                    <table>
-                        <tbody>
-                            <tr><th align="left">Vector</th><td id="vector"></td></tr>
-                            <tr><th align="left">Additional Comments</th><td id="designComments"></td></tr>
-                        </tbody>    
-                    </table>
-                </div>  
             </div>  
         </div>
         <hr/>
@@ -78,49 +55,17 @@
         <div class="well" id ="assemblyInformation">
             <h4>Assembly Information</h4>
             <div class="row-fluid">
-                <div class="span4">
-                    <table>
-                        <tbody>
-                            <tr><th align="left">Assembly Method(s)</th><td id="assemblyMethod"></td></tr>
-                            <tr><th align="left">Assembly RFC</th><td id="assemblyRFC"></td></tr>
-                            <tr><th align="left">Scars</th><td id="assemblyScars"></td></tr>
-                            <tr><th align="left">Assembly Components</th><td id="assemblyComponents"></td></tr>
+                    <table><col width="150"><col width="150">
+                        <tbody>                           
+                            <tr><th align="left">Assembly Method(s)</th><td id="assemblyMethod"></td><th align="left">Chassis</th><td id="chassis"></td></tr>
+                            <tr><th align="left">Assembly RFC</th><td id="assemblyRFC"></td><th align="left">Strain</th><td id="strain"></td></tr>
+                            <tr><th align="left">Scars (y/n)</th><td id="assemblyScars"></td><th align="left">Additional Comments </th><td id="assemblyComments"></td></tr>
+                            <tr><th align="left">Assembly Components</th><td id="assemblyComponents"></td><th align="left">Assembly Graph</th><td id="assemblyImage"></td></tr>
                         </tbody>
                     </table>
-                </div>    
-
-                <div class="span6">
-                    <table>
-                        <tbody>
-                            <tr><th align="left">Assembly Graph</th><td id="assemblyImage"></td></tr>
-                            <tr><th align="left">Chassis</th><td id="chassis"></td></tr>
-                            <tr><th align="left">Strain</th><td id="strain"></td></tr>                           
-                            <tr><th align="left">Additional Comments </th><td id="assemblyComments"></td></tr>                         
-                        </tbody>    
-                    </table>
-                </div>  
             </div>
             <hr/>
         </div>
-
-
-        <div class="well">
-            <h4>Restriction Map</h4>
-            <div class="row-fluid">
-                <div id="restrictionMap" class="span6">
-                </div>
-            </div> 
-        </div>
-        <hr/>
-
-        <div class="well">
-            <h4>Flow Cytometry Experiment</h4>
-            <div class="row-fluid">
-                <div id="flowCytometry" class="span6">
-                </div>
-            </div>
-        </div>    
-        <hr/>    
         
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> 
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
@@ -129,81 +74,82 @@
                 $(".name").text(data.name);
                 $("#summary").text(data.summary);
                 $("#deviceImage img").attr('src', data.deviceImage);
+                
+                //Contact Info
                 $("#authors").text(data.contactInformation.authors);
                 $("#team").text(data.contactInformation.team);
                 $("#dataCollection").text(data.contactInformation.dataCollection);
                 $("#affiliation").text(data.contactInformation.affiliation);
                 $("#date").text(data.contactInformation.date);
                 $("#contact").text(data.contactInformation.contact);
-                //Changing Standard Design Information          
-                $("#chassis").text(data.designInformation.chassisName);
-                $("#strain").text(data.designInformation.strain);
-                $("#deviceType").text(data.designInformation.deviceType);
-                $("#deviceName").text(data.designInformation.deviceName);
-                $("#safetyLevel").text(data.designInformation.safetyLevel);
-                $("#components").text(data.designInformation.components);
-                $("#assembly").text(data.designInformation.assembly);
-                $("#protocol").text(data.designInformation.protocol);
-                $("#scars").text(data.designInformation.scars);
-                $("#insertion").text(data.designInformation.insertion);
-                $("#vector").text(data.designInformation.vector);
-                $("#additionalComments").text(data.designInformation.designComments);
-                //Changing Standard Assay Table   
-                var standAssayTable = '';
-                standAssayTable = standAssayTable + '<table><tbody>';
-                for (var key in data["restrictionMap"]) {
-                    standAssayTable = standAssayTable + '<tr>';
-                    standAssayTable = standAssayTable + '<th align="left">' + key + '</th><td>' + data["restrictionMap"][key] + '</td>';
-                    standAssayTable = standAssayTable + '</tr>';
-                }
-                standAssayTable = standAssayTable + '</tbody></table>';
-                $('#restrictionMap').html(standAssayTable);
-                //Changing Functionality Table         
-                var fuctAssayTable = '';
-                fuctAssayTable = fuctAssayTable + '<table><tbody>';
-                for (var key1 in data["functionalityAssays"]) {
-                    if (data["functionalityAssays"][key1.toString()].toString().indexOf("object Object") < 0) {
-                        fuctAssayTable = fuctAssayTable + '<tr>';
-                        fuctAssayTable = fuctAssayTable + '<th align ="left">' + key1 + '</th><td>' + data["functionalityAssays"][key1] + '</td>';
-                        fuctAssayTable = fuctAssayTable + '</tr>';
-                    }
-                }
-                fuctAssayTable = fuctAssayTable + '</tbody></table>';
-                fuctAssayTable = fuctAssayTable + '<h5>PreInductionGrowthConditions</h5>';
-                fuctAssayTable = fuctAssayTable + '<table><tbody>';
-                for (var prekey in data["functionalityAssays"]["preInductionGrowthConditions"]) {
-                    fuctAssayTable = fuctAssayTable + '<tr>';
-                    fuctAssayTable = fuctAssayTable + '<th align ="left">' + prekey + '</th><td>' + data["functionalityAssays"]["preInductionGrowthConditions"][prekey] + '</td>';
-                    fuctAssayTable = fuctAssayTable + '</tr>';
-                }
-                fuctAssayTable = fuctAssayTable + '</tbody></table>';
-                fuctAssayTable = fuctAssayTable + '<h5>PreInductionGrowthConditions</h5>';
-                fuctAssayTable = fuctAssayTable + '<table><tbody>';
-                for (var indkey in data["functionalityAssays"]["inductionGrowthConditions"]) {
-                    fuctAssayTable = fuctAssayTable + '<tr>';
-                    fuctAssayTable = fuctAssayTable + '<th align ="left">' + indkey + '</th><td>' + data["functionalityAssays"]["inductionGrowthConditions"][indkey] + '</td>';
-                    fuctAssayTable = fuctAssayTable + '</tr>';
-                }
-                fuctAssayTable = fuctAssayTable + '</tbody></table>';
-                $('#flowCytometry').html(fuctAssayTable);
-                //Changing PreInduction Growth Conditions
-                var something = data.functionalityAssays;
-                $("#preMedia").text(data.functionalityAssays.preInductionGrowthConditions.media);
-                $("#preVessel").text(data.functionalityAssays.preInductionGrowthConditions.vessel);
-                $("#preVolume").text(data.functionalityAssays.preInductionGrowthConditions.volume);
-                $("#preIncubation").text(data.functionalityAssays.preInductionGrowthConditions.incubation);
-                $("#preTime").text(data.functionalityAssays.preInductionGrowthConditions.time);
-                //Changing Induction Growth Conditions
-                $("#media").text(data.functionalityAssays.inductionGrowthConditions.media);
-                $("#vessel").text(data.functionalityAssays.inductionGrowthConditions.vessel);
-                $("#volume").text(data.functionalityAssays.inductionGrowthConditions.volume);
-                $("#incubation").text(data.functionalityAssays.inductionGrowthConditions.incubation);
-                $("#time").text(data.functionalityAssays.inductionGrowthConditions.time);
-
+                
+                //Design Detail          
+                $("#type").text(data.designDetails.type);
+                $("#vector").text(data.designDetails.vector);
+                $("#designComponents").text(data.designDetails.designComponents);
+                $("#designComments").text(data.designDetails.designComments);
+                
+                //Assembly
+                $("#assemblyMethod").text(data.assemblyInformation.assemblyMethod);
+                $("#assemblyRFC").text(data.assemblyInformation.assemblyRFC);
+                $("#assemblyScars").text(data.assemblyInformation.assemblyScars);
+                $("#assemblyComponents").text(data.assemblyInformation.assemblyComponents);
+                $("#chasis").text(data.assemblyInformation.chasis);
+                $("#strain").text(data.assemblyInformation.strain);
+                $("#assemblyComments").text(data.assemblyInformation.assemblyComments);
+                $("#assemblyImage img").attr('src', data.assemblyInformation.assemblyImage);
+                
+                //Assay Table   
+ 
+//                var rmap = data.restrictionMap;
+//                if (data.restrictionMap !== ) {
+                    $('#main').append('<div class="well"><h3>Restriction Map</h3><div class="row-fluid"> <table><col width="150"><col width="150"><tbody>'+
+                    '<tr><th align="left">Gel Buffer</th><td>' + data.restrictionMap.GelBuffer + '</td> <th align="left">DNA Quantity</th><td>' + data.restrictionMap.DNAQuantity + '</td></tr>' +
+                    '<tr><th align="left">Percent Agar</th><td>' + data.restrictionMap.Agar + '</td> <th align="left">Enzymes</th><td>' + data.restrictionMap.Enzymes + '</td></tr>' +
+                    '<tr><th align="left">Ladder</th><td>' + data.restrictionMap.Ladder + '</td> <th align="left">Digest Buffer</th><td>' + data.restrictionMap.DigestBuffer + '</td></tr>' +
+                    '<tr><th align="left">Staining Dye</th><td>' + data.restrictionMap.StainingDye + '</td> <th align="left">Digest Time</th><td>' + data.restrictionMap.DigestTime + '</td></tr>' +
+                    '<tr><th align="left">Voltage</th><td>' + data.restrictionMap.Voltage + '</td> <th align="left">Link to Gel Image</th><td>' + data.restrictionMap.Image + '</td></tr>' +
+                    '<tr><th align="left">Time</th><td>' + data.restrictionMap.Time + '</td> <th align="left">Caption for Gel Image</th><td>' + data.restrictionMap.Caption + '</td></tr>' +
+                    '</tbody></table></div></div>');
+//                }
+                
+                //                if (data["restrictionMap"].length > 0) {
+                    $('#main').append('<div class="well"><h3>Flow Cytometry Experiment</h3><div class="row-fluid"> <table><tbody>'+
+                    '<tr><th align="left">Purpose</th><td>' + data.functionalityAssays.Purpose + '</td></tr>' +
+                    '<tr><th align="left">Type</th><td>' + data.functionalityAssays.ExperimentType + '</td></tr>' +
+                    '<tr><th align="left">Location</th><td>' + data.functionalityAssays.Location + '</td></tr>' +
+                    '<tr><th align="left">FCS Format</th><td>' + data.functionalityAssays.FCSFormat + '</td></tr>' +
+                    '<tr><th align="left">Machine Name</th><td>' + data.functionalityAssays.MachineName + '</td></tr>' +
+                    '<tr><th align="left">Protocol Details</th><td>' + data.functionalityAssays.FlowProtocolDetails + '</td></tr>' +
+                    '<tr><th align="left">Link to Protocol</th><td>' + data.functionalityAssays.FlowProtocolLink + '</td></tr>' +
+                    '<tr><th align="left">Lasers(Fliters)</th><td>' + data.functionalityAssays.LasersFilters + '</td></tr>' +
+                    '<tr><th align="left">Link to Transfer Curve Image</th><td>' + data.functionalityAssays.TranserCurve + '</td></tr>' +
+                    '<tr><th align="left">Transfer Curve Caption</th><td>' + data.functionalityAssays.TranserCurveCaption + '</td></tr>' +
+                    '<tr><th align="left">Link to Time Series Graph</th><td>' + data.functionalityAssays.TimeSeriesGraph + '</td></tr>' +
+                    '<tr><th align="left">Caption for Time Series Graph</th><td>' + data.functionalityAssays.TimeSeriesGraphCaption + '</td></tr>' +
+                    '</tbody></table><h5>Pre-Induction Growth Conditions</h5><table><tbody>'+
+                    '<tr><th align="left">Media Type</th><td>' + data.functionalityAssays.preInductionGrowthConditions.PreMedia + '</td></tr>' +
+                    '<tr><th align="left">Vessel</th><td>' + data.functionalityAssays.preInductionGrowthConditions.PreVessel + '</td></tr>' +
+                    '<tr><th align="left">Volume</th><td>' + data.functionalityAssays.preInductionGrowthConditions.PreVolume + '</td></tr>' +
+                    '<tr><th align="left">Incubation Time (min)</th><td>' + data.functionalityAssays.preInductionGrowthConditions.PreIncubationTime + '</td></tr>' +
+                    '<tr><th align="left">Growth Phase</th><td>' + data.functionalityAssays.preInductionGrowthConditions.PreGrowthPhase + '</td></tr>' +
+                    '</tbody></table><h5>Pre-Induction Growth Conditions</h5><table><tbody>'+
+                    '<tr><th align="left">Media Type</th><td>' + data.functionalityAssays.inductionGrowthConditions.IndMedia + '</td></tr>' +
+                    '<tr><th align="left">Vessel</th><td>' + data.functionalityAssays.inductionGrowthConditions.IndVessel + '</td></tr>' +
+                    '<tr><th align="left">Volume</th><td>' + data.functionalityAssays.inductionGrowthConditions.IndVolume + '</td></tr>' +
+                    '<tr><th align="left">Incubation Time (min)</th><td>' + data.functionalityAssays.inductionGrowthConditions.IndIncubationTime + '</td></tr>' +
+                    '<tr><th align="left">Growth Phase</th><td>' + data.functionalityAssays.inductionGrowthConditions.IndGrowthPhase + '</td></tr>' +
+                    '<tr><th align="left">Inducer</th><td>' + data.functionalityAssays.inductionGrowthConditions.Inducer + '</td></tr>' +
+                    '<tr><th align="left">Inducer Concentrations</th><td>' + data.functionalityAssays.inductionGrowthConditions.InducerConcentration + '</td></tr>' +
+                    '</div></div>');
+//                }
 
 
             });
         </script>
+        
+        <!--<script>$('div.well:empty').hide(); </script>-->
+        
     </body>
 </html>
 
