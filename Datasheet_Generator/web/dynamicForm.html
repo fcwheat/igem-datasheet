@@ -97,7 +97,7 @@
                             <div class="span6">
                                 <div><h5>Data Collectors</h5><input class="data" id="dataCollection"/></div>
                                 <div><h5>Affiliation</h5><input class="data" id="affiliation"/></div>
-                                <div><h5>Contact</h5><input class="data" id="contact"/></div>                                
+                                <div><h5>Contact Email</h5><input class="data" id="contact"/></div>                                
                             </div>        
                         </div>
                         <button class="btn back" style ='margin-top: 10px'><strong>Back</strong></button>
@@ -197,8 +197,8 @@
                                         <div><h5>Purpose</h5><input class="assayData" id="Purpose"></div>
                                         <div><h5>Experiment Type</h5><input class="assayData" id="ExperimentType"></div>
                                         <div><h5>Location</h5><input class="assayData" id="Location"></div>
-                                        <div><h5>FCS Format</h5><input class="assayData" id="FCSFormat"></div>                                        
-                                        <div><h5>Protocol Details</h5><input class="assayData" id="FlowProtocolDetails"></div>
+                                        <div><h5>FCS Format</h5><input class="assayData" id="FCSFormat"></div>  
+                                        <div><h5>Protocol Details</h5><textarea rows="5" id="FlowProtocolDetails"></textarea></div>
                                         <div><h5>Link to Protocol</h5><input class="assayData" id="FlowProtocolLink"></div>
                                     </div>
                                     <div class="span6">
@@ -229,7 +229,7 @@
                                         <div><h5>Incubation Time (min)</h5><input class="assayData" id="IndIncubationTime"></div>
                                         <div><h5>Growth Phase</h5><input class="assayData" id="IndGrowthPhase"></div>
                                         <div><h5>Inducer</h5><input class="assayData" id="Inducer"></div>
-                                        <div><h5>Inducer Concentrations</h5><input class="assayData" id="InducerConcentration"></div>
+                                        <div><h5>Inducer Concentrations</h5><textarea rows="5" id="InducerConcentration"></textarea></div>
                                     </div>
                                 </div> 
                                 <button id="removeFlowCytometryButton" type="button"><Strong>Remove</strong></button>
@@ -270,6 +270,7 @@
                             </div>          
                         </div>
                         <button class="btn back"><strong>Back</strong></button>
+                        <button class="btn btn-success" id="designButton">Make Datasheet</button>
                     </div>
                 </div>
             </div>

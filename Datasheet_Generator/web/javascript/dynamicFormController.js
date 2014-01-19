@@ -145,6 +145,14 @@ $(document).ready(function() {
             var value = $(this).val(); 
             functionalityAssays[key] = value; 
         });
+        
+        //Devina edited
+        $('div#functionalityAssays textarea').each(function() {
+            var key = $(this).attr("id");
+            var value = $(this).val();
+            functionalityAssays[key] = value;
+        });     
+        
         var pre ={};
         $('div#functionalityAssays div.setup div#preInductionGrowthConditions input').each(function() {
             var key = $(this).attr("id");
