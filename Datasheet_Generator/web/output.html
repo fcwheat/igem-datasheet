@@ -143,7 +143,24 @@
                     '<tr><th align="left">Inducer Concentrations</th><td>' + data.functionalityAssays.inductionGrowthConditions.InducerConcentration + '</td></tr>' +
                     '</div></div>');
 //                }
-
+                    $('#main').append('<div class="well"><h3>User-Defined Assay</h3><div class="row-fluid"> <table><tbody>'+
+                    '<tr><th align="left">Assay Name</th><td>' + data.otherAssay.AssayName + '</td></tr>' +
+                    '<tr><th align="left">Assay Purpose</th><td>' + data.otherAssay.AssayPurpose + '</td></tr>' +
+                    '<tr><th align="left">Link to Image</th><td>' + data.otherAssay.AssayImage + '</td></tr>' +
+                    '<tr><th align="left">Link to Image Caption</th><td>' + data.otherAssay.AssayImageCaption + '</td></tr>' +
+                    '<tr><th align="left">Link to Protocol</th><td>' + data.otherAssay.ProtocolLink + '</td></tr>' +
+                    '<tr><th align="left">Protocol Details</th><td>' + data.otherAssay.ProtocolDetails + '</td></tr>' +
+                    '<tr><th align="left">Parameter 1</th><td>' + data.otherAssay.Parameter1 + '</td></tr>' +
+                    '<tr><th align="left">Parameter 2</th><td>' + data.otherAssay.Parameter2 + '</td></tr>' +
+                    '<tr><th align="left">Parameter 3 </th><td>' + data.otherAssay.Parameter3 + '</td></tr>' +
+                    '<tr><th align="left">Value 1</th><td>' + data.otherAssay.Value1 + '</td></tr>' +
+                    '<tr><th align="left">Value 2</th><td>' + data.otherAssay.Value2 + '</td></tr>' +
+                    '<tr><th align="left">Value 3 </th><td>' + data.otherAssay.Value3 + '</td></tr>' +
+                    '</div></div>');
+            
+            
+           
+                    
 
             });
         </script>
