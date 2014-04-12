@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    </head>
+    <body>
+        <form id="file_upload" action="DataServlet" method="POST" enctype="multipart/form-data" target="hiddenFrame">
+            <input id="file_1" type="file" name="file_1" multiple/>
+            <br>
+            <button id="uploadButton">Upload</button>
+        </form>
+        <iframe name="hiddenFrame" class="hidden"></iframe>
+        <script src="js/jquery-2.1.0.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>  
+        <script>
+            $(document).ready(function(){
+                $('#uploadButton').click(function(){
+                    alert('uploading')
+                    $('#file_upload').submit()
+                })
+
+    });
+        </script>
+    </body>  
+</html>
