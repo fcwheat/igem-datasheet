@@ -9,25 +9,68 @@ and open the template in the editor.
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
-         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    </head>
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">    </head>
     <body>
-        <form id="file_upload" action="DataServlet" method="POST" enctype="multipart/form-data" target="hiddenFrame">
-            <input id="file_1" type="file" name="file_1" multiple/>
-            <br>
-            <button id="uploadButton">Upload</button>
-        </form>
-        <iframe name="hiddenFrame" class="hidden"></iframe>
-        <script src="js/jquery-2.1.0.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>  
-        <script>
-            $(document).ready(function(){
-                $('#uploadButton').click(function(){
-                    alert('uploading')
-                    $('#file_upload').submit()
-                })
+        <div>
+            <!--the radio buttons need to be unique and have their own event handlers-->
+            <!--these buttons determine which form shows-->
+            <form>
+                <input id="urlRadio1" type='radio'/> URL
+                <input id="uploadRadio1" type='radio'/> Upload
+            </form>
 
-    });
+            <!--this id should be unique-->
+            <form id="imageUpload1" class="upload" action="DataServlet" method="POST" enctype="multipart/form-data" target="hiddenFrame">
+                <input class="imagePath" type="file" name="file_1" multiple/>
+                <br>
+            </form>
+            <!--this id should be unique-->
+            <form id="urlUpload1" class="hidden upload">
+                URL: <input  class="imagePath">
+            </form>
+            <button id="uploadButton1">Upload</button>
+
+        </div>
+
+        <!--You must include this iframe so that the page won't redirect after upload-->
+        <iframe name="hiddenFrame" class="hidden"></iframe>
+
+        <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>--> 
+        <script src="libraries/jquery-1.9.1.min.js"></script> 
+        <!--<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>-->
+        <script>
+            $(document).ready(function() {
+                //event handler for radio buttons
+                $('#urlRadio1').click(function() {
+                    $('#uploadRadio1').prop("checked", false);
+                    $('#imageUpload1').addClass('hidden');
+                    $('#urlUpload1').removeClass('hidden');
+
+                });
+                $('#uploadRadio1').click(function() {
+                    $('#urlRadio1').prop("checked", false);
+                    $('#imageUpload1').removeClass('hidden');
+                    $('#urlUpload1').addClass('hidden');
+
+                });
+
+                //bind an event handler to each upload button
+                $('#uploadButton1').click(function() {
+                    var uploadPath = $(this).parent().find('form.upload:not(hidden) input').val();
+                    if (uploadPath.length > 0) {
+                        //if a file is being uploaded
+                        //submit the form
+                        $(this).parent().find('form.upload:not(hidden)')[0].submit();
+                        setTimeout(function() {
+                            alert ("hi")
+                            
+                        },1000);
+                    }
+
+                });
+
+            });
         </script>
     </body>  
 </html>

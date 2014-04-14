@@ -4,13 +4,20 @@
  */
 package datasheet;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -59,7 +66,7 @@ public class DataServlet extends HttpServlet {
                 ServletFileUpload uploadHandler = new ServletFileUpload(new DiskFileItemFactory());
                 response.setContentType("text/plain");
 //                response.sendRedirect("index.html");
-                String user = "test";
+                String user = getUser(request);
                 List<FileItem> items = uploadHandler.parseRequest(request);
                 String uploadFilePath = this.getServletContext().getRealPath("/") + "/data/" + user + "/";
 
@@ -79,8 +86,10 @@ public class DataServlet extends HttpServlet {
                         }
                         item.write(file);
                         toLoad.add(file);
+                        String path = file.getAbsolutePath();
+                        writer.write("{\"result\":\"good\",\"status\":\"good\",\"path\":" + path + "}");
+
                     }
-                    writer.write("{\"result\":\"good\",\"status\":\"good\"}");
                 }
             } else {
                 String data = request.getParameter("sending");
@@ -143,4 +152,50 @@ public class DataServlet extends HttpServlet {
     }// </editor-fold>
     private Boolean holdingData = false;
     private JSONObject heldData;
+
+    private String getUser(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        String user = "default";
+        if (cookies != null) {
+            for (int i = 0; i < cookies.length; i++) {
+                if (cookies[i].getName().equals("user")) {
+                    user = cookies[i].getValue();
+                }
+            }
+        }
+        return user;
+    }
+
+    private void saveUrl(String urlString, String localFileName) {
+        int size = 1024;
+        OutputStream outStream = null;
+        URLConnection uCon = null;
+        InputStream inputStream = null;
+        try {
+            URL url;
+            byte[] buf;
+            int ByteRead, ByteWritten = 0;
+            url = new URL(urlString);
+            File newFile = new File(localFileName);
+            newFile.createNewFile();
+            FileOutputStream fileOutStream = new FileOutputStream(newFile);
+            outStream = new BufferedOutputStream(fileOutStream);
+            uCon = url.openConnection();
+            inputStream = uCon.getInputStream();
+            buf = new byte[size];
+            while ((ByteRead = inputStream.read(buf)) != -1) {
+                outStream.write(buf, 0, ByteRead);
+                ByteWritten += ByteRead;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                inputStream.close();
+                outStream.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }
