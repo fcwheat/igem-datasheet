@@ -21,13 +21,13 @@ and open the template in the editor.
             </form>
 
             <!--this id should be unique-->
-            <form id="imageUpload1" class="upload" action="DataServlet" method="POST" enctype="multipart/form-data" target="hiddenFrame">
-                <input class="imagePath" type="file" name="file_1" multiple/>
+            <form id="imageUpload1" class="upload active" action="DataServlet" method="POST" enctype="multipart/form-data" target="hiddenFrame">
+                <input type="file" name="file_1"/>
                 <br>
             </form>
             <!--this id should be unique-->
-            <form id="urlUpload1" class="hidden upload">
-                URL: <input  class="imagePath">
+            <form id="urlUpload1" class="upload hidden">
+                URL: <input/>
             </form>
             <button id="uploadButton1">Upload</button>
 
@@ -41,36 +41,81 @@ and open the template in the editor.
         <!--<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>-->
         <script>
             $(document).ready(function() {
+
+                function getCookie(c_name) {
+                    var c_value = document.cookie;
+                    var c_start = c_value.indexOf(" " + c_name + "=");
+                    if (c_start === -1) {
+                        c_start = c_value.indexOf(c_name + "=");
+                    }
+                    if (c_start === -1) {
+                        c_value = null;
+                    }
+                    else {
+                        c_start = c_value.indexOf("=", c_start) + 1;
+                        var c_end = c_value.indexOf(";", c_start);
+                        if (c_end === -1) {
+                            c_end = c_value.length;
+                        }
+                        c_value = unescape(c_value.substring(c_start, c_end));
+                    }
+                    return c_value;
+                }
                 //event handler for radio buttons
                 $('#urlRadio1').click(function() {
                     $('#uploadRadio1').prop("checked", false);
                     $('#imageUpload1').addClass('hidden');
                     $('#urlUpload1').removeClass('hidden');
+                    $('#imageUpload1').removeClass('active');
+                    $('#urlUpload1').addClass('active');
 
                 });
                 $('#uploadRadio1').click(function() {
                     $('#urlRadio1').prop("checked", false);
                     $('#imageUpload1').removeClass('hidden');
                     $('#urlUpload1').addClass('hidden');
+                    $('#imageUpload1').addClass('active');
+                    $('#urlUpload1').removeClass('active');
 
                 });
 
                 //bind an event handler to each upload button
                 $('#uploadButton1').click(function() {
-                    var uploadPath = $(this).parent().find('form.upload:not(hidden) input').val();
+                    var uploadPath = $(this).parent().find('form.upload.active input').val();
+//                    alert(uploadPath)
                     if (uploadPath.length > 0) {
-                        //if a file is being uploaded
                         //submit the form
-                        $(this).parent().find('form.upload:not(hidden)')[0].submit();
-                        setTimeout(function() {
-                            alert ("hi")
-                            
-                        },1000);
+                        var fileName = $(this).parent().find('form.upload.active input').val()
+                        if (fileName.indexOf("www") > -1) {
+                            fileName = fileName;
+                            var parent = $(this).parent()
+                            parent.html("UPLOADING");
+                            //assume upload will take just 5 seconds
+                            setTimeout(function() {
+                                parent.html('<img src="' + fileName + '">');
+
+                            }, 1000);
+                        } else {
+                            $(this).parent().find('form.upload:not(hidden)')[0].submit();
+                            fileName = $(this).parent().find('form.upload.active input').val().split("\\")
+                            fileName = fileName[fileName.length - 1]
+                            var parent = $(this).parent()
+                            parent.html("UPLOADING");
+                            //assume upload will take just 5 seconds
+                            setTimeout(function() {
+                                parent.html('<img src="data/' + getCookie('user') + '/' + fileName + '">');
+
+                            }, 1000);
+                        }
+
                     }
 
                 });
 
             });
+
+
+
         </script>
     </body>  
 </html>

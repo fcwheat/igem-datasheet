@@ -40,6 +40,11 @@ public class DataServlet extends HttpServlet {
             if (holdingData) {
                 out.write(heldData.toString());
                 holdingData = false;
+            } else {
+                String data = request.getParameter("sending");
+                heldData = new JSONObject(data);
+                holdingData = true;
+                response.sendRedirect("output.html");
             }
 
         } catch (Exception e) {
@@ -62,10 +67,8 @@ public class DataServlet extends HttpServlet {
 
         PrintWriter writer = response.getWriter();
         try {
-            if (ServletFileUpload.isMultipartContent(request)) {
                 ServletFileUpload uploadHandler = new ServletFileUpload(new DiskFileItemFactory());
                 response.setContentType("text/plain");
-//                response.sendRedirect("index.html");
                 String user = getUser(request);
                 List<FileItem> items = uploadHandler.parseRequest(request);
                 String uploadFilePath = this.getServletContext().getRealPath("/") + "/data/" + user + "/";
@@ -91,12 +94,6 @@ public class DataServlet extends HttpServlet {
 
                     }
                 }
-            } else {
-                String data = request.getParameter("sending");
-                heldData = new JSONObject(data);
-                holdingData = true;
-                response.sendRedirect("output.html");
-            }
 
         } catch (Exception e) {
             e.printStackTrace();

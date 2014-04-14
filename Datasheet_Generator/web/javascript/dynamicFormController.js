@@ -164,7 +164,7 @@ $(document).ready(function() {
 
 
         data["functionalityAssays"] =functionalityAssays;
-        $.post("DataServlet",{"sending":JSON.stringify(data)},function(){
+        $.get("DataServlet",{"sending":JSON.stringify(data)},function(){
             window.location.replace("output.html")
         });
 
