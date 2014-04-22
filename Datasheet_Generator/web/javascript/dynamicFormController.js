@@ -64,6 +64,7 @@ $(document).ready(function() {
         var data = {};
         data["name"] = $('#name').val();
         data["summary"] = $('#summary').val();
+        data["sequence"] = $('#sequence').val();
         data["deviceImage"] = $('#deviceImage').val();
         
         //gather contact information
@@ -128,13 +129,18 @@ $(document).ready(function() {
         $('div#restrictionMap input').each(function() {
             var key = $(this).attr("id");
             var value = $(this).val();
-//            if (value.length > 0) {
+            if (value.length > 0) {
                 restrictionMap[key] = value;
-//            }                     
-        })
+            }                     
+        });
         
-//        if (restrictionMap.length > 0) {
-            data["restrictionMap"]=restrictionMap;
+        for (var key in restrictionMap) {
+            if (restrictionMap[key] !== 'undefined') {
+                data["restrictionMap"]=restrictionMap;
+            }
+        }
+//        if (restrictionMap.keys().length > 0) {
+//            data["restrictionMap"]=restrictionMap;
 //        }
         
         

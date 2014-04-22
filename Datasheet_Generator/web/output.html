@@ -13,27 +13,25 @@
         <div class="well" id ="basicInformation">
             
             <h1 class="name"></h1>
-            <h4>Part Description</h4>                 
+            <h3>Part Description</h3>                 
             <h4>Summary</h4>
+            <div class="row-fluid span6"><p id="summary"></p></div>
             
-            <div class="row-fluid">
-                <div class="span6">
-                    <p id="summary"></p>
-                </div>
-                <div class="span6" id="deviceImage">
-                    <img src="" class="img-polaroid"/>
-                </div>
-            </div>
+            <h4>Image</h4>
+            <div class="row-fluid span6" id="deviceImage"><img src="" class="img-polaroid"/></div>
             
+            <h4>Sequence</h4>
+            <div class="row-fluid span6"><p id="sequence"></p></div>          
+
             <h4>Designer Information</h4>
             <div class="row-fluid">                                          
-                    <table><col width="150"><col width="150">
-                        <tbody>                        
-                            <tr><th align="left">Author(s)</th><td id="authors"></td><th align="left">Data Collection</th><td id="dataCollection"></td></tr>
-                            <tr><th align="left">Date</th><td id="date"></td><th align="left">Affiliation</th><td id="affiliation"></td></tr>
-                            <tr><th align="left">Team</th><td id="team"></td><th align="left">Contact</th><td id="contact"></td></tr>                       
-                        </tbody>    
-                    </table>
+                <table><col width="250"><col width="250">
+                    <tbody>                        
+                        <tr><th align="left">Author(s)</th><td id="authors"></td><th align="left">Data Collection</th><td id="dataCollection"></td></tr>
+                        <tr><th align="left">Date</th><td id="date"></td><th align="left">Affiliation</th><td id="affiliation"></td></tr>
+                        <tr><th align="left">Team</th><td id="team"></td><th align="left">Contact</th><td id="contact"></td></tr>                       
+                    </tbody>    
+                </table>
             </div>
         </div>
         <hr/>
@@ -42,7 +40,7 @@
             
             <h4>Design Details</h4>
             <div class="row-fluid">   
-                    <table><col width="150"><col width="150">
+                    <table><col width="250"><col width="250">
                         <tbody>
                             <tr><th align="left">Type</th><td id="type"></td><th align="left">Vector</th><td id="vector"></td></tr>
                             <tr><th align="left">Design Components</th><td id="designComponents"></td><th align="left">Additional Comments</th><td id="designComments"></td></tr>
@@ -55,7 +53,7 @@
         <div class="well" id ="assemblyInformation">
             <h4>Assembly Information</h4>
             <div class="row-fluid">
-                    <table><col width="150"><col width="150">
+                    <table><col width="250"><col width="250">
                         <tbody>                           
                             <tr><th align="left">Assembly Method(s)</th><td id="assemblyMethod"></td><th align="left">Chassis</th><td id="chassis"></td></tr>
                             <tr><th align="left">Assembly RFC</th><td id="assemblyRFC"></td><th align="left">Strain</th><td id="strain"></td></tr>
@@ -73,6 +71,7 @@
             $.get("DataServlet", function(data) {
                 $(".name").text(data.name);
                 $("#summary").text(data.summary);
+                $("#sequence").text(data.sequence);
                 $("#deviceImage img").attr('src', data.deviceImage);
                 
                 //Contact Info
@@ -102,8 +101,8 @@
                 //Assay Table   
  
 //                var rmap = data.restrictionMap;
-//                if (data.restrictionMap !== ) {
-                    $('#main').append('<div class="well"><h3>Restriction Map</h3><div class="row-fluid"> <table><col width="150"><col width="150"><tbody>'+
+                if (data.restrictionMap !== null) {
+                    $('#main').append('<div class="well"><h3>Restriction Map</h3><div class="row-fluid"> <table><col width="250"><col width="250"><tbody>'+
                     '<tr><th align="left">Gel Buffer</th><td>' + data.restrictionMap.GelBuffer + '</td> <th align="left">DNA Quantity</th><td>' + data.restrictionMap.DNAQuantity + '</td></tr>' +
                     '<tr><th align="left">Percent Agar</th><td>' + data.restrictionMap.Agar + '</td> <th align="left">Enzymes</th><td>' + data.restrictionMap.Enzymes + '</td></tr>' +
                     '<tr><th align="left">Ladder</th><td>' + data.restrictionMap.Ladder + '</td> <th align="left">Digest Buffer</th><td>' + data.restrictionMap.DigestBuffer + '</td></tr>' +
@@ -111,7 +110,7 @@
                     '<tr><th align="left">Voltage</th><td>' + data.restrictionMap.Voltage + '</td> <th align="left">Link to Gel Image</th><td>' + data.restrictionMap.Image + '</td></tr>' +
                     '<tr><th align="left">Time</th><td>' + data.restrictionMap.Time + '</td> <th align="left">Caption for Gel Image</th><td>' + data.restrictionMap.Caption + '</td></tr>' +
                     '</tbody></table></div></div>');
-//                }
+                }
                 
                 //                if (data["restrictionMap"].length > 0) {
                     $('#main').append('<div class="well"><h3>Flow Cytometry Experiment</h3><div class="row-fluid"> <table><tbody>'+
