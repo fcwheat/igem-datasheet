@@ -123,8 +123,7 @@ $(document).ready(function() {
         });
         data["assemblyInformation"] = assemblyInformation;
 
-        var restrictionMap = {};
-        
+        var restrictionMap = {}       
         //DEVINA POPULATE THIS ARRAY
         $('div#restrictionMap input').each(function() {
             var key = $(this).attr("id");
@@ -139,10 +138,14 @@ $(document).ready(function() {
                 data["restrictionMap"]=restrictionMap;
             }
         }
-//        if (restrictionMap.keys().length > 0) {
-//            data["restrictionMap"]=restrictionMap;
-//        }
         
+        var extraAssay = {};
+        $('div#otherAssay input').each(function() {
+            var key = $(this).attr("id");
+            var value = $(this).val(); 
+            extraAssay[key] = value; 
+        });
+        data["extraAssay"] = extraAssay;
         
         var functionalityAssays ={};
         //DEVINA POPULATE THIS ARRAY
@@ -167,7 +170,7 @@ $(document).ready(function() {
         functionalityAssays["preInductionGrowthConditions"] = pre;
         functionalityAssays["inductionGrowthConditions"] = post;
         
-
+        
 
         data["functionalityAssays"] =functionalityAssays;
         $.get("DataServlet",{"sending":JSON.stringify(data)},function(){

@@ -112,7 +112,7 @@
                     '</tbody></table></div></div>');
                 }
                 
-                //                if (data["restrictionMap"].length > 0) {
+                if (data.functionalityAssays !== null) {
                     $('#main').append('<div class="well"><h3>Flow Cytometry Experiment</h3><div class="row-fluid"> <table><tbody>'+
                     '<tr><th align="left">Purpose</th><td>' + data.functionalityAssays.Purpose + '</td></tr>' +
                     '<tr><th align="left">Type</th><td>' + data.functionalityAssays.ExperimentType + '</td></tr>' +
@@ -141,9 +141,19 @@
                     '<tr><th align="left">Inducer</th><td>' + data.functionalityAssays.inductionGrowthConditions.Inducer + '</td></tr>' +
                     '<tr><th align="left">Inducer Concentrations</th><td>' + data.functionalityAssays.inductionGrowthConditions.InducerConcentration + '</td></tr>' +
                     '</div></div>');
-//                }
-
-
+                }
+                
+                if (data.extraAssay !== null) {
+                    $('#main').append('<div class="well"><h3>Restriction Map</h3><div class="row-fluid"> <table><col width="250"><col width="250"><tbody>'+
+                    '<tr><th align="left">Assay Name</th><td>' + data.extraAssay.AssayName + '</td> <th align="left">Protocol Details</th><td>' + data.extraAssay.ProtocolDetails + '</td></tr>' +
+                    '<tr><th align="left">Assay Type</th><td>' + data.extraAssay.AssayType + '</td> <th align="left">Link to Protocol</th><td>' + data.extraAssay.ProtocolLink + '</td></tr>' +
+                    '<tr><th align="left">Link to Image</th><td>' + data.extraAssay.AssayImage + '</td> <th align="left">Image Caption</th><td>' + data.extraAssay.AssayImageCaption + '</td></tr>' +
+                    '<tr><th align="left">Link to Additional Data</th><td>' + data.extraAssay.AssayDataLink + '</td> <th align="left">Additional Data Details</th><td>' + data.extraAssay.AssayDataDetails + '</td></tr>' +
+                    '<tr><th align="left">Parameter 1</th><td>' + data.extraAssay.Parameter1 + '</td> <th align="left">Value 1</th><td>' + data.extraAssay.Value1 + '</td></tr>' +
+                    '<tr><th align="left">Parameter 2</th><td>' + data.extraAssay.Parameter2 + '</td> <th align="left">Value 2</th><td>' + data.extraAssay.Value2 + '</td></tr>' +
+                    '<tr><th align="left">Parameter 3</th><td>' + data.extraAssay.Parameter3 + '</td> <th align="left">Value 3</th><td>' + data.extraAssay.Value3 + '</td></tr>' +
+                    '</tbody></table></div></div>');
+                }              
             });
         </script>
         
