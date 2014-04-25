@@ -93,12 +93,21 @@ $(document).ready(function() {
     //JSON object 
     $('#designButton').click(function() {
         //collect information here
+       
         var data = {};
         data["name"] = $('#name').val();
         data["summary"] = $('#summary').val();
         data["sequence"] = $('#sequence').val();
         data["deviceImage"] = $('#deviceImage').val();
+        data["plasmidMap"] = $('#plasmidMap').val();
+        data["assemblyImage"] = $('#assemblyImage').val();
+        data["partType"] = $('#partType :selected').text();
+        data["relatedParts"] = $('#relatedParts').val();
         
+        
+        console.log(data);
+        
+
         //gather contact information
         var contactInformation = {};
         $('div#contactInformation input').each(function() {
@@ -189,6 +198,7 @@ $(document).ready(function() {
         if (!$('#otherAssay').hasClass('hidden'))
         {
         var otherAssay = {};
+        console.log('other');
         var flag = 0;
         $('div#otherAssay input').each(function() {
             var key = $(this).attr("id");
@@ -201,13 +211,16 @@ $(document).ready(function() {
         });
         if (flag)
         {
+        otherAssay['comments'] = $('#comments').val();
         data["otherAssay"] = otherAssay;
     }
+
     }
     if (!$('#functionalityAssays').hasClass('hidden'))
     {
         var functionalityAssays ={};
         var flag = 0;
+        console.log('abc');
         //DEVINA POPULATE THIS ARRAY
         $('div#functionalityAssays div.experiment input').each(function() {
             var key = $(this).attr("id");
