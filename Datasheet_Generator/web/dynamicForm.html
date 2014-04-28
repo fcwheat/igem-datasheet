@@ -7,6 +7,7 @@
         <link rel="shortcut icon" href="images/logo-Owl-Color_cropped.ico">
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+       
     </head>
     
     <body class="container">
@@ -85,15 +86,21 @@
                       <button id="uploadFileButton" class="btn btn-primary">Upload File</button>
                       <button class="btn" data-dismiss="modal">Cancel</button> -->
                
-                
-                              <!--  <form action="/upload" class="dropzone">
-                                        
-                                       <div class="fallback">
-                                           <h5>Link to Pigeon image of device</h5><input class="data" id="deviceImage">
-                                        </div>
-                                </form> -->
-                              <h5>Link to Pigeon image of device</h5><input class="data" id="deviceImage">
-                                <div><h5>Link to Plasmid Map image of device</h5><input class="data" id="plasmidMap"></div>
+                <form enctype="multipart/form-data" id = "pigeonImage">
+                    <h5> Pigeon Image </h5>
+                        <input type="file"  id="displayImage" name = "displayImage" accept="image/*">
+   
+                       
+                </form>
+                  <form enctype="multipart/form-data" id = "plasmidImage">
+                    <h5> Plasmid Map Image </h5>
+                        <input type="file"  id="plasmidMap" name = "plasmidMap" accept="image/*">
+   
+                       
+                </form>
+
+                             <!-- <h5>Link to Pigeon image of device</h5><input class="data" id="deviceImage">-->
+                    
                             </div>
                         </div>
                         
@@ -161,8 +168,12 @@
                                 <div><h5>Scars (y/n)</h5><input class="data" id="assemblyScars"></div>                                
                                 <div><h5>Assembly Components</h5><textarea rows="5" id="assemblyComponents"></textarea></div>
                             </div>
-                            <div class="span6">                 
-                                <div><h5>Link to Assembly Graph Image</h5><input class="data" id="assemblyImage"></div>
+                            <div class="span6">
+                                                  <form enctype="multipart/form-data" id = "assemblyForm">
+                            <h5> Assembly Graph Image </h5>
+                                    <input type="file"  id="assemblyImage" name = "assemblyImage" accept="image/*">
+                            </form>
+                 
                                 <div><h5>Chassis</h5><input class="data" id="chassis"></div>                                
                                 <div><h5>Strain</h5><input class="data" id="strain"></div>
                                 <div><h5>Additional Comments</h5><textarea rows="5" class="data" id="assemblyComments"></textarea></div>
