@@ -68,7 +68,31 @@
                             </div> 
                             
                             <div class="span6"> 
-                                <div><h5>Link to Pigeon image of device</h5><input class="data" id="deviceImage"></div>
+  
+              
+              <!-- FILE UPLOAD MODAL -->
+
+
+ 
+                   <!--   <h4 id="uploadFileModalLabel">Upload File</h4> 
+         
+                      <form id="uploadForm" method="POST" action="OwlServlet" enctype="multipart/form-data">
+                          <input type="file" name="file" id="file" multiple/>
+                          <!--   <input type="submit" value="Upload File" name="upload" id="uploadFileButton" class="btn" style="width:150px" /> -->
+  <!--                    </form>
+  
+   
+                      <button id="uploadFileButton" class="btn btn-primary">Upload File</button>
+                      <button class="btn" data-dismiss="modal">Cancel</button> -->
+               
+                
+                              <!--  <form action="/upload" class="dropzone">
+                                        
+                                       <div class="fallback">
+                                           <h5>Link to Pigeon image of device</h5><input class="data" id="deviceImage">
+                                        </div>
+                                </form> -->
+                              <h5>Link to Pigeon image of device</h5><input class="data" id="deviceImage">
                                 <div><h5>Link to Plasmid Map image of device</h5><input class="data" id="plasmidMap"></div>
                             </div>
                         </div>
@@ -280,13 +304,32 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
         <script>
             $.get("ParserServlet", function(data) {
-                $("#name").val(data.name);
-                $("#summary").val(data.summary);
-                $("#authors").val(data.contactInformation.authors);
-                $("#sequence").val(data.sequence);
-                $("#date").val(data.designInformation.date);
-                $("#deviceName").val(data.name);
-                $("#deviceType").val(data.designInformation.deviceType);
+                //console.log(data);
+                if (data.name)
+                {
+                    $("#name").val(data.name);
+                    $("#deviceName").val(data.name);
+                }
+                if (data.summary)
+                {
+                    $("#summary").val(data.summary);
+                }
+                if (data.contactInformation.authors)
+                {
+                    $("#authors").val(data.contactInformation.authors);
+                }
+                if (data.sequence)
+                {
+                    $("#sequence").val(data.sequence);
+                }
+                if (data.designInformation.date)
+                {
+                    $("#date").val(data.designInformation.date);
+                }
+                if (data.designInformation.deviceType)
+                {
+                    $("#deviceType").val(data.designInformation.deviceType);
+                }
             });
         </script>
         

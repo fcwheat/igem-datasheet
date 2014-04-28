@@ -4,7 +4,19 @@ $(document).ready(function() {
     
     $.get("ParserServlet",function(data) {
        //use data to fill out parts of the form.
+       console.log('called');
         $("#name").text(data.name);
+    });
+    
+     $('#uploadFileButton').click(function() {
+        console.log('trying to upload');
+        var newFileName = $('#file').val();
+        if (newFileName !== "") {
+            $('#uploadForm').submit();
+        } else if ($('a.dynatree-title:contains("' + newFileName + '")').length === 0) {
+            editor.setValue("");
+            saveFile(newFileName);
+        }
     });
     
     
@@ -260,8 +272,9 @@ $(document).ready(function() {
     }
     }
         $.get("DataServlet",{"sending":JSON.stringify(data)},function(){
-            var win = window.open("output.html",'_blank');
-            win.focus();
+             window.location.assign("output.html");
+            //window.open("output.html");
+            //win.focus();
         });
 
     });

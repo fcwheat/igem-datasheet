@@ -74,7 +74,7 @@
             <div class ="container">
                 <div class="row">
                     <div class="col-md-4"><h4>Author(s)</h4><div id = "authors"></div></div>
-                    <div class="col-md-4"><h4>Data Collection</h4><div id = "dataCollection"></div></div>
+                    <div class="col-md-4"><h4>Data Collectors</h4><div id = "dataCollection"></div></div>
                     <div class="col-md-4"><h4>Date</h4><div id = "date" style = "width:80%"></div></div>
                 </div>
                  <div class="row">
@@ -96,7 +96,7 @@
                     <div class="col-md-3"><h4>Type</h4><div id = "type"></div></div>
                     <div class="col-md-3"><h4>Vector</h4><div id = "vector"></div></div>
                     <div class="col-md-3"><h4>Design Components</h4><div id = "designComponents"></div></div>
-                    <div class="col-md-3"><h4>Additional Comments</h4><div id = "additionalComments" style = "width:80%"></div></div>
+                    <div class="col-md-3"><h4>Additional Comments</h4><div id = "designComments" style = "width:80%"></div></div>
                 </div>
                                
             </div>
@@ -115,7 +115,7 @@
                 </div>
                  <div class="row">
                   
-                    <div class="col-md-3"><h4>Scars (y/n)</h4><div id = "scars"></div></div>
+                    <div class="col-md-3"><h4>Scars (y/n)</h4><div id = "assemblyScars"></div></div>
                     <div class="col-md-3"><h4>Additional Comments</h4><div id = "assemblyComments"></div></div>
                     <div class="col-md-3"><h4>Assembly Components</h4><div id = "assemblyComponents" style = "width:80%"></div></div>
                     
@@ -133,6 +133,7 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
         <script>
             $.get("DataServlet", function(data) {
+                
                 
                 // a function to check is an entire field is empty
                 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -157,7 +158,7 @@
                 return true;
                 }
                 
-                console.log(data);
+                //console.log(data);
                 $(".name").text(data.name);
                 $("#summary").text(data.summary);
                 $("#sequence").text(data.sequence);
@@ -174,7 +175,8 @@
                 $("#date").text(data.contactInformation.date);
                 $("#contact").text(data.contactInformation.contact);
                 
-                //Design Detail          
+                //Design Detail  
+                //console.log(data.designDetails);
                 $("#type").text(data.designDetails.type);
                 $("#vector").text(data.designDetails.vector);
                 $("#designComponents").text(data.designDetails.designComponents);
@@ -182,6 +184,7 @@
                 
                 //Assembly
                 $("#assemblyMethod").text(data.assemblyInformation.assemblyMethod);
+                $("#chassis").text(data.assemblyInformation.chassis);
                 $("#assemblyRFC").text(data.assemblyInformation.assemblyRFC);
                 $("#assemblyScars").text(data.assemblyInformation.assemblyScars);
                 $("#assemblyComponents").text(data.assemblyInformation.assemblyComponents);
